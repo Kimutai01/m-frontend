@@ -72,18 +72,22 @@ const NavBar = () => {
 
   return (
     <div
+
       style={{ backgroundColor: `${navBg}` }}
       className={
         shadow
-          ? 'fixed w-full h-20 shadow-xl z-[100] md:px-24'
-          : 'fixed w-full h-20 z-[100] md:px-24'
+          ? ' w-full h-20 shadow-xl z-[100] md:px-24'
+          : 'w-full h-20 z-[100] md:px-24'
       }
     >
       <div className="flex justify-between items-center w-full h-full md:px-4 py-4 px-2 2xl:px-16 rounded">
-        <div className="animate-pulse">
+        <div className="absolute left-2">
           <Link className="text-[#fff] font-bold text-3xl" to="/">
             <img src={logo} alt="Muranga seals logo" className="h-28" />
           </Link>
+        </div>
+        <div className="h-20 bg-[red]">
+
         </div>
         <div>
           <ul
