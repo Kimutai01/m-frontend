@@ -1,14 +1,14 @@
-import midfielder1 from '../../assets/midfielder1.png';
+import midfielder1 from '../../assets/EricBalecho.png';
 import midfielder2 from '../../assets/midfielder2.png';
 
 const Midfielders = () => {
   const midfielders = [
     {
-      name1: 'Francis',
-      name2: 'Ocholla',
+      name1: 'Eric',
+      name2: 'Balecho',
       image: midfielder1,
       id: 6,
-      number: '06',
+      number: '08',
     },
     {
       name1: 'Victory',
