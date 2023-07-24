@@ -1,21 +1,21 @@
-import forward1 from "../../assets/forward1.png";
-import forward2 from "../../assets/forward2.png";
+import forward1 from '../../assets/forward1.png';
+import forward2 from '../../assets/forward2.png';
 
 const Forwards = () => {
   const forwards = [
     {
-      name1: "Christian ",
-      name2: "Mutiso",
+      name1: 'Christian ',
+      name2: 'Mutiso',
       image: forward1,
-      number: "06",
+      number: '06',
       id: 8,
     },
     {
-      name1: "Tom",
-      name2: "Kangeta",
+      name1: 'Tom',
+      name2: 'Kangeta',
 
       image: forward2,
-      number: "06",
+      number: '06',
       id: 9,
     },
   ];

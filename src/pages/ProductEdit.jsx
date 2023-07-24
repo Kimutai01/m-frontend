@@ -1,30 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
-import { selectUser } from "../features/userSlice";
-import { register } from "../features/userSlice";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import {
+  useLocation, useNavigate, useParams, Link, redirect,
+} from 'react-router-dom';
+import axios from 'axios';
+import { selectUser, register } from '../features/userSlice';
 
-import { Link, redirect } from "react-router-dom";
-import { getUserDetails, selectUserDetails } from "../features/profileSlice";
+import { getUserDetails, selectUserDetails } from '../features/profileSlice';
 import {
   fetchProduct,
   selectProduct,
   updateProductById,
-} from "../features/productSlice";
+} from '../features/productSlice';
 
 const ProductEdit = () => {
   const { id } = useParams();
   console.log(id);
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
-  const [category, setCategory] = useState("");
-  const [brand, setBrand] = useState("");
-  const [countInStock, setCountInStock] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
+  const [image, setImage] = useState('');
+  const [category, setCategory] = useState('');
+  const [brand, setBrand] = useState('');
+  const [countInStock, setCountInStock] = useState('');
+  const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
 
   const location = useLocation();
@@ -56,18 +55,18 @@ const ProductEdit = () => {
         brand,
         countInStock,
         description,
-      })
+      }),
     );
 
-    toast.success("Product Updated Successfully", {
-      position: "top-center",
+    toast.success('Product Updated Successfully', {
+      position: 'top-center',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       draggable: true,
     });
 
-    navigate("/admin/products");
+    navigate('/admin/products');
   };
   const user = useSelector(selectUser);
   console.log(user);
@@ -76,23 +75,23 @@ const ProductEdit = () => {
     const file = e.target.files[0];
     console.log(file);
     const formData = new FormData();
-    formData.append("image", file);
-    formData.append("product_id", id);
+    formData.append('image', file);
+    formData.append('product_id', id);
 
     try {
       setUploading(true);
 
       const config = {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${user.token}`,
         },
       };
 
       const { data } = await axios.post(
-        `http://127.0.0.1:8000/api/products/upload/`,
+        'http://127.0.0.1:8000/api/products/upload/',
         formData,
-        config
+        config,
       );
 
       setImage(data);
@@ -136,7 +135,7 @@ const ProductEdit = () => {
         </h1>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label for="name" className="text-white mb-3 uppercase font-bold">
+            <label htmlFor="name" className="text-white mb-3 uppercase font-bold">
               Name
             </label>
             <input
@@ -152,7 +151,7 @@ const ProductEdit = () => {
         </div>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label for="price" className="text-white mb-3 uppercase font-bold">
+            <label htmlFor="price" className="text-white mb-3 uppercase font-bold">
               Price
             </label>
             <input
@@ -172,7 +171,7 @@ const ProductEdit = () => {
               alt=""
               className="h-20 w-20"
             />
-            <label for="image" className="text-white mb-3 uppercase font-bold">
+            <label htmlFor="image" className="text-white mb-3 uppercase font-bold">
               Image
             </label>
             <input
@@ -193,7 +192,7 @@ const ProductEdit = () => {
             />
             {uploading && (
               <div className="flex justify-center items-center pt-28 bg-black">
-                <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent"></div>
+                <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent" />
               </div>
             )}
           </div>
@@ -202,7 +201,7 @@ const ProductEdit = () => {
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
             <label
-              for="category"
+              htmlFor="category"
               className="text-white mb-3 uppercase font-bold"
             >
               Category
@@ -220,7 +219,7 @@ const ProductEdit = () => {
 
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
-            <label for="brand" className="text-white mb-3 uppercase font-bold">
+            <label htmlFor="brand" className="text-white mb-3 uppercase font-bold">
               Brand
             </label>
             <input
@@ -237,7 +236,7 @@ const ProductEdit = () => {
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
             <label
-              for="countInStock"
+              htmlFor="countInStock"
               className="text-white mb-3 uppercase font-bold"
             >
               Count In Stock
@@ -256,7 +255,7 @@ const ProductEdit = () => {
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
             <label
-              for="description"
+              htmlFor="description"
               className="text-white mb-3 uppercase font-bold"
             >
               Description

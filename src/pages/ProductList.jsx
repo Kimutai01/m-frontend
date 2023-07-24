@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, Link } from 'react-router-dom';
 
 import {
   fetchProducts,
@@ -13,7 +12,7 @@ import {
   getCreatedProduct,
   getProductsError,
   getProductsStatus,
-} from "../features/productsSlice";
+} from '../features/productsSlice';
 
 const ProductList = () => {
   const navigate = useNavigate();
@@ -32,9 +31,9 @@ const ProductList = () => {
   }, []);
 
   useEffect(() => {
-    if (status === "failed") {
+    if (status === 'failed') {
       toast.error(error, {
-        position: "top-center",
+        position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -44,10 +43,10 @@ const ProductList = () => {
   }, [status, error]);
 
   const deleteHandler = (id) => {
-    if (window.confirm("Are you sure you want to delete this product?")) {
+    if (window.confirm('Are you sure you want to delete this product?')) {
       dispatch(deleteProductById(id));
-      toast.success("Product Deleted Successfully", {
-        position: "top-center",
+      toast.success('Product Deleted Successfully', {
+        position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -82,9 +81,9 @@ const ProductList = () => {
           <h1 className="font-bold">Create Product</h1>
         </button>
       </div>
-      {status === "loading" && (
+      {status === 'loading' && (
         <div className="flex justify-center items-center pt-28 bg-black">
-          <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent"></div>
+          <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent" />
         </div>
       )}
       <div className="w-full">

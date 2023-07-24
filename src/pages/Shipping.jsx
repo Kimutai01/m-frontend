@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
-import { selectUser } from "../features/userSlice";
-import { register } from "../features/userSlice";
-import { selectShippingAddress } from "../features/cartSlice";
-import { saveShippingAddress } from "../features/cartSlice";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import {
+  useLocation, useNavigate, Link, redirect,
+} from 'react-router-dom';
+import { selectUser, register } from '../features/userSlice';
+import { selectShippingAddress, saveShippingAddress } from '../features/cartSlice';
 
-import { Link, redirect } from "react-router-dom";
-
-import CheckoutSteps from "../components/CheckoutSteps";
+import CheckoutSteps from '../components/CheckoutSteps';
 
 const Shipping = () => {
   const dispatch = useDispatch();
@@ -23,13 +21,15 @@ const Shipping = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, postalCode, country }));
-    toast.success("Shipping Address Saved", {
-      position: "top-center",
+    dispatch(saveShippingAddress({
+      address, city, postalCode, country,
+    }));
+    toast.success('Shipping Address Saved', {
+      position: 'top-center',
       autoClose: 2000,
     });
 
-    navigate("/payment");
+    navigate('/payment');
   };
   return (
     <div className="bg-[#000] pt-28">
@@ -42,7 +42,7 @@ const Shipping = () => {
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
             <label
-              for="address"
+              htmlFor="address"
               className="text-white mb-3 uppercase font-bold"
             >
               Address
@@ -52,7 +52,7 @@ const Shipping = () => {
               id="address"
               required
               name="address"
-              value={address ? address : ""}
+              value={address || ''}
               onChange={(e) => setAddress(e.target.value)}
               placeholder="Your address.."
               className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
@@ -61,7 +61,7 @@ const Shipping = () => {
         </div>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label for="city" className="text-white mb-3 uppercase font-bold">
+            <label htmlFor="city" className="text-white mb-3 uppercase font-bold">
               City
             </label>
             <input
@@ -69,7 +69,7 @@ const Shipping = () => {
               required
               id="city"
               name="city"
-              value={city ? city : ""}
+              value={city || ''}
               onChange={(e) => setCity(e.target.value)}
               placeholder="Your city.."
               className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
@@ -79,7 +79,7 @@ const Shipping = () => {
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
             <label
-              for="postalCode"
+              htmlFor="postalCode"
               className="text-white mb-3 uppercase font-bold"
             >
               Postal Code
@@ -89,7 +89,7 @@ const Shipping = () => {
               required
               id="postalCode"
               name="postalCode"
-              value={postalCode ? postalCode : ""}
+              value={postalCode || ''}
               onChange={(e) => setPostalCode(e.target.value)}
               placeholder="Your postal code.."
               className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
@@ -99,7 +99,7 @@ const Shipping = () => {
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
             <label
-              for="country"
+              htmlFor="country"
               className="text-white mb-3 uppercase font-bold"
             >
               Country
@@ -109,7 +109,7 @@ const Shipping = () => {
               required
               id="country"
               name="country"
-              value={country ? country : ""}
+              value={country || ''}
               onChange={(e) => setCountry(e.target.value)}
               placeholder="Your country.."
               className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"

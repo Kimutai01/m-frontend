@@ -1,39 +1,40 @@
-import React, { useEffect } from "react";
-import { useMatch, useLocation, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import {
+  useMatch, useLocation, Link, useNavigate,
+} from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast, ToastContainer } from 'react-toastify';
+import { BsFillTrash3Fill } from 'react-icons/bs';
 import {
   addItemsToCart,
   selectCartItems,
   removeItemsFromCart,
-} from "../features/cartSlice";
-import { toast, ToastContainer } from "react-toastify";
-import { BsFillTrash3Fill } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
-import { selectUser } from "../features/userSlice";
+} from '../features/cartSlice';
+import { selectUser } from '../features/userSlice';
 
 const Cart = () => {
   const navigate = useNavigate();
-  const match = useMatch("/cart/:id");
-  const { id } = match?.params || "";
+  const match = useMatch('/cart/:id');
+  const { id } = match?.params || '';
   console.log(id);
   const user = useSelector(selectUser);
 
   const qty = useLocation().search
-    ? Number(useLocation().search.split("=")[1])
+    ? Number(useLocation().search.split('=')[1])
     : 1;
   const dispatch = useDispatch();
 
   const checkoutHandler = () => {
     // dispatch(removeItemsFromCart(id));
-    navigate("/login?redirect=/shipping");
+    navigate('/login?redirect=/shipping');
   };
 
   const cart = useSelector(selectCartItems);
   console.log(cart);
   console.log(cart);
-  cart.length === 0 &&
-    toast.error("Your cart is empty", {
-      position: "top-center",
+  cart.length === 0
+    && toast.error('Your cart is empty', {
+      position: 'top-center',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -67,11 +68,9 @@ const Cart = () => {
                 <select
                   className="bg-[#fff] text-[#000] px-2 py-1 rounded-lg"
                   value={item.qty}
-                  onChange={(e) =>
-                    dispatch(
-                      addItemsToCart(item.product, Number(e.target.value))
-                    )
-                  }
+                  onChange={(e) => dispatch(
+                    addItemsToCart(item.product, Number(e.target.value)),
+                  )}
                 >
                   {[...Array(item.countInStock).keys()].map((x) => (
                     <option key={x + 1} value={x + 1}>
@@ -94,10 +93,12 @@ const Cart = () => {
             <h2 className="text-2xl font-bold text-center p-3  text-[red]">
               {/* Subtotal ({cart.reduce((acc, item) => acc + item.qty, 0)}) items */}
               Subtotal (
-              {cart.reduce((acc, item) => acc + parseInt(item.qty), 0)}) items
+              {cart.reduce((acc, item) => acc + parseInt(item.qty), 0)}
+              ) items
             </h2>
             <h2 className="text-2xl font-bold text-center text-[grey]">
-              Total Price: ${" "}
+              Total Price: $
+              {' '}
               {cart
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
                 .toFixed(2)}

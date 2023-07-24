@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import {
   getAllUsers,
   selectUsers,
   selectUser,
   deleteUserById,
-} from "../features/userSlice";
-import { Link } from "react-router-dom";
-import { getAllOrders, selectAllOrders } from "../features/orderSlice";
+} from '../features/userSlice';
+import { getAllOrders, selectAllOrders } from '../features/orderSlice';
 
 const OrderList = () => {
   const dispatch = useDispatch();
@@ -24,16 +23,16 @@ const OrderList = () => {
     if (singleUser && singleUser.isAdmin) {
       dispatch(getAllOrders());
     } else {
-      navigate("/login");
+      navigate('/login');
     }
   }, [dispatch, navigate]);
 
   const deleteHandler = (id) => {
-    if (window.confirm("Are you sure you want to delete this user?")) {
+    if (window.confirm('Are you sure you want to delete this user?')) {
       dispatch(deleteUserById(id));
 
-      toast.success("User Deleted Successfully", {
-        position: "top-center",
+      toast.success('User Deleted Successfully', {
+        position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -71,14 +70,14 @@ const OrderList = () => {
                   {order.isPaid ? (
                     order.paidAt.substring(0, 10)
                   ) : (
-                    <i className="fas fa-times" style={{ color: "red" }}></i>
+                    <i className="fas fa-times" style={{ color: 'red' }} />
                   )}
                 </td>
                 <td className="py-2">
                   {order.isDelivered ? (
                     order.deliveredAt.substring(0, 10)
                   ) : (
-                    <i className="fas fa-times" style={{ color: "red" }}></i>
+                    <i className="fas fa-times" style={{ color: 'red' }} />
                   )}
                 </td>
                 <td className="py-2">

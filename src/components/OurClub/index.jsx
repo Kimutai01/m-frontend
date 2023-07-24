@@ -1,45 +1,45 @@
-import clubhistory1 from "../../assets/clubhistory1.png";
-import clubhistory2 from "../../assets/clubhistory2.png";
-import clubhistory3 from "../../assets/clubhistory3.png";
-import clubhistory4 from "../../assets/clubhistory4.png";
-import clubhistory5 from "../../assets/clubhistory5.png";
+import clubhistory1 from '../../assets/clubhistory1.png';
+import clubhistory2 from '../../assets/clubhistory2.png';
+import clubhistory3 from '../../assets/clubhistory3.png';
+import clubhistory4 from '../../assets/clubhistory4.png';
+import clubhistory5 from '../../assets/clubhistory5.png';
 
 const index = () => {
   const clubhistorycontent = [
     {
       id: 1,
       image: clubhistory1,
-      title: "Our team members",
+      title: 'Our team members',
       content:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi ",
+        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi ',
     },
     {
       id: 2,
       image: clubhistory2,
-      title: "Our management",
+      title: 'Our management',
       content:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi ",
+        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi ',
     },
     {
       id: 3,
       image: clubhistory3,
-      title: "OUR SPONSORS  &  PARTNERS ",
+      title: 'OUR SPONSORS  &  PARTNERS ',
       content:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi ",
+        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi ',
     },
     {
       id: 4,
       image: clubhistory4,
-      title: "Our Academy",
+      title: 'Our Academy',
       content:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi ",
+        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi ',
     },
     {
       id: 5,
       image: clubhistory5,
-      title: "OUR  CLUB PRODUCTS  ",
+      title: 'OUR  CLUB PRODUCTS  ',
       content:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi ",
+        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi ',
     },
   ];
 
@@ -57,8 +57,8 @@ const index = () => {
             key={clubhistory.id}
             className={
               clubhistory.id % 2 == !0
-                ? "flex flex-col-reverse md:flex-row  items-center border-t-2  border-[#FAE115] my-4 bg-[#fdfee9] p-10"
-                : "flex  flex-col-reverse md:flex-row-reverse items-center border-t-2  border-[#FAE115] my-4 bg-[#fdfee9] p-4"
+                ? 'flex flex-col-reverse md:flex-row  items-center border-t-2  border-[#FAE115] my-4 bg-[#fdfee9] p-10'
+                : 'flex  flex-col-reverse md:flex-row-reverse items-center border-t-2  border-[#FAE115] my-4 bg-[#fdfee9] p-4'
             }
           >
             <div className="flex flex-col  ">

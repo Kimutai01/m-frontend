@@ -1,10 +1,10 @@
-import { useState } from "react";
-import banner from "../../assets/banner.png";
-import news1 from "../../assets/news1.png";
-import news2 from "../../assets/news2.png";
-import news3 from "../../assets/news3.png";
-import news4 from "../../assets/news4.png";
-import featured1 from "../../assets/featured1.png";
+import { useState } from 'react';
+import banner from '../../assets/banner.png';
+import news1 from '../../assets/news1.png';
+import news2 from '../../assets/news2.png';
+import news3 from '../../assets/news3.png';
+import news4 from '../../assets/news4.png';
+import featured1 from '../../assets/featured1.png';
 
 const Landing = () => {
   const [current, setCurrent] = useState(0);
@@ -17,30 +17,30 @@ const Landing = () => {
   const news = [
     {
       id: 1,
-      title: "AQUINAS FC  1-0 MURANGA SEAL ",
-      description: "Penalty for Wazito fc on the ground  ",
-      date: " 20th/ April/ 2023 ",
+      title: 'AQUINAS FC  1-0 MURANGA SEAL ',
+      description: 'Penalty for Wazito fc on the ground  ',
+      date: ' 20th/ April/ 2023 ',
       image: news1,
     },
     {
       id: 1,
-      title: "WAZITO FC  1-0 MURANGA SEAL ",
-      description: "Penalty for Wazito fc on the ground  ",
-      date: " 20th/ April/ 2023 ",
+      title: 'WAZITO FC  1-0 MURANGA SEAL ',
+      description: 'Penalty for Wazito fc on the ground  ',
+      date: ' 20th/ April/ 2023 ',
       image: news2,
     },
     {
       id: 1,
-      title: "WAZITO FC  1-0 MURANGA SEAL ",
-      description: "Penalty for Wazito fc on the ground  ",
-      date: " 20th/ April/ 2023 ",
+      title: 'WAZITO FC  1-0 MURANGA SEAL ',
+      description: 'Penalty for Wazito fc on the ground  ',
+      date: ' 20th/ April/ 2023 ',
       image: news3,
     },
     {
       id: 1,
-      title: "WAZITO FC  1-0 MURANGA SEAL ",
-      description: "Penalty for Wazito fc on the ground  ",
-      date: " 20th/ April/ 2023 ",
+      title: 'WAZITO FC  1-0 MURANGA SEAL ',
+      description: 'Penalty for Wazito fc on the ground  ',
+      date: ' 20th/ April/ 2023 ',
       image: news4,
     },
   ];
@@ -48,12 +48,12 @@ const Landing = () => {
   const featuredNews = [
     {
       id: 1,
-      title: "DONT MISS THIS GAME FOR ALL STARS VS SEALS",
+      title: 'DONT MISS THIS GAME FOR ALL STARS VS SEALS',
       image: featured1,
     },
     {
       id: 2,
-      title: "DONT MISS THIS GAME FOR ALL STARS VS SEALS",
+      title: 'DONT MISS THIS GAME FOR ALL STARS VS SEALS',
       image: featured1,
     },
   ];

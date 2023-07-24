@@ -1,31 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
-import { selectUser } from "../features/userSlice";
-import { userDetailReset } from "../features/profileSlice";
-import { ImCross } from "react-icons/im";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import {
+  useLocation, useNavigate, Link, redirect,
+} from 'react-router-dom';
+import { ImCross } from 'react-icons/im';
 
-import { AiFillInstagram } from "react-icons/ai";
-import { AiFillFacebook } from "react-icons/ai";
-import { AiFillTwitterCircle } from "react-icons/ai";
-import { AiFillPhone } from "react-icons/ai";
-import { AiFillHome } from "react-icons/ai";
-import { AiFillMail } from "react-icons/ai";
-import { FaTwitter } from "react-icons/fa";
-import { IoMdMail } from "react-icons/io";
-import { IoLocationSharp } from "react-icons/io5";
-import { Link, redirect } from "react-router-dom";
-import { selectUserDetails, updateUserProfile } from "../features/profileSlice";
-import { getUserDetails } from "../features/profileSlice";
-import { listAllOrders } from "../features/orderSlice";
-import { selectOrders } from "../features/orderSlice";
+import {
+  AiFillInstagram, AiFillFacebook, AiFillTwitterCircle, AiFillPhone, AiFillHome, AiFillMail,
+} from 'react-icons/ai';
+import { FaTwitter } from 'react-icons/fa';
+import { IoMdMail } from 'react-icons/io';
+import { IoLocationSharp } from 'react-icons/io5';
+import {
+  userDetailReset, selectUserDetails, updateUserProfile, getUserDetails,
+} from '../features/profileSlice';
+import { selectUser } from '../features/userSlice';
+import { listAllOrders, selectOrders } from '../features/orderSlice';
 
 const Profile = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState(null);
 
   const orders = useSelector(selectOrders);
@@ -34,11 +31,11 @@ const Profile = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+  const redirect = location.search ? location.search.split('=')[1] : '/';
 
   const submitHandler = (e) => {
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match");
+      setMessage('Passwords do not match');
     } else {
       e.preventDefault();
       dispatch(
@@ -46,13 +43,13 @@ const Profile = () => {
           id: user._id,
           name,
           email,
-          password: password,
-        })
+          password,
+        }),
       );
     }
   };
   toast.error(message, {
-    position: "top-center",
+    position: 'top-center',
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -63,14 +60,12 @@ const Profile = () => {
   const user = useSelector(selectUser);
   useEffect(() => {
     if (!user) {
-      navigate("/login");
+      navigate('/login');
+    } else if (!userDetails.name || user._id !== userDetails._id) {
+      dispatch(getUserDetails('profile'));
     } else {
-      if (!userDetails.name || user._id !== userDetails._id) {
-        dispatch(getUserDetails("profile"));
-      } else {
-        setName(userDetails.name);
-        setEmail(userDetails.email);
-      }
+      setName(userDetails.name);
+      setEmail(userDetails.email);
     }
   }, [navigate, user, userDetails, dispatch]);
 
@@ -83,7 +78,7 @@ const Profile = () => {
       <div className="bg-[#161616] mx-auto w-[30%] px-10 rounded-lg pb-10">
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label for="name" className="text-white mb-3 uppercase font-bold">
+            <label htmlFor="name" className="text-white mb-3 uppercase font-bold">
               Name
             </label>
             <input
@@ -100,7 +95,7 @@ const Profile = () => {
         </div>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label for="email" className="text-white mb-3 uppercase font-bold">
+            <label htmlFor="email" className="text-white mb-3 uppercase font-bold">
               Email Address
             </label>
             <input
@@ -118,7 +113,7 @@ const Profile = () => {
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
             <label
-              for="password"
+              htmlFor="password"
               className="text-white mb-3 uppercase font-bold"
             >
               Password
@@ -137,7 +132,7 @@ const Profile = () => {
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
             <label
-              for="confirmPassword"
+              htmlFor="confirmPassword"
               className="text-white mb-3 uppercase font-bold"
             >
               Password
@@ -161,9 +156,10 @@ const Profile = () => {
           <h1 className="font-bold">Update profile</h1>
         </button>
         <p className="text-[#fff] font-medium">
-          Already have an account?{" "}
+          Already have an account?
+          {' '}
           <Link
-            to={redirect ? `/login?redirect=${redirect}` : "/login"}
+            to={redirect ? `/login?redirect=${redirect}` : '/login'}
             className="text-[#ff4d24]"
           >
             Sign In

@@ -1,5 +1,5 @@
-import coach1 from "../../assets/coach1.png";
-import coach2 from "../../assets/coach2.png";
+import coach1 from '../../assets/coach1.png';
+import coach2 from '../../assets/coach2.png';
 
 const Coaches = () => {
   const coaches = [

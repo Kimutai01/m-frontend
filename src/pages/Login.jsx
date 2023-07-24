@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
-import { selectUser } from "../features/userSlice";
-import { login } from "../features/userSlice";
-
-import { Link, redirect } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import {
+  useLocation, useNavigate, Link, redirect,
+} from 'react-router-dom';
+import { selectUser, login } from '../features/userSlice';
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+  const redirect = location.search ? location.search.split('=')[1] : '/';
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -35,7 +34,7 @@ const Login = () => {
       <div className="bg-[#161616] mx-auto w-[30%] px-10 rounded-lg pb-10">
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label for="email" className="text-white mb-3 uppercase font-bold">
+            <label htmlFor="email" className="text-white mb-3 uppercase font-bold">
               Email Address
             </label>
             <input
@@ -52,7 +51,7 @@ const Login = () => {
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
             <label
-              for="password"
+              htmlFor="password"
               className="text-white mb-3 uppercase font-bold"
             >
               Password
@@ -76,9 +75,10 @@ const Login = () => {
           <h1 className="font-bold">Login</h1>
         </button>
         <p className="text-[#fff] font-medium">
-          Don't have an account?{" "}
+          Don't have an account?
+          {' '}
           <Link
-            to={redirect ? `/register?redirect=${redirect}` : "/register"}
+            to={redirect ? `/register?redirect=${redirect}` : '/register'}
             className="text-[#ff4d24]"
           >
             Register

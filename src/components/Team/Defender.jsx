@@ -1,29 +1,29 @@
-import defender1 from "../../assets/defender1.png";
-import defender2 from "../../assets/defender2.png";
-import defender3 from "../../assets/defender3.png";
+import defender1 from '../../assets/defender1.png';
+import defender2 from '../../assets/defender2.png';
+import defender3 from '../../assets/defender3.png';
 
 const Defender = () => {
   const defenders = [
     {
-      name1: "Samuel",
-      name2: "Semo",
+      name1: 'Samuel',
+      name2: 'Semo',
       image: defender1,
-      number: "06",
+      number: '06',
       id: 3,
     },
     {
-      name1: "Henry",
-      name2: "Omollo",
+      name1: 'Henry',
+      name2: 'Omollo',
       image: defender2,
       id: 4,
-      number: "03",
+      number: '03',
     },
     {
-      name1: "Victory",
-      name2: "Onyango",
+      name1: 'Victory',
+      name2: 'Onyango',
       image: defender3,
       id: 5,
-      number: "22",
+      number: '22',
     },
   ];
   return (

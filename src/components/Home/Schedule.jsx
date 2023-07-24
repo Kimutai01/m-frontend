@@ -1,8 +1,8 @@
-import { useState, useRef } from "react";
-import wazitologo from "../../assets/wazitologo.png";
-import emailjs from "@emailjs/browser";
-import msealskit from "../../assets/msealskit.png";
-import msealslogo from "../../assets/msealslogo.png";
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import wazitologo from '../../assets/wazitologo.png';
+import msealskit from '../../assets/msealskit.png';
+import msealslogo from '../../assets/msealslogo.png';
 
 const Schedule = () => {
   const [showModal, setShowModal] = useState(false);
@@ -13,10 +13,10 @@ const Schedule = () => {
 
     emailjs
       .sendForm(
-        "service_abzd5cf",
-        "template_ncd937d",
+        'service_abzd5cf',
+        'template_ncd937d',
         form.current,
-        "cea2TAaV7fu3Aqtyp"
+        'cea2TAaV7fu3Aqtyp',
       )
       .then(
         (result) => {
@@ -24,7 +24,7 @@ const Schedule = () => {
         },
         (error) => {
           console.log(error.text);
-        }
+        },
       );
   };
   return (
@@ -81,7 +81,7 @@ const Schedule = () => {
       )}
       <div
         className={`bg-black text-white px-4 py-8 md:ml-[28px] md:mr-[28px] ${
-          showModal ? "blur-lg" : "blur-none"
+          showModal ? 'blur-lg' : 'blur-none'
         }`}
       >
         <h1 className="uppercase">Match Schedule</h1>
