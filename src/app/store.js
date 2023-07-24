@@ -6,6 +6,7 @@ import userReducer from "../features/userSlice";
 import profileReducer from "../features/profileSlice";
 import orderReducer from "../features/orderSlice";
 // import registerReducer from "../features/registerSlice";
+import newsReducer from "../features/newsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -15,5 +16,6 @@ export const store = configureStore({
     user: userReducer,
     userDetails: profileReducer,
     order: orderReducer,
+    news: newsReducer,
   },
 });

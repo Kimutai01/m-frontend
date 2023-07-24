@@ -24,6 +24,7 @@ import Ticket from "./Components/Ticket/index.jsx";
 import Team from "./Components/Team/index.jsx";
 import Membership from "./Components/Membership/index.jsx";
 import OurClub from "./Components/OurClub/index.jsx";
+import NewsList from "./components/NewsList";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
         <Route path="/admin/products" element={<ProductList />} />
         <Route path="/admin/product/:id/edit" element={<ProductEdit />} />
         <Route path="/admin/orderlist" element={<OrderList />} />
+        <Route path="/admin/news" element={<NewsList />} />
       </Routes>
       <Footer />
     </>

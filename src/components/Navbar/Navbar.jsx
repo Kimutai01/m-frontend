@@ -118,9 +118,9 @@ const NavBar = () => {
                 OUR CLUB
               </li>
             </Link>
-            <Link exact="true" to="/ourclub">
-              <li className="ml-10 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                LOGIN
+            <Link exact="true" to="/shop">
+              <li className="ml-10 hover:underline text-[#f4e721] uppercase underline-offset-8 hover:text-[#f4e721]">
+                Shop
               </li>
             </Link>
 
@@ -145,6 +145,11 @@ const NavBar = () => {
                       <Link to="/admin/orderlist">
                         <div className="text-[#fff] py-1 px-2 hover:text-[#ff4d23] hover:scale-105 transition-all duration-all hover:border-y-black">
                           Orders
+                        </div>
+                      </Link>
+                      <Link to="/admin/news">
+                        <div className="text-[#fff] py-1 px-2 hover:text-[#ff4d23] hover:scale-105 transition-all duration-all hover:border-y-black">
+                          News
                         </div>
                       </Link>
                     </ul>
