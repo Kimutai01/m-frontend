@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { clearCart } from "./cartSlice";
+import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { clearCart } from './cartSlice';
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
@@ -8,26 +8,26 @@ export const createOrder = (order) => async (dispatch, getState) => {
     const {
       user: { user },
     } = getState();
-    const token = user.token;
+    const { token } = user;
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     };
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/orders/add/`,
+      'http://127.0.0.1:8000/api/orders/add/',
       order,
-      config
+      config,
     );
 
     dispatch(setOrder(data));
-    localStorage.setItem("order", JSON.stringify(data));
+    localStorage.setItem('order', JSON.stringify(data));
     dispatch(clearCart());
-    localStorage.removeItem("cartItems");
+    localStorage.removeItem('cartItems');
     dispatch(setLoading(false));
   } catch (error) {
-    console.error("Error creating order:", error);
+    console.error('Error creating order:', error);
     dispatch(setError(error.message));
     dispatch(setLoading(false));
   }
@@ -39,23 +39,23 @@ export const orderDetails = (id) => async (dispatch, getState) => {
     const {
       user: { user },
     } = getState();
-    const token = user.token;
+    const { token } = user;
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     };
     const { data } = await axios.get(
       `http://127.0.0.1:8000/api/orders/${id}/`,
-      config
+      config,
     );
 
     dispatch(getOrderDetails(data));
-    localStorage.setItem("order", JSON.stringify(data));
+    localStorage.setItem('order', JSON.stringify(data));
     dispatch(setLoading(false));
   } catch (error) {
-    console.error("Error getting order:", error);
+    console.error('Error getting order:', error);
     dispatch(setError(error.message));
     dispatch(setLoading(false));
   }
@@ -67,24 +67,24 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
     const {
       user: { user },
     } = getState();
-    const token = user.token;
+    const { token } = user;
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     };
     const { data } = await axios.put(
       `http://127.0.0.1:8000/api/orders/${id}/pay/`,
       paymentResult,
-      config
+      config,
     );
 
     dispatch(orderPay(data));
-    localStorage.setItem("order", JSON.stringify(data));
+    localStorage.setItem('order', JSON.stringify(data));
     dispatch(setLoading(false));
   } catch (error) {
-    console.error("Error paying order:", error);
+    console.error('Error paying order:', error);
     dispatch(setError(error.message));
     dispatch(setLoading(false));
   }
@@ -96,21 +96,21 @@ export const listAllOrders = () => async (dispatch, getState) => {
     const {
       user: { user },
     } = getState();
-    const token = user.token;
+    const { token } = user;
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/orders/myorders`,
-      config
+      'http://127.0.0.1:8000/api/orders/myorders',
+      config,
     );
 
     dispatch(listOrders(data));
     dispatch(setLoading(false));
   } catch (error) {
-    console.error("Error listing orders:", error);
+    console.error('Error listing orders:', error);
     dispatch(setError(error.message));
     dispatch(setLoading(false));
   }
@@ -122,21 +122,21 @@ export const getAllOrders = () => async (dispatch, getState) => {
     const {
       user: { user },
     } = getState();
-    const token = user.token;
+    const { token } = user;
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/orders/`,
-      config
+      'http://127.0.0.1:8000/api/orders/',
+      config,
     );
 
     dispatch(allOrders(data));
     dispatch(setLoading(false));
   } catch (error) {
-    console.error("Error listing orders:", error);
+    console.error('Error listing orders:', error);
     dispatch(setError(error.message));
     dispatch(setLoading(false));
   }
@@ -148,7 +148,7 @@ export const markOrderAsDelivered = (id) => async (dispatch, getState) => {
     const {
       user: { user },
     } = getState();
-    const token = user.token;
+    const { token } = user;
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -157,12 +157,12 @@ export const markOrderAsDelivered = (id) => async (dispatch, getState) => {
     await axios.put(
       `http://127.0.0.1:8000/api/orders/${id}/deliver/`,
       {},
-      config
+      config,
     );
     dispatch(markOrderDelivered(id));
     dispatch(setLoading(false));
   } catch (error) {
-    console.error("Error marking order as delivered:", error);
+    console.error('Error marking order as delivered:', error);
     dispatch(setError(error.message));
     dispatch(setLoading(false));
   }
@@ -179,7 +179,7 @@ const initialState = {
 };
 
 const orderSlice = createSlice({
-  name: "order",
+  name: 'order',
   initialState,
   reducers: {
     setOrder: (state, action) => {
@@ -187,7 +187,7 @@ const orderSlice = createSlice({
     },
     resetOrder: (state) => {
       state.order = {};
-      localStorage.removeItem("order");
+      localStorage.removeItem('order');
     },
     getOrderDetails: (state, action) => {
       state.orderDetails = action.payload;

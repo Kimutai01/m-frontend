@@ -1,33 +1,32 @@
-import Product from "../components/Product";
-import { fetchProducts } from "../features/productsSlice";
-import { toast, ToastContainer } from "react-toastify";
-
-import "react-toastify/dist/ReactToastify.css";
-
-import { RingLoader } from "react-spinners";
-
-import { AiOutlineCalendar } from "react-icons/ai";
-
-import { useSelector, useDispatch } from "react-redux";
-
+import Product from '../components/Product';
 import {
+  fetchProducts,
   selectAllProducts,
   getProductsError,
   getProductsStatus,
-} from "../features/productsSlice";
+} from '../features/productsSlice';
+import { toast, ToastContainer } from 'react-toastify';
 
-import React, { useRef, useState, useEffect } from "react";
+import 'react-toastify/dist/ReactToastify.css';
+
+import { RingLoader } from 'react-spinners';
+
+import { AiOutlineCalendar } from 'react-icons/ai';
+
+import { useSelector, useDispatch } from 'react-redux';
+
+import React, { useRef, useState, useEffect } from 'react';
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 // import required modules
-import { Pagination } from "swiper/modules";
-import axios from "axios";
-import Loader from "../components/Loader";
+import { Pagination } from 'swiper/modules';
+import axios from 'axios';
+import Loader from '../components/Loader';
 
 const HomeShop = () => {
   const dispatch = useDispatch();
@@ -37,13 +36,13 @@ const HomeShop = () => {
   const status = useSelector(getProductsStatus);
 
   useEffect(() => {
-    if (status === "idle") {
+    if (status === 'idle') {
       dispatch(fetchProducts());
     }
 
-    if (status === "failed") {
+    if (status === 'failed') {
       toast.error(error, {
-        position: "top-center",
+        position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -87,16 +86,14 @@ const HomeShop = () => {
           </Swiper>
         </div>
         <ToastContainer />
-        {status === "loading" && (
+        {status === 'loading' && (
           <div className="flex justify-center items-center pt-28 bg-black">
-            <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent"></div>
+            <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent" />
           </div>
         )}
         <div className="bg-[#000] pt-10 px-5 md:pt-28 pb-32 flex flex-col-reverse md:flex-row gap-10 md:px-32">
           <div className="md:w-[70%] grid grid-cols-1 md:grid-cols-2 gap-10">
-            {products.map((product) => {
-              return <Product key={product._id} product={product} />;
-            })}
+            {products.map((product) => <Product key={product._id} product={product} />)}
           </div>
           <div className="md:w-[30%] md:sticky md:top-20 md:h-screen">
             <div className="bg-[#161616] flex gap-2  rounded-lg p-8">

@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import {
   getAllUsers,
   selectUsers,
   selectUser,
   deleteUserById,
-} from "../features/userSlice";
-import { Link } from "react-router-dom";
+} from '../features/userSlice';
 
 const UsersList = () => {
   const dispatch = useDispatch();
@@ -22,16 +21,16 @@ const UsersList = () => {
     if (singleUser && singleUser.isAdmin) {
       dispatch(getAllUsers());
     } else {
-      navigate("/login");
+      navigate('/login');
     }
   }, [dispatch, navigate]);
 
   const deleteHandler = (id) => {
-    if (window.confirm("Are you sure you want to delete this user?")) {
+    if (window.confirm('Are you sure you want to delete this user?')) {
       dispatch(deleteUserById(id));
 
-      toast.success("User Deleted Successfully", {
-        position: "top-center",
+      toast.success('User Deleted Successfully', {
+        position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -66,9 +65,9 @@ const UsersList = () => {
                 </td>
                 <td className="py-2">
                   {user.isAdmin ? (
-                    <i className="fas fa-check text-green-500"></i>
+                    <i className="fas fa-check text-green-500" />
                   ) : (
-                    <i className="fas fa-times text-red-500"></i>
+                    <i className="fas fa-times text-red-500" />
                   )}
                 </td>
                 <td className="py-2">

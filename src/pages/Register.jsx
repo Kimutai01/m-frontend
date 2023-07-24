@@ -1,34 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
-import { selectUser } from "../features/userSlice";
-import { register } from "../features/userSlice";
-
-import { Link, redirect } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import {
+  useLocation, useNavigate, Link, redirect,
+} from 'react-router-dom';
+import { selectUser, register } from '../features/userSlice';
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState(null);
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+  const redirect = location.search ? location.search.split('=')[1] : '/';
 
   const submitHandler = (e) => {
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match");
+      setMessage('Passwords do not match');
     } else {
       e.preventDefault();
       dispatch(register(name, email, password));
     }
   };
   toast.error(message, {
-    position: "top-center",
+    position: 'top-center',
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -47,7 +46,7 @@ const Register = () => {
       <div className="bg-[#161616] mx-auto w-[30%] px-10 rounded-lg pb-10">
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label for="name" className="text-white mb-3 uppercase font-bold">
+            <label htmlFor="name" className="text-white mb-3 uppercase font-bold">
               Name
             </label>
             <input
@@ -64,7 +63,7 @@ const Register = () => {
         </div>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label for="email" className="text-white mb-3 uppercase font-bold">
+            <label htmlFor="email" className="text-white mb-3 uppercase font-bold">
               Email Address
             </label>
             <input
@@ -82,7 +81,7 @@ const Register = () => {
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
             <label
-              for="password"
+              htmlFor="password"
               className="text-white mb-3 uppercase font-bold"
             >
               Password
@@ -102,7 +101,7 @@ const Register = () => {
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
             <label
-              for="confirmPassword"
+              htmlFor="confirmPassword"
               className="text-white mb-3 uppercase font-bold"
             >
               Password
@@ -127,9 +126,10 @@ const Register = () => {
           <h1 className="font-bold">Register</h1>
         </button>
         <p className="text-[#fff] font-medium">
-          Already have an account?{" "}
+          Already have an account?
+          {' '}
           <Link
-            to={redirect ? `/login?redirect=${redirect}` : "/login"}
+            to={redirect ? `/login?redirect=${redirect}` : '/login'}
             className="text-[#ff4d24]"
           >
             Sign In

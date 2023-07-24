@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
-import { selectUser } from "../features/userSlice";
-import { register } from "../features/userSlice";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import {
+  useLocation, useNavigate, useParams, Link,
+} from 'react-router-dom';
+import { register } from '../features/userSlice';
 
-import { Link, redirect } from "react-router-dom";
-import { getUserDetails, selectUserDetails } from "../features/profileSlice";
+import { getUserDetails, selectUserDetails } from '../features/profileSlice';
 
 const UserEdit = () => {
   const { id } = useParams();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [admin, setAdmin] = useState(false);
   const [message, setMessage] = useState(null);
 
@@ -21,14 +20,14 @@ const UserEdit = () => {
 
   const submitHandler = (e) => {
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match");
+      setMessage('Passwords do not match');
     } else {
       e.preventDefault();
       dispatch(register(name, email, password));
     }
   };
   toast.error(message, {
-    position: "top-center",
+    position: 'top-center',
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -49,7 +48,7 @@ const UserEdit = () => {
   return (
     <div className="bg-[#000] pt-28">
       <Link to="/admin/userlist">
-        <button className="why-btn ml-40  mt-10 mb-10 ">
+        <button type="button" className="why-btn ml-40  mt-10 mb-10 ">
           <h1 className="font-bold">Go Back</h1>
         </button>
       </Link>
@@ -61,7 +60,7 @@ const UserEdit = () => {
         </h1>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label for="name" className="text-white mb-3 uppercase font-bold">
+            <label htmlFor="name" className="text-white mb-3 uppercase font-bold">
               Name
             </label>
             <input
@@ -77,7 +76,7 @@ const UserEdit = () => {
         </div>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label for="email" className="text-white mb-3 uppercase font-bold">
+            <label htmlFor="email" className="text-white mb-3 uppercase font-bold">
               Email Address
             </label>
             <input
@@ -93,7 +92,7 @@ const UserEdit = () => {
         </div>
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-row items-center w-full gap-3">
-            <label for="admin" className="text-white  uppercase font-bold ">
+            <label htmlFor="admin" className="text-white  uppercase font-bold ">
               Is Admin
             </label>
             <input
@@ -108,6 +107,7 @@ const UserEdit = () => {
         </div>
 
         <button
+          type="button"
           className="why-btn  w-full mt-10 mb-10 "
           onClick={(e) => submitHandler(e)}
         >

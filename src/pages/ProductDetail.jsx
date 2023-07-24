@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { fetchProducts } from "../features/productsSlice";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
-import { addItemsToCart } from "../features/cartSlice";
+import axios from 'axios';
+import { addItemsToCart } from '../features/cartSlice';
 import {
   getProductsStatus,
   getProductsError,
   selectAllProducts,
-} from "../features/productsSlice";
+  fetchProducts,
+} from '../features/productsSlice';
 
-import axios from "axios";
-import { useParams } from "react-router-dom";
-
-import { Link } from "react-router-dom";
-
-import Rating from "../components/Rating";
+import Rating from '../components/Rating';
 
 const ProductDetail = ({}) => {
   const navigate = useNavigate();
-  const [size, setSize] = useState("S");
+  const [size, setSize] = useState('S');
   console.log(size);
   const [qty, setQty] = useState(1);
   console.log(qty);
@@ -33,13 +29,13 @@ const ProductDetail = ({}) => {
   console.log(parseInt(id));
 
   useEffect(() => {
-    if (status === "idle") {
+    if (status === 'idle') {
       dispatch(fetchProducts());
     }
 
-    if (status === "failed") {
+    if (status === 'failed') {
       toast.error(error, {
-        position: "top-center",
+        position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -56,10 +52,10 @@ const ProductDetail = ({}) => {
     navigate(`/cart/${id}?qty=${qty}`);
   };
 
-  if (status === "loading" || !product) {
+  if (status === 'loading' || !product) {
     return (
       <div className="flex justify-center items-center pt-28 bg-black">
-        <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent"></div>
+        <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent" />
       </div>
     );
   }
@@ -87,12 +83,16 @@ const ProductDetail = ({}) => {
               <Rating
                 value={product.rating}
                 text={`${product.numReviews} reviews`}
-                color={"#f8e825"}
+                color="#f8e825"
               />
             </div>
             <div>
               <p className="text-[#ff4d23] font-bold text-2xl">
-                $ {product.price} USD
+                $
+                {' '}
+                {product.price}
+                {' '}
+                USD
               </p>
             </div>
 
@@ -102,7 +102,7 @@ const ProductDetail = ({}) => {
             <div className="flex border-[#ff4d23] border-2 justify-between px-3  mt-5 w-3/4">
               <p className="text-[grey] font-bold text-2xl">Status :</p>
               <p className="text-[grey] font-bold text-2xl">
-                {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
+                {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
               </p>
             </div>
             <div className="flex border-[#ff4d23] border-2 justify-between px-3 mt-5 w-3/4">

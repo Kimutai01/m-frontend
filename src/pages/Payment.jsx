@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
-import { selectUser } from "../features/userSlice";
-import { register } from "../features/userSlice";
-import { selectShippingAddress } from "../features/cartSlice";
-import { saveShippingAddress } from "../features/cartSlice";
-import { selectPaymentMethod } from "../features/cartSlice";
-import { savePaymentMethod } from "../features/cartSlice";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import {
+  useLocation, useNavigate, Link, redirect,
+} from 'react-router-dom';
+import { selectUser, register } from '../features/userSlice';
+import {
+  selectShippingAddress, saveShippingAddress, selectPaymentMethod, savePaymentMethod,
+} from '../features/cartSlice';
 
-import { Link, redirect } from "react-router-dom";
-import CheckoutSteps from "../components/CheckoutSteps";
+import CheckoutSteps from '../components/CheckoutSteps';
+
 const Payment = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const shippingAddress = useSelector(selectShippingAddress);
-  const [paymentMethod, setPaymentMethod] = useState("PayPal");
+  const [paymentMethod, setPaymentMethod] = useState('PayPal');
 
   if (!shippingAddress.address) {
-    redirect("/shipping");
+    redirect('/shipping');
   }
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(savePaymentMethod(paymentMethod));
-    navigate("/placeorder");
+    navigate('/placeorder');
   };
   return (
     <div className="pt-28 bg-[#000]">

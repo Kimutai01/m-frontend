@@ -9,7 +9,8 @@
 }
 
 .service-background {
-  background-image: linear-gradient(to right, rgba(62, 7, 7, 0.5), transparent),
+  background-image:
+    linear-gradient(to right, rgba(62, 7, 7, 0.5), transparent),
     url("https://assets.website-files.com/633148302ffcde12c15b7e7d/633417e6f7701e34e46f04a7_Car%20Service.jpg");
   background-size: cover;
   background-position: center;
