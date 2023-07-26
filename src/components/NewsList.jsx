@@ -61,7 +61,7 @@ const ProductList = () => {
 
   useEffect(() => {
     if (created && created._id) {
-      navigate(`/admin/product/${created._id}/edit`);
+      navigate(`/admin/news/${created._id}/edit`);
 
       dispatch(createNewsReset());
     }
@@ -72,13 +72,14 @@ const ProductList = () => {
       <ToastContainer />
       <div className="flex justify-between">
         <h1 className="text-[#fff] text-3xl uppercase items-center font-bold mt-10">
-          Product List
+          News List
         </h1>
         <button
           className="why-btn ml-40  mt-10 mb-10 "
+          type="button"
           onClick={createNewsHandler}
         >
-          <h1 className="font-bold">Create Product</h1>
+          <h1 className="font-bold">Create News</h1>
         </button>
       </div>
       {status === 'loading' && (
@@ -101,8 +102,11 @@ const ProductList = () => {
                 <td className="py-2">{product.title}</td>
 
                 <td className="py-2">
-                  <Link to={`/admin/product/${product._id}/edit`}>
-                    <button className="bg-[#ff4d24] text-white px-4 py-2 rounded-lg">
+                  <Link to={`/admin/news/${product._id}/edit`}>
+                    <button
+                      className="bg-[#ff4d24] text-white px-4 py-2 rounded-lg"
+                      type="button"
+                    >
                       <h1 className="font-bold">Edit</h1>
                     </button>
                   </Link>
@@ -110,6 +114,7 @@ const ProductList = () => {
                 <td className="py-2">
                   <button
                     className="bg-[#ff4d24] text-white px-4 py-2 rounded-lg"
+                    type="button"
                     onClick={() => deleteHandler(product._id)}
                   >
                     <h1 className="font-bold">Delete</h1>

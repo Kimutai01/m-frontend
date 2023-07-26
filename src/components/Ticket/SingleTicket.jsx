@@ -29,6 +29,7 @@ const SingleTicket = () => (
     </div>
     <div className="flex flex-col justify-between">
       <button
+        type="button"
         style={{
           background: 'rgba(244, 238, 238, 0.72)',
           boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
@@ -38,6 +39,7 @@ const SingleTicket = () => (
         General Membership
       </button>
       <button
+        type="button"
         className="bg-[#FAE115] p-4"
         style={{
           boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',

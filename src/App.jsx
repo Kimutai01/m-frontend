@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import NavBar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import Home from './Components/Home/index.jsx';
+import Home from './components/Home';
 
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
@@ -19,12 +18,13 @@ import ProductList from './pages/ProductList';
 import ProductEdit from './pages/ProductEdit';
 import OrderList from './pages/OrderList';
 import HomeShop from './pages/HomeShop';
-import News from './Components/News/index.jsx';
-import Ticket from './Components/Ticket/index.jsx';
-import Team from './Components/Team/index.jsx';
-import Membership from './Components/Membership/index.jsx';
-import OurClub from './Components/OurClub/index.jsx';
+import News from './components/News';
+import Ticket from './components/Ticket';
+import Team from './components/Team';
+import Membership from './components/Membership';
+import OurClub from './components/OurClub';
 import NewsList from './components/NewsList';
+import NewsEdit from './pages/NewsEdit';
 
 function App() {
   return (
@@ -53,6 +53,7 @@ function App() {
         <Route path="/admin/product/:id/edit" element={<ProductEdit />} />
         <Route path="/admin/orderlist" element={<OrderList />} />
         <Route path="/admin/news" element={<NewsList />} />
+        <Route path="/admin/news/:id/edit" element={<NewsEdit />} />
       </Routes>
       <Footer />
     </>

@@ -18,12 +18,12 @@ export const fetchNews = createAsyncThunk('news/fetchNews', async () => {
 export const fetchNewsById = createAsyncThunk(
   'news/fetchNewsById',
   async (id) => {
-    const response = await axios.get(`${newsUrl}${id}`);
+    const response = await axios.get(`${newsUrl}/${id}`);
     return response.data;
   },
 );
 
-export const updateNewsById = (id, news) => async (dispatch, getState) => {
+export const updateNewsById = (news) => async (dispatch, getState) => {
   try {
     const {
       user: { user },
@@ -35,7 +35,7 @@ export const updateNewsById = (id, news) => async (dispatch, getState) => {
         Authorization: `Bearer ${token}`,
       },
     };
-    await axios.put(`${newsUrl}${id}/update/`, news, config);
+    await axios.put(`${newsUrl}/update/${news._id}/`, news, config);
     dispatch(fetchNews());
   } catch (error) {
     console.error('Error updating product:', error);
@@ -53,7 +53,7 @@ export const deleteNewsById = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${token}`,
       },
     };
-    await axios.delete(`${newsUrl}${id}/delete/`, config);
+    await axios.delete(`${newsUrl}/delete/${id}`, config);
     dispatch(deleteNews(id));
     dispatch(fetchNews());
   } catch (error) {
@@ -73,7 +73,7 @@ export const createNewNews = () => async (dispatch, getState) => {
         Authorization: `Bearer ${token}`,
       },
     };
-    const { data } = await axios.post(`${productsUrl}create/`, {}, config);
+    const { data } = await axios.post(`${newsUrl}/create/`, {}, config);
     dispatch(fetchNews());
     dispatch(createNews(data));
   } catch (error) {
@@ -96,7 +96,7 @@ const newsSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchNews.pending]: (state, action) => {
+    [fetchNews.pending]: (state) => {
       state.status = 'loading';
     },
     [fetchNews.fulfilled]: (state, action) => {
@@ -107,7 +107,7 @@ const newsSlice = createSlice({
       state.status = 'failed';
       state.error = action.error.message;
     },
-    [fetchNewsById.pending]: (state, action) => {
+    [fetchNewsById.pending]: (state) => {
       state.status = 'loading';
     },
     [fetchNewsById.fulfilled]: (state, action) => {
@@ -127,6 +127,7 @@ export const { deleteNews } = newsSlice.actions;
 export const { createNews } = newsSlice.actions;
 export const { createNewsReset } = newsSlice.actions;
 export const selectAllNews = (state) => state.news.news;
+export const selectSingleNews = (state) => state.news.new;
 export const getNewsStatus = (state) => state.news.status;
 export const getNewsError = (state) => state.news.error;
 export const getCreatedNews = (state) => state.news.createdNews;

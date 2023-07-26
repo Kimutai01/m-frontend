@@ -172,7 +172,6 @@ const initialState = {
   order: {},
   orderDetails: {},
   orderPay: {},
-  orders: [],
   loading: false,
   error: null,
   orders: [],

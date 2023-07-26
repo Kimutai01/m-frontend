@@ -28,9 +28,9 @@ const Tweets = () => (
           slidesPerView: 3,
         },
       }}
-        // onSlideChange={() => console.log("slide change")}
-        // onSwiper={(swiper) => console.log(swiper)}
-        // navigation={true}
+      // onSlideChange={() => console.log("slide change")}
+      // onSwiper={(swiper) => console.log(swiper)}
+      // navigation={true}
       pagination
     >
       <SwiperSlide className="p-20">
@@ -45,7 +45,7 @@ const Tweets = () => (
         <p className="text-[#F4EEEEB8] font-bold text-8xl absolute top-[35%] left-[70%] z-0">
           01
         </p>
-        <button className="bg-[#FAE115] font-extralight p-2 my-4">
+        <button className="bg-[#FAE115] font-extralight p-2 my-4" type="button">
           Read Tweet
         </button>
       </SwiperSlide>
@@ -61,7 +61,7 @@ const Tweets = () => (
         <p className="text-[#F4EEEEB8] font-bold text-8xl absolute top-[35%] left-[70%] z-0">
           02
         </p>
-        <button className="bg-[#FAE115] font-extralight p-2 my-4">
+        <button className="bg-[#FAE115] font-extralight p-2 my-4" type="button">
           Read Tweet
         </button>
       </SwiperSlide>
@@ -77,7 +77,7 @@ const Tweets = () => (
         <p className="text-[#F4EEEEB8] font-bold text-8xl absolute md:top-[35%] md:left-[70%] z-0">
           03
         </p>
-        <button className="bg-[#FAE115] font-extralight p-2 my-4">
+        <button className="bg-[#FAE115] font-extralight p-2 my-4" type="button">
           Read Tweet
         </button>
       </SwiperSlide>
@@ -93,7 +93,7 @@ const Tweets = () => (
         <p className="text-[#F4EEEEB8] font-bold text-8xl absolute top-[35%] left-[70%] z-0">
           04
         </p>
-        <button className="bg-[#FAE115] font-extralight p-2 my-4">
+        <button className="bg-[#FAE115] font-extralight p-2 my-4" type="button">
           Read Tweet
         </button>
       </SwiperSlide>

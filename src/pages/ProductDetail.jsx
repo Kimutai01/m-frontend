@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 
-import axios from 'axios';
 import { addItemsToCart } from '../features/cartSlice';
 import {
   getProductsStatus,
@@ -12,21 +11,18 @@ import {
   fetchProducts,
 } from '../features/productsSlice';
 
-import Rating from '../components/Rating';
-
-const ProductDetail = ({}) => {
+const ProductDetail = () => {
   const navigate = useNavigate();
   const [size, setSize] = useState('S');
-  console.log(size);
+
   const [qty, setQty] = useState(1);
-  console.log(qty);
+
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
-  console.log(products);
+
   const error = useSelector(getProductsError);
   const status = useSelector(getProductsStatus);
   const { id } = useParams();
-  console.log(parseInt(id));
 
   useEffect(() => {
     if (status === 'idle') {
@@ -45,7 +41,6 @@ const ProductDetail = ({}) => {
   }, [status, dispatch]);
 
   const product = products.find((product) => product._id === parseInt(id));
-  console.log(product);
 
   const addToCartHandler = () => {
     dispatch(addItemsToCart(id, qty));
@@ -64,7 +59,10 @@ const ProductDetail = ({}) => {
     <>
       <div className="pt-28 bg-black ">
         <ToastContainer />
-        <button className="bg-[#ff4d23] ml-40 mb-10 text-white font-bold text-2xl px-5 py-2 rounded-lg">
+        <button
+          className="bg-[#ff4d23] ml-40 mb-10 text-white font-bold text-2xl px-5 py-2 rounded-lg"
+          type="button"
+        >
           <Link to="/">Go Back</Link>
         </button>
         <div className="bg-[#000] px-40 pb-20 flex">
@@ -79,13 +77,7 @@ const ProductDetail = ({}) => {
             <h1 className="text-white text-3xl font-bold uppercase">
               {product.name}
             </h1>
-            <div>
-              <Rating
-                value={product.rating}
-                text={`${product.numReviews} reviews`}
-                color="#f8e825"
-              />
-            </div>
+
             <div>
               <p className="text-[#ff4d23] font-bold text-2xl">
                 $
@@ -142,6 +134,7 @@ const ProductDetail = ({}) => {
             <div className="flex justify-center mt-5">
               <button
                 onClick={addToCartHandler}
+                type="button"
                 className="bg-[#ff4d23] text-[#161616] font-bold text-2xl px-10 py-3 rounded-lg uppercase"
                 disabled={product.countInStock === 0}
               >

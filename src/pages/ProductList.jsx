@@ -27,8 +27,10 @@ const ProductList = () => {
   };
 
   useEffect(() => {
-    fetchAllProducts();
-  }, []);
+    if (products.length === 0) {
+      fetchAllProducts();
+    }
+  }, [fetchAllProducts, products.length]);
 
   useEffect(() => {
     if (status === 'failed') {
@@ -76,6 +78,7 @@ const ProductList = () => {
         </h1>
         <button
           className="why-btn ml-40  mt-10 mb-10 "
+          type="button"
           onClick={createProductHandler}
         >
           <h1 className="font-bold">Create Product</h1>
@@ -109,7 +112,10 @@ const ProductList = () => {
 
                 <td className="py-2">
                   <Link to={`/admin/product/${product._id}/edit`}>
-                    <button className="bg-[#ff4d24] text-white px-4 py-2 rounded-lg">
+                    <button
+                      className="bg-[#ff4d24] text-white px-4 py-2 rounded-lg"
+                      type="button"
+                    >
                       <h1 className="font-bold">Edit</h1>
                     </button>
                   </Link>
@@ -117,6 +123,7 @@ const ProductList = () => {
                 <td className="py-2">
                   <button
                     className="bg-[#ff4d24] text-white px-4 py-2 rounded-lg"
+                    type="button"
                     onClick={() => deleteHandler(product._id)}
                   >
                     <h1 className="font-bold">Delete</h1>

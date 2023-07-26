@@ -8,7 +8,7 @@ import orderReducer from '../features/orderSlice';
 // import registerReducer from "../features/registerSlice";
 import newsReducer from '../features/newsSlice';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     products: productsReducer,
     product: productReducer,
@@ -19,3 +19,5 @@ export const store = configureStore({
     news: newsReducer,
   },
 });
+
+export default store;

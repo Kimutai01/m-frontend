@@ -1,6 +1,6 @@
-import Landing from './Landing.jsx';
-import Schedule from './Schedule.jsx';
-import Tweets from './Tweets.jsx';
+import Landing from './Landing';
+import Schedule from './Schedule';
+import Tweets from './Tweets';
 
 const Home = () => (
   <>

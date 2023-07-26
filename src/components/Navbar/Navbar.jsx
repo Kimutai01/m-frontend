@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { toast } from 'react-toastify';
+import { AiOutlineClose } from 'react-icons/ai';
 import { CiUser } from 'react-icons/ci';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -10,7 +10,6 @@ import { HiShoppingCart } from 'react-icons/hi';
 import './Navbar.css';
 import { BsChevronDown } from 'react-icons/bs';
 
-import { motion } from 'framer-motion';
 import logo from '../../assets/logo.png';
 import { logoutUser, selectUser } from '../../features/userSlice';
 import { selectCartItemsCount } from '../../features/cartSlice';
@@ -45,13 +44,9 @@ const NavBar = () => {
   };
 
   const [showServicesDetails, setShowServicesDetails] = useState(false);
-  const [showStoreDetails, setShowStoreDetails] = useState(false);
 
   const handleServicesClick = () => {
     setShowServicesDetails(!showServicesDetails);
-  };
-  const handleStoreClick = () => {
-    setShowStoreDetails(!showStoreDetails);
   };
 
   const cartItemsCount = useSelector(selectCartItemsCount);
@@ -270,7 +265,10 @@ const NavBar = () => {
         >
           <div>
             <div className="flex justify-between items-center w-full mt-3 px-3">
-              <Link className="font-bold text-4xl uppercase animate-pulse">
+              <Link
+                className="font-bold text-4xl uppercase animate-pulse"
+                to="/"
+              >
                 Mechanic
               </Link>
               <div
@@ -322,13 +320,6 @@ const NavBar = () => {
                   <li className="py-4 text-xl ml-3 cursor-pointer">About</li>
                 </Link>
               </ul>
-              <div>
-                <Link to="/contact">
-                  <button className="uppercase text-[#fff] bg-[#808080] rounded-full hover:bg-[#ff4d23] font-bold p-4 mt-10 ml-4">
-                    get an appointment
-                  </button>
-                </Link>
-              </div>
             </div>
           </div>
         </div>

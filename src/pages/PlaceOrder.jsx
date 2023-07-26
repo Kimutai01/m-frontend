@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import {
-  selectShippingAddress, selectCartItems, selectPaymentMethod, clearCart,
+  selectShippingAddress,
+  selectCartItems,
+  selectPaymentMethod,
 } from '../features/cartSlice';
 import { createOrder, selectOrder, resetOrder } from '../features/orderSlice';
 
@@ -15,8 +17,6 @@ const PlaceOrder = () => {
   const cart = useSelector(selectCartItems);
   const shippingAddress = useSelector(selectShippingAddress);
   const paymentMethod = useSelector(selectPaymentMethod);
-
-  // Calculate the prices and create a new order object
   const navigate = useNavigate();
   const itemsPrice = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
   const shippingPrice = itemsPrice > 100 ? 0 : 10;
@@ -30,7 +30,6 @@ const PlaceOrder = () => {
   };
 
   if (!paymentMethod) {
-    const navigate = useNavigate();
     navigate('/payment');
   }
 
@@ -176,6 +175,7 @@ const PlaceOrder = () => {
               </div>
               <button
                 className="bg-[#fff] text-[#000] text-lg font-medium mt-5 py-3 rounded-lg"
+                type="button"
                 disabled={cart.length === 0}
                 onClick={placeOrder}
               >

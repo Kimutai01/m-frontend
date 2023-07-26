@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+
 import {
-  useLocation, useNavigate, Link, redirect,
-} from 'react-router-dom';
-import { selectUser, register } from '../features/userSlice';
-import { selectShippingAddress, saveShippingAddress } from '../features/cartSlice';
+  selectShippingAddress,
+  saveShippingAddress,
+} from '../features/cartSlice';
 
 import CheckoutSteps from '../components/CheckoutSteps';
 
@@ -21,9 +22,14 @@ const Shipping = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({
-      address, city, postalCode, country,
-    }));
+    dispatch(
+      saveShippingAddress({
+        address,
+        city,
+        postalCode,
+        country,
+      }),
+    );
     toast.success('Shipping Address Saved', {
       position: 'top-center',
       autoClose: 2000,
@@ -44,36 +50,40 @@ const Shipping = () => {
             <label
               htmlFor="address"
               className="text-white mb-3 uppercase font-bold"
+              type="text"
             >
               Address
+              <input
+                type="text"
+                id="address"
+                required
+                name="address"
+                value={address || ''}
+                onChange={(e) => setAddress(e.target.value)}
+                placeholder="Your address.."
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              id="address"
-              required
-              name="address"
-              value={address || ''}
-              onChange={(e) => setAddress(e.target.value)}
-              placeholder="Your address.."
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label htmlFor="city" className="text-white mb-3 uppercase font-bold">
+            <label
+              htmlFor="city"
+              className="text-white mb-3 uppercase font-bold"
+            >
               City
+              <input
+                type="text"
+                required
+                id="city"
+                name="city"
+                value={city || ''}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="Your city.."
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              required
-              id="city"
-              name="city"
-              value={city || ''}
-              onChange={(e) => setCity(e.target.value)}
-              placeholder="Your city.."
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
         <div className="flex justify-center md:flex-row mt-10 gap-5">
@@ -83,17 +93,17 @@ const Shipping = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Postal Code
+              <input
+                type="text"
+                required
+                id="postalCode"
+                name="postalCode"
+                value={postalCode || ''}
+                onChange={(e) => setPostalCode(e.target.value)}
+                placeholder="Your postal code.."
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              required
-              id="postalCode"
-              name="postalCode"
-              value={postalCode || ''}
-              onChange={(e) => setPostalCode(e.target.value)}
-              placeholder="Your postal code.."
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
         <div className="flex justify-center md:flex-row mt-10 gap-5">
@@ -103,22 +113,23 @@ const Shipping = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Country
+              <input
+                type="text"
+                required
+                id="country"
+                name="country"
+                value={country || ''}
+                onChange={(e) => setCountry(e.target.value)}
+                placeholder="Your country.."
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              required
-              id="country"
-              name="country"
-              value={country || ''}
-              onChange={(e) => setCountry(e.target.value)}
-              placeholder="Your country.."
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
 
         <button
           className="why-btn  w-full mt-10 mb-10 "
+          type="submit"
           onClick={(e) => submitHandler(e)}
         >
           <h1 className="font-bold">Continue</h1>

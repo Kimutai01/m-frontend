@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
-import {
-  useLocation, useNavigate, Link, redirect,
-} from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { selectUser, register } from '../features/userSlice';
 
 const Register = () => {
@@ -17,7 +15,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
-
+  const dispatch = useDispatch();
   const submitHandler = (e) => {
     if (password !== confirmPassword) {
       setMessage('Passwords do not match');
@@ -33,7 +31,7 @@ const Register = () => {
     closeOnClick: true,
     draggable: true,
   });
-  const dispatch = useDispatch();
+
   const user = useSelector(selectUser);
   useEffect(() => {
     if (user) {
@@ -46,36 +44,42 @@ const Register = () => {
       <div className="bg-[#161616] mx-auto w-[30%] px-10 rounded-lg pb-10">
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label htmlFor="name" className="text-white mb-3 uppercase font-bold">
+            <label
+              htmlFor="name"
+              className="text-white mb-3 uppercase font-bold"
+            >
               Name
+              <input
+                type="text"
+                id="email"
+                required
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your name.."
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              id="email"
-              required
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your name.."
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label htmlFor="email" className="text-white mb-3 uppercase font-bold">
+            <label
+              htmlFor="email"
+              className="text-white mb-3 uppercase font-bold"
+            >
               Email Address
+              <input
+                type="text"
+                required
+                id="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email address.."
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              required
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email address.."
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
         <div className="flex justify-center md:flex-row mt-10 gap-5">
@@ -85,17 +89,17 @@ const Register = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Password
+              <input
+                type="password"
+                id="password"
+                required
+                name="name"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Your password.."
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="password"
-              id="password"
-              required
-              name="name"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Your password.."
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
         <div className="flex justify-center md:flex-row mt-10 gap-5">
@@ -105,23 +109,24 @@ const Register = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Password
+              <input
+                type="password"
+                required
+                id="confirmPassword"
+                name="confirmPassword"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Confirm your password.."
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="password"
-              required
-              id="confirmPassword"
-              name="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="Confirm your password.."
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
 
         <button
           className="why-btn  w-full mt-10 mb-10 "
           onClick={(e) => submitHandler(e)}
+          type="submit"
         >
           <h1 className="font-bold">Register</h1>
         </button>

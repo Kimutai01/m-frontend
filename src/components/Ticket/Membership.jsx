@@ -11,7 +11,7 @@ const Membership = () => (
         nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
         volutpat. Ut wisi
       </p>
-      <button className="uppercase p-4 bg-[#FAE115] md:w-[20%]">
+      <button className="uppercase p-4 bg-[#FAE115] md:w-[20%]" type="button">
         Join now
       </button>
     </div>

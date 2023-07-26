@@ -1,14 +1,12 @@
-import Goalkeeper from './Goalkeeper.jsx';
-import Defender from './Defender.jsx';
-import Midfielders from './Midfielders.jsx';
-import Forwards from './Forwards.jsx';
-import Coaches from './Coaches.jsx';
+import Goalkeeper from './Goalkeeper';
+import Defender from './Defender';
+import Midfielders from './Midfielders';
+import Forwards from './Forwards';
+import Coaches from './Coaches';
 
 const Team = () => (
   <div>
-    <div className="p-8 bg-[#FAE115] font-bold uppercase text-5xl">
-      Teams
-    </div>
+    <div className="p-8 bg-[#FAE115] font-bold uppercase text-5xl">Teams</div>
     {/* Goalkeeper */}
     <Goalkeeper />
     {/* Defenders */}

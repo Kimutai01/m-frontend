@@ -11,21 +11,12 @@ const Schedule = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        'service_abzd5cf',
-        'template_ncd937d',
-        form.current,
-        'cea2TAaV7fu3Aqtyp',
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        },
-      );
+    emailjs.sendForm(
+      'service_abzd5cf',
+      'template_ncd937d',
+      form.current,
+      'cea2TAaV7fu3Aqtyp',
+    );
   };
   return (
     <>
@@ -35,6 +26,7 @@ const Schedule = () => {
             <div className="flex justify-end">
               <button
                 className="bg-[#000] text-white px-4 py-2 rounded-lg"
+                type="button"
                 onClick={() => setShowModal(false)}
               >
                 X
@@ -102,7 +94,10 @@ const Schedule = () => {
               Murang&apos;a stadium , Email muranga seals to book a ticket today
             </h1>
             <p className="text-[#867A7A]">29/April/2023</p>
-            <button className="bg-[#FAE115] text-black mt-5 font-bold p-2 w-[40%] mx-auto">
+            <button
+              className="bg-[#FAE115] text-black mt-5 font-bold p-2 w-[40%] mx-auto"
+              type="button"
+            >
               Buy Ticket
             </button>
           </div>
@@ -125,6 +120,7 @@ const Schedule = () => {
             <p className="text-[#867A7A]">29/April/2023</p>
             <button
               className="bg-[#FAE115] text-black mt-5 font-bold p-2 w-[40%] mx-auto"
+              type="button"
               onClick={() => setShowModal(true)}
             >
               Buy Ticket
@@ -143,6 +139,7 @@ const Schedule = () => {
               <p className="mb-5 text-[#867A7A]">Medium</p>
               <button
                 className="bg-[#FAE115]  flex justify-center text-black font-bold p-2 w-[80%] "
+                type="button"
                 onClick={() => setShowModal(true)}
               >
                 Buy Now

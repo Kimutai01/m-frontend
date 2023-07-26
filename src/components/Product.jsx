@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Rating from './Rating';
 
 const Product = ({ product }) => (
   <div key={product.id} className="bg-[#161616] rounded-lg">
@@ -14,13 +13,7 @@ const Product = ({ product }) => (
         <h2 className="text-white text-3xl font-bold uppercase">
           {product.name}
         </h2>
-        <div>
-          <Rating
-            value={product.rating}
-            text={`${product.numReviews} reviews`}
-            color="#f8e825"
-          />
-        </div>
+
         <div>
           <p className="text-[#ff4d23] font-bold text-2xl">
             $

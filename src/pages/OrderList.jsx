@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
-import {
-  getAllUsers,
-  selectUsers,
-  selectUser,
-  deleteUserById,
-} from '../features/userSlice';
+import { ToastContainer } from 'react-toastify';
+import { useNavigate, Link } from 'react-router-dom';
+import { selectUsers, selectUser } from '../features/userSlice';
 import { getAllOrders, selectAllOrders } from '../features/orderSlice';
 
 const OrderList = () => {
@@ -27,19 +22,19 @@ const OrderList = () => {
     }
   }, [dispatch, navigate]);
 
-  const deleteHandler = (id) => {
-    if (window.confirm('Are you sure you want to delete this user?')) {
-      dispatch(deleteUserById(id));
+  // const deleteHandler = (id) => {
+  //   if (window.confirm("Are you sure you want to delete this user?")) {
+  //     dispatch(deleteUserById(id));
 
-      toast.success('User Deleted Successfully', {
-        position: 'top-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        draggable: true,
-      });
-    }
-  };
+  //     toast.success("User Deleted Successfully", {
+  //       position: "top-center",
+  //       autoClose: 5000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       draggable: true,
+  //     });
+  //   }
+  // };
 
   return (
     <div className="bg-[#000] pt-20 px-20">
@@ -82,7 +77,10 @@ const OrderList = () => {
                 </td>
                 <td className="py-2">
                   <Link to={`/order/${order._id}`}>
-                    <button className="bg-[#ff4d24] text-white px-4 py-2 rounded-lg">
+                    <button
+                      className="bg-[#ff4d24] text-white px-4 py-2 rounded-lg"
+                      type="button"
+                    >
                       <h1 className="font-bold">Details</h1>
                     </button>
                   </Link>

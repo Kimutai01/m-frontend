@@ -1,21 +1,12 @@
-import Product from '../components/Product';
-import {
-  fetchProducts,
-  selectAllProducts,
-  getProductsError,
-  getProductsStatus,
-} from '../features/productsSlice';
 import { toast, ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
-
-import { RingLoader } from 'react-spinners';
 
 import { AiOutlineCalendar } from 'react-icons/ai';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -25,8 +16,14 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Pagination } from 'swiper/modules';
-import axios from 'axios';
-import Loader from '../components/Loader';
+
+import Product from '../components/Product';
+import {
+  fetchProducts,
+  selectAllProducts,
+  getProductsError,
+  getProductsStatus,
+} from '../features/productsSlice';
 
 const HomeShop = () => {
   const dispatch = useDispatch();
@@ -93,7 +90,9 @@ const HomeShop = () => {
         )}
         <div className="bg-[#000] pt-10 px-5 md:pt-28 pb-32 flex flex-col-reverse md:flex-row gap-10 md:px-32">
           <div className="md:w-[70%] grid grid-cols-1 md:grid-cols-2 gap-10">
-            {products.map((product) => <Product key={product._id} product={product} />)}
+            {products.map((product) => (
+              <Product key={product._id} product={product} />
+            ))}
           </div>
           <div className="md:w-[30%] md:sticky md:top-20 md:h-screen">
             <div className="bg-[#161616] flex gap-2  rounded-lg p-8">
@@ -102,7 +101,7 @@ const HomeShop = () => {
                 placeholder="Search"
                 className="bg-[#161616] border-[1px] rounded-lg border-[grey] w-full py-2 px-2 text-white focus:outline-none"
               />
-              <button className="why-btn flex items-center">
+              <button className="why-btn flex items-center" type="button">
                 <h1>Search</h1>
               </button>
             </div>

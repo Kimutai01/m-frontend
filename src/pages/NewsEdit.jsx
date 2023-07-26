@@ -1,64 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
-import {
-  useLocation, useNavigate, useParams, Link, redirect,
-} from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { selectUser, register } from '../features/userSlice';
-
-import { getUserDetails, selectUserDetails } from '../features/profileSlice';
+import { selectUser } from '../features/userSlice';
 import {
-  fetchProduct,
-  selectProduct,
-  updateProductById,
-} from '../features/productSlice';
+  // fetchNews,
+  fetchNewsById,
+  // selectAllNews,
+  selectSingleNews,
+  updateNewsById,
+} from '../features/newsSlice';
 
-const ProductEdit = () => {
+const NewsEdit = () => {
   const { id } = useParams();
-  console.log(id);
-  const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
+  const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
-  const [category, setCategory] = useState('');
-  const [brand, setBrand] = useState('');
-  const [countInStock, setCountInStock] = useState('');
   const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
-
-  const location = useLocation();
   const navigate = useNavigate();
-  const product = useSelector(selectProduct);
-  console.log(product);
+
+  const newsById = useSelector(selectSingleNews);
+  const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    console.log({
-      _id: Number(id),
-      name,
-      price,
-      image,
-      category,
-      brand,
-      countInStock,
-      description,
-    });
-
     dispatch(
-      updateProductById({
-        _id: product._id,
-        name,
-        price,
+      updateNewsById({
+        _id: newsById._id,
+        title,
         image,
-        category,
-        brand,
-        countInStock,
+
         description,
       }),
     );
 
-    toast.success('Product Updated Successfully', {
+    toast.success('News Updated Successfully', {
       position: 'top-center',
       autoClose: 5000,
       hideProgressBar: false,
@@ -66,17 +44,15 @@ const ProductEdit = () => {
       draggable: true,
     });
 
-    navigate('/admin/products');
+    navigate('/admin/news');
   };
   const user = useSelector(selectUser);
-  console.log(user);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
-    console.log(file);
     const formData = new FormData();
     formData.append('image', file);
-    formData.append('product_id', id);
+    formData.append('news_id', id);
 
     try {
       setUploading(true);
@@ -89,41 +65,34 @@ const ProductEdit = () => {
       };
 
       const { data } = await axios.post(
-        'http://127.0.0.1:8000/api/products/upload/',
+        'http://127.0.0.1:8000/api/news/upload/',
         formData,
         config,
       );
 
       setImage(data);
-      console.log(data);
+
       setUploading(false);
     } catch (error) {
-      console.error(error);
       setUploading(false);
     }
   };
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(fetchProduct(id));
+    dispatch(fetchNewsById(id));
   }, [dispatch, id]);
 
   useEffect(() => {
-    if (product) {
-      setName(product.name);
-      setPrice(product.price);
-      setImage(product.image);
-      setCategory(product.category);
-      setBrand(product.brand);
-      setCountInStock(product.countInStock);
-      setDescription(product.description);
+    if (newsById) {
+      setTitle(newsById.title);
+      setImage(newsById.image);
+      setDescription(newsById.description);
     }
-  }, [product]);
+  }, [newsById]);
   return (
     <div className="bg-[#000] pt-28">
-      <Link to="/admin/userlist">
-        <button className="why-btn ml-40  mt-10 mb-10 ">
+      <Link to="/admin/news">
+        <button className="why-btn ml-40  mt-10 mb-10 " type="button">
           <h1 className="font-bold">Go Back</h1>
         </button>
       </Link>
@@ -131,57 +100,49 @@ const ProductEdit = () => {
       <ToastContainer />
       <div className="bg-[#161616] mx-auto w-[30%] px-10 rounded-lg pb-10">
         <h1 className="text-[#fff] text-center font-bold text-2xl pt-10">
-          Edit Product
+          Edit News
         </h1>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label htmlFor="name" className="text-white mb-3 uppercase font-bold">
-              Name
+            <label
+              htmlFor="title"
+              className="text-white mb-3 uppercase font-bold"
+            >
+              title
+              <input
+                type="text"
+                id="title"
+                name="name"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Enter title"
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              id="email"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your name.."
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
-        <div className="flex justify-center md:flex-row gap-5 pt-10">
-          <div className="flex flex-col w-full">
-            <label htmlFor="price" className="text-white mb-3 uppercase font-bold">
-              Price
-            </label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
-          </div>
-        </div>
+
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
             <img
-              src={`http://127.0.0.1:8000//${image}`}
+              src={`http://127.0.0.1:8000/${image}`}
               alt=""
               className="h-20 w-20"
             />
-            <label htmlFor="image" className="text-white mb-3 uppercase font-bold">
+            <label
+              htmlFor="image"
+              className="text-white mb-3 uppercase font-bold"
+            >
               Image
+              <input
+                type="text"
+                id="image"
+                name="image"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              id="image"
-              name="image"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
 
             <input
               type="file"
@@ -198,7 +159,7 @@ const ProductEdit = () => {
           </div>
         </div>
 
-        <div className="flex justify-center md:flex-row mt-10 gap-5">
+        {/* <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
             <label
               htmlFor="category"
@@ -215,42 +176,7 @@ const ProductEdit = () => {
               className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
             />
           </div>
-        </div>
-
-        <div className="flex justify-center md:flex-row mt-10 gap-5">
-          <div className="flex flex-col w-full">
-            <label htmlFor="brand" className="text-white mb-3 uppercase font-bold">
-              Brand
-            </label>
-            <input
-              type="text"
-              id="brand"
-              name="brand"
-              value={brand}
-              onChange={(e) => setBrand(e.target.value)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
-          </div>
-        </div>
-
-        <div className="flex justify-center md:flex-row mt-10 gap-5">
-          <div className="flex flex-col w-full">
-            <label
-              htmlFor="countInStock"
-              className="text-white mb-3 uppercase font-bold"
-            >
-              Count In Stock
-            </label>
-            <input
-              type="number"
-              id="countInStock"
-              name="countInStock"
-              value={countInStock}
-              onChange={(e) => setCountInStock(e.target.value)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
-          </div>
-        </div>
+        </div> */}
 
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
@@ -259,21 +185,22 @@ const ProductEdit = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Description
+              <textarea
+                type="text"
+                id="description"
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <textarea
-              type="text"
-              id="description"
-              name="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
 
         <button
           className="why-btn  w-full mt-10 mb-10 "
           onClick={(e) => submitHandler(e)}
+          type="submit"
         >
           <h1 className="font-bold">Update</h1>
         </button>
@@ -282,4 +209,4 @@ const ProductEdit = () => {
   );
 };
 
-export default ProductEdit;
+export default NewsEdit;
