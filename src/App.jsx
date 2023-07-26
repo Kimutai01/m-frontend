@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import NavBar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import Home from './Components/Home/index';
+import Home from './components/Home';
 
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
@@ -18,11 +18,11 @@ import ProductList from './pages/ProductList';
 import ProductEdit from './pages/ProductEdit';
 import OrderList from './pages/OrderList';
 import HomeShop from './pages/HomeShop';
-import News from './Components/News';
-import Ticket from './Components/Ticket';
-import Team from './Components/Team';
-import Membership from './Components/Membership';
-import OurClub from './Components/OurClub';
+import News from './components/News';
+import Ticket from './components/Ticket';
+import Team from './components/Team';
+import Membership from './components/Membership';
+import OurClub from './components/OurClub';
 import NewsList from './components/NewsList';
 import NewsEdit from './pages/NewsEdit';
 
