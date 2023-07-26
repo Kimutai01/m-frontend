@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate, Link } from "react-router-dom";
 
 import {
   fetchNews,
@@ -12,7 +12,7 @@ import {
   getCreatedNews,
   getNewsError,
   getNewsStatus,
-} from '../features/newsSlice';
+} from "../features/newsSlice";
 
 const ProductList = () => {
   const navigate = useNavigate();
@@ -31,9 +31,9 @@ const ProductList = () => {
   }, []);
 
   useEffect(() => {
-    if (status === 'failed') {
+    if (status === "failed") {
       toast.error(error, {
-        position: 'top-center',
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -43,10 +43,10 @@ const ProductList = () => {
   }, [status, error]);
 
   const deleteHandler = (id) => {
-    if (window.confirm('Are you sure you want to delete this product?')) {
+    if (window.confirm("Are you sure you want to delete this product?")) {
       dispatch(deleteNewsById(id));
-      toast.success('Product Deleted Successfully', {
-        position: 'top-center',
+      toast.success("Product Deleted Successfully", {
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -61,7 +61,7 @@ const ProductList = () => {
 
   useEffect(() => {
     if (created && created._id) {
-      navigate(`/admin/product/${created._id}/edit`);
+      navigate(`/admin/news/${created._id}/edit`);
 
       dispatch(createNewsReset());
     }
@@ -72,16 +72,16 @@ const ProductList = () => {
       <ToastContainer />
       <div className="flex justify-between">
         <h1 className="text-[#fff] text-3xl uppercase items-center font-bold mt-10">
-          Product List
+          News List
         </h1>
         <button
           className="why-btn ml-40  mt-10 mb-10 "
           onClick={createNewsHandler}
         >
-          <h1 className="font-bold">Create Product</h1>
+          <h1 className="font-bold">Create News</h1>
         </button>
       </div>
-      {status === 'loading' && (
+      {status === "loading" && (
         <div className="flex justify-center items-center pt-28 bg-black">
           <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent" />
         </div>
@@ -101,7 +101,7 @@ const ProductList = () => {
                 <td className="py-2">{product.title}</td>
 
                 <td className="py-2">
-                  <Link to={`/admin/product/${product._id}/edit`}>
+                  <Link to={`/admin/news/${product._id}/edit`}>
                     <button className="bg-[#ff4d24] text-white px-4 py-2 rounded-lg">
                       <h1 className="font-bold">Edit</h1>
                     </button>

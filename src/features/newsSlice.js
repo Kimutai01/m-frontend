@@ -1,29 +1,29 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-const newsUrl = 'http://127.0.0.1:8000/api/news';
+const newsUrl = "http://127.0.0.1:8000/api/news";
 const initialState = {
   news: [],
-  status: 'idle',
+  status: "idle",
   error: null,
   createdNews: {},
   new: {},
 };
 
-export const fetchNews = createAsyncThunk('news/fetchNews', async () => {
+export const fetchNews = createAsyncThunk("news/fetchNews", async () => {
   const response = await axios.get(newsUrl);
   return response.data;
 });
 
 export const fetchNewsById = createAsyncThunk(
-  'news/fetchNewsById',
+  "news/fetchNewsById",
   async (id) => {
-    const response = await axios.get(`${newsUrl}${id}`);
+    const response = await axios.get(`${newsUrl}/${id}`);
     return response.data;
-  },
+  }
 );
 
-export const updateNewsById = (id, news) => async (dispatch, getState) => {
+export const updateNewsById = (news) => async (dispatch, getState) => {
   try {
     const {
       user: { user },
@@ -31,14 +31,14 @@ export const updateNewsById = (id, news) => async (dispatch, getState) => {
     const { token } = user;
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     };
-    await axios.put(`${newsUrl}${id}/update/`, news, config);
+    await axios.put(`${newsUrl}/update/${news._id}/`, news, config);
     dispatch(fetchNews());
   } catch (error) {
-    console.error('Error updating product:', error);
+    console.error("Error updating product:", error);
   }
 };
 
@@ -53,11 +53,11 @@ export const deleteNewsById = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${token}`,
       },
     };
-    await axios.delete(`${newsUrl}${id}/delete/`, config);
+    await axios.delete(`${newsUrl}/delete/${id}`, config);
     dispatch(deleteNews(id));
     dispatch(fetchNews());
   } catch (error) {
-    console.error('Error deleting product:', error);
+    console.error("Error deleting product:", error);
   }
 };
 
@@ -69,20 +69,20 @@ export const createNewNews = () => async (dispatch, getState) => {
     const { token } = user;
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     };
-    const { data } = await axios.post(`${productsUrl}create/`, {}, config);
+    const { data } = await axios.post(`${newsUrl}/create/`, {}, config);
     dispatch(fetchNews());
     dispatch(createNews(data));
   } catch (error) {
-    console.error('Error creating product:', error);
+    console.error("Error creating product:", error);
   }
 };
 
 const newsSlice = createSlice({
-  name: 'news',
+  name: "news",
   initialState,
   reducers: {
     createNews: (state, action) => {
@@ -97,25 +97,25 @@ const newsSlice = createSlice({
   },
   extraReducers: {
     [fetchNews.pending]: (state, action) => {
-      state.status = 'loading';
+      state.status = "loading";
     },
     [fetchNews.fulfilled]: (state, action) => {
-      state.status = 'succeeded';
+      state.status = "succeeded";
       state.news = action.payload;
     },
     [fetchNews.rejected]: (state, action) => {
-      state.status = 'failed';
+      state.status = "failed";
       state.error = action.error.message;
     },
     [fetchNewsById.pending]: (state, action) => {
-      state.status = 'loading';
+      state.status = "loading";
     },
     [fetchNewsById.fulfilled]: (state, action) => {
-      state.status = 'succeeded';
+      state.status = "succeeded";
       state.new = action.payload;
     },
     [fetchNewsById.rejected]: (state, action) => {
-      state.status = 'failed';
+      state.status = "failed";
       state.error = action.error.message;
     },
   },
@@ -127,6 +127,7 @@ export const { deleteNews } = newsSlice.actions;
 export const { createNews } = newsSlice.actions;
 export const { createNewsReset } = newsSlice.actions;
 export const selectAllNews = (state) => state.news.news;
+export const selectSingleNews = (state) => state.news.new;
 export const getNewsStatus = (state) => state.news.status;
 export const getNewsError = (state) => state.news.error;
 export const getCreatedNews = (state) => state.news.createdNews;
