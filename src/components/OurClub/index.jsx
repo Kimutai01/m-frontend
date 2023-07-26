@@ -56,7 +56,7 @@ const index = () => {
           <div
             key={clubhistory.id}
             className={
-              clubhistory.id % 2 == !0
+              clubhistory.id % 2 === !0
                 ? 'flex flex-col-reverse md:flex-row  items-center border-t-2  border-[#FAE115] my-4 bg-[#fdfee9] p-10'
                 : 'flex  flex-col-reverse md:flex-row-reverse items-center border-t-2  border-[#FAE115] my-4 bg-[#fdfee9] p-4'
             }
@@ -69,7 +69,10 @@ const index = () => {
                 {clubhistory.content}
               </p>
 
-              <button className="w-[290px] h-[53px] bg-[#F4E721] font-normal my-3 py-3 text-2xl ">
+              <button
+                className="w-[290px] h-[53px] bg-[#F4E721] font-normal my-3 py-3 text-2xl "
+                type="button"
+              >
                 Read More
               </button>
             </div>

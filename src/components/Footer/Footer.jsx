@@ -104,7 +104,10 @@ const Footer = () => (
             <p className="mt-3">07000000000</p>
           </div>
           <div>
-            <button className="bg-[#fae115] p-4 text-[#000] rounded-xl">
+            <button
+              className="bg-[#fae115] p-4 text-[#000] rounded-xl"
+              type="button"
+            >
               Subscribe
             </button>
           </div>

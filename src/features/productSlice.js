@@ -44,7 +44,7 @@ const productSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchProduct.pending]: (state, action) => {
+    [fetchProduct.pending]: (state) => {
       state.status = 'loading';
     },
     [fetchProduct.fulfilled]: (state, action) => {

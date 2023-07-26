@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
-import {
-  useLocation, useNavigate, useParams, Link,
-} from 'react-router-dom';
-import { register } from '../features/userSlice';
+import { useParams, Link } from 'react-router-dom';
 
 import { getUserDetails, selectUserDetails } from '../features/profileSlice';
 
@@ -13,20 +10,11 @@ const UserEdit = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [admin, setAdmin] = useState(false);
-  const [message, setMessage] = useState(null);
-
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const submitHandler = (e) => {
-    if (password !== confirmPassword) {
-      setMessage('Passwords do not match');
-    } else {
-      e.preventDefault();
-      dispatch(register(name, email, password));
-    }
+    e.preventDefault();
   };
-  toast.error(message, {
+  toast.error({
     position: 'top-center',
     autoClose: 5000,
     hideProgressBar: false,
@@ -53,56 +41,62 @@ const UserEdit = () => {
         </button>
       </Link>
 
-      {message && <ToastContainer />}
+      <ToastContainer />
       <div className="bg-[#161616] mx-auto w-[30%] px-10 rounded-lg pb-10">
         <h1 className="text-[#fff] text-center font-bold text-2xl pt-10">
           Edit User
         </h1>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label htmlFor="name" className="text-white mb-3 uppercase font-bold">
+            <label
+              htmlFor="name"
+              className="text-white mb-3 uppercase font-bold"
+            >
               Name
+              <input
+                type="text"
+                id="email"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your name.."
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              id="email"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your name.."
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label htmlFor="email" className="text-white mb-3 uppercase font-bold">
+            <label
+              htmlFor="email"
+              className="text-white mb-3 uppercase font-bold"
+            >
               Email Address
+              <input
+                type="text"
+                id="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email address.."
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email address.."
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-row items-center w-full gap-3">
             <label htmlFor="admin" className="text-white  uppercase font-bold ">
               Is Admin
+              <input
+                type="checkbox"
+                id="admin"
+                name="admin"
+                checked={admin}
+                onChange={(e) => setAdmin(e.target.checked)}
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="checkbox"
-              id="admin"
-              name="admin"
-              checked={admin}
-              onChange={(e) => setAdmin(e.target.checked)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
 

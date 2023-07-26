@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
-import {
-  useLocation, useNavigate, useParams, Link, redirect,
-} from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { selectUser, register } from '../features/userSlice';
+import { selectUser } from '../features/userSlice';
 
-import { getUserDetails, selectUserDetails } from '../features/profileSlice';
 import {
   fetchProduct,
   selectProduct,
@@ -16,7 +13,7 @@ import {
 
 const ProductEdit = () => {
   const { id } = useParams();
-  console.log(id);
+
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
@@ -26,24 +23,12 @@ const ProductEdit = () => {
   const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
 
-  const location = useLocation();
   const navigate = useNavigate();
   const product = useSelector(selectProduct);
-  console.log(product);
+  const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    console.log({
-      _id: Number(id),
-      name,
-      price,
-      image,
-      category,
-      brand,
-      countInStock,
-      description,
-    });
 
     dispatch(
       updateProductById({
@@ -69,11 +54,9 @@ const ProductEdit = () => {
     navigate('/admin/products');
   };
   const user = useSelector(selectUser);
-  console.log(user);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
-    console.log(file);
     const formData = new FormData();
     formData.append('image', file);
     formData.append('product_id', id);
@@ -95,15 +78,12 @@ const ProductEdit = () => {
       );
 
       setImage(data);
-      console.log(data);
+
       setUploading(false);
     } catch (error) {
-      console.error(error);
       setUploading(false);
     }
   };
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProduct(id));
@@ -123,7 +103,7 @@ const ProductEdit = () => {
   return (
     <div className="bg-[#000] pt-28">
       <Link to="/admin/userlist">
-        <button className="why-btn ml-40  mt-10 mb-10 ">
+        <button className="why-btn ml-40  mt-10 mb-10 " type="button">
           <h1 className="font-bold">Go Back</h1>
         </button>
       </Link>
@@ -135,33 +115,39 @@ const ProductEdit = () => {
         </h1>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label htmlFor="name" className="text-white mb-3 uppercase font-bold">
+            <label
+              htmlFor="name"
+              className="text-white mb-3 uppercase font-bold"
+            >
               Name
+              <input
+                type="text"
+                id="email"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your name.."
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              id="email"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your name.."
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <label htmlFor="price" className="text-white mb-3 uppercase font-bold">
+            <label
+              htmlFor="price"
+              className="text-white mb-3 uppercase font-bold"
+            >
               Price
+              <input
+                type="number"
+                id="price"
+                name="price"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
         <div className="flex justify-center md:flex-row mt-10 gap-5">
@@ -171,17 +157,20 @@ const ProductEdit = () => {
               alt=""
               className="h-20 w-20"
             />
-            <label htmlFor="image" className="text-white mb-3 uppercase font-bold">
+            <label
+              htmlFor="image"
+              className="text-white mb-3 uppercase font-bold"
+            >
               Image
+              <input
+                type="text"
+                id="image"
+                name="image"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              id="image"
-              name="image"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
 
             <input
               type="file"
@@ -205,31 +194,34 @@ const ProductEdit = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Category
+              <input
+                type="text"
+                id="category"
+                name="category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              id="category"
-              name="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
 
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
-            <label htmlFor="brand" className="text-white mb-3 uppercase font-bold">
+            <label
+              htmlFor="brand"
+              className="text-white mb-3 uppercase font-bold"
+            >
               Brand
+              <input
+                type="text"
+                id="brand"
+                name="brand"
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              id="brand"
-              name="brand"
-              value={brand}
-              onChange={(e) => setBrand(e.target.value)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
 
@@ -240,15 +232,15 @@ const ProductEdit = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Count In Stock
+              <input
+                type="number"
+                id="countInStock"
+                name="countInStock"
+                value={countInStock}
+                onChange={(e) => setCountInStock(e.target.value)}
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="number"
-              id="countInStock"
-              name="countInStock"
-              value={countInStock}
-              onChange={(e) => setCountInStock(e.target.value)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
 
@@ -259,20 +251,21 @@ const ProductEdit = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Description
+              <textarea
+                type="text"
+                id="description"
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <textarea
-              type="text"
-              id="description"
-              name="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
 
         <button
           className="why-btn  w-full mt-10 mb-10 "
+          type="submit"
           onClick={(e) => submitHandler(e)}
         >
           <h1 className="font-bold">Update</h1>

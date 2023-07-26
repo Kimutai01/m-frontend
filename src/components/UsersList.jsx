@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   getAllUsers,
   selectUsers,
@@ -14,8 +14,6 @@ const UsersList = () => {
   const navigate = useNavigate();
   const users = useSelector(selectUsers);
   const singleUser = useSelector(selectUser);
-
-  console.log(users);
 
   useEffect(() => {
     if (singleUser && singleUser.isAdmin) {
@@ -72,7 +70,10 @@ const UsersList = () => {
                 </td>
                 <td className="py-2">
                   <Link to={`/admin/user/${user._id}/edit`}>
-                    <button className="bg-[#ff4d24] text-white px-4 py-2 rounded-lg">
+                    <button
+                      className="bg-[#ff4d24] text-white px-4 py-2 rounded-lg"
+                      type="button"
+                    >
                       <h1 className="font-bold">Edit</h1>
                     </button>
                   </Link>
@@ -80,6 +81,7 @@ const UsersList = () => {
                 <td className="py-2">
                   <button
                     className="bg-[#ff4d24] text-white px-4 py-2 rounded-lg"
+                    type="button"
                     onClick={() => deleteHandler(user._id)}
                   >
                     <h1 className="font-bold">Delete</h1>

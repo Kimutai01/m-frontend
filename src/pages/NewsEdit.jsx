@@ -1,51 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, useParams, Link } from 'react-router-dom';
+import axios from 'axios';
+import { selectUser } from '../features/userSlice';
 import {
-  useLocation,
-  useNavigate,
-  useParams,
-  Link,
-  redirect,
-} from "react-router-dom";
-import axios from "axios";
-import { selectUser, register } from "../features/userSlice";
-
-import { getUserDetails, selectUserDetails } from "../features/profileSlice";
-import {
-  fetchNews,
+  // fetchNews,
   fetchNewsById,
-  selectAllNews,
+  // selectAllNews,
   selectSingleNews,
   updateNewsById,
-} from "../features/newsSlice";
+} from '../features/newsSlice';
 
 const NewsEdit = () => {
   const { id } = useParams();
-  console.log(id);
-  const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState('');
+  const [image, setImage] = useState('');
+  const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
-  console.log(title);
-  console.log(image);
-  console.log(description);
-
-  const location = useLocation();
   const navigate = useNavigate();
-  const news = useSelector(selectAllNews);
+
   const newsById = useSelector(selectSingleNews);
-  console.log(news);
+  const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    console.log({
-      _id: Number(id),
-      title,
-      image,
-      description,
-    });
 
     dispatch(
       updateNewsById({
@@ -54,55 +33,50 @@ const NewsEdit = () => {
         image,
 
         description,
-      })
+      }),
     );
 
-    toast.success("News Updated Successfully", {
-      position: "top-center",
+    toast.success('News Updated Successfully', {
+      position: 'top-center',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       draggable: true,
     });
 
-    navigate("/admin/news");
+    navigate('/admin/news');
   };
   const user = useSelector(selectUser);
-  console.log(user);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
-    console.log(file);
     const formData = new FormData();
-    formData.append("image", file);
-    formData.append("news_id", id);
+    formData.append('image', file);
+    formData.append('news_id', id);
 
     try {
       setUploading(true);
 
       const config = {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${user.token}`,
         },
       };
 
       const { data } = await axios.post(
-        "http://127.0.0.1:8000/api/news/upload/",
+        'http://127.0.0.1:8000/api/news/upload/',
         formData,
-        config
+        config,
       );
 
       setImage(data);
-      console.log(data);
+
       setUploading(false);
     } catch (error) {
-      console.error(error);
       setUploading(false);
     }
   };
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchNewsById(id));
@@ -118,7 +92,7 @@ const NewsEdit = () => {
   return (
     <div className="bg-[#000] pt-28">
       <Link to="/admin/news">
-        <button className="why-btn ml-40  mt-10 mb-10 ">
+        <button className="why-btn ml-40  mt-10 mb-10 " type="button">
           <h1 className="font-bold">Go Back</h1>
         </button>
       </Link>
@@ -135,16 +109,16 @@ const NewsEdit = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               title
+              <input
+                type="text"
+                id="title"
+                name="name"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Enter title"
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              id="title"
-              name="name"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Enter title"
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
 
@@ -160,15 +134,15 @@ const NewsEdit = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Image
+              <input
+                type="text"
+                id="image"
+                name="image"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <input
-              type="text"
-              id="image"
-              name="image"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
 
             <input
               type="file"
@@ -211,21 +185,22 @@ const NewsEdit = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Description
+              <textarea
+                type="text"
+                id="description"
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              />
             </label>
-            <textarea
-              type="text"
-              id="description"
-              name="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
           </div>
         </div>
 
         <button
           className="why-btn  w-full mt-10 mb-10 "
           onClick={(e) => submitHandler(e)}
+          type="submit"
         >
           <h1 className="font-bold">Update</h1>
         </button>

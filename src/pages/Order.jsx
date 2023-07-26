@@ -3,39 +3,26 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { PayPalButton } from 'react-paypal-button-v2';
 import {
-  markOrderAsDelivered, orderDetails, selectOrderDetails, selectOrderPay, payOrder, selectLoading, selectError,
+  markOrderAsDelivered,
+  orderDetails,
+  selectOrderDetails,
+  payOrder,
+  selectLoading,
 } from '../features/orderSlice';
-import CheckoutSteps from '../components/CheckoutSteps';
 import Loader from '../components/Loader';
 
 const Order = () => {
   const dispatch = useDispatch();
   const [sdkReady, setSdkReady] = useState(false);
-
   const user = useSelector((state) => state.user.user);
-  console.log(user);
-
   const { id } = useParams();
-  console.log(id);
   const orderDetail = useSelector(selectOrderDetails);
-
-  const orderPay = useSelector(selectOrderPay);
-  const error = useSelector(selectError);
-  console.log(orderDetail);
-
-  //   const itemsPrice = orderDetail.orderItems.reduce(
-  //     (acc, item) => acc + item.price * item.qty,
-  //     0
-  //   );
-
-  //   AbUcQE9bOtTKsrCYMEaJ7jWUP2mr9nNuqglCRz6Z8AATAZvwhIFag1k7bYRPjH3vy9ClInyOlHtZWY9w;
 
   const loadingPay = useSelector(selectLoading);
   const handleDeliver = () => {
     dispatch(markOrderAsDelivered(orderDetail._id));
     window.location.reload();
   };
-
   const addPayPalScript = () => {
     const script = document.createElement('script');
     script.type = 'text/javascript';
@@ -58,21 +45,16 @@ const Order = () => {
       }
     }
   }, [orderDetail]);
-  console.log(Number(id));
   useEffect(() => {
     dispatch(orderDetails(id));
   }, [dispatch, id]);
-  console.log(orderDetail._id);
 
   if (!orderDetail._id) {
     return <div>Loading...</div>;
   }
   const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult);
     if (orderDetail._id) {
       dispatch(payOrder(orderDetail._id, paymentResult));
-
-      // console.log({ id: orderDetail._id, paymentResult })
     }
   };
 
@@ -262,7 +244,7 @@ const Order = () => {
                     className="flex justify-between flex-row mt-5 gap-32 border-b border-[gray] pb-5"
                     onClick={handleDeliver}
                   >
-                    <button className="why-btn  mt-10 mb-10 ">
+                    <button className="why-btn  mt-10 mb-10 " type="button">
                       <h1 className="font-bold">Mark as Delivered</h1>
                     </button>
                   </div>

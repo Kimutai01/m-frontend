@@ -113,8 +113,6 @@ export const cartSlice = createSlice({
       state.cartItems = [];
     },
   },
-
-  // extraReducers: {
 });
 
 export const {

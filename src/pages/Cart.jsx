@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-  useMatch, useLocation, Link, useNavigate,
-} from 'react-router-dom';
+import { useMatch, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import { BsFillTrash3Fill } from 'react-icons/bs';
@@ -10,14 +8,11 @@ import {
   selectCartItems,
   removeItemsFromCart,
 } from '../features/cartSlice';
-import { selectUser } from '../features/userSlice';
 
 const Cart = () => {
   const navigate = useNavigate();
   const match = useMatch('/cart/:id');
   const { id } = match?.params || '';
-  console.log(id);
-  const user = useSelector(selectUser);
 
   const qty = useLocation().search
     ? Number(useLocation().search.split('=')[1])
@@ -30,8 +25,7 @@ const Cart = () => {
   };
 
   const cart = useSelector(selectCartItems);
-  console.log(cart);
-  console.log(cart);
+
   cart.length === 0
     && toast.error('Your cart is empty', {
       position: 'top-center',
@@ -56,7 +50,10 @@ const Cart = () => {
       <div className="flex gap-20 mx-20">
         <div className="flex flex-col gap-5">
           {cart.map((item) => (
-            <div className="flex gap-5 rounded-lg p-4 items-center bg-[#161616]">
+            <div
+              className="flex gap-5 rounded-lg p-4 items-center bg-[#161616]"
+              key={item._id}
+            >
               <img
                 src={`http://127.0.0.1:8000/${item.image}`}
                 alt=""
@@ -82,6 +79,7 @@ const Cart = () => {
               <button
                 className="bg-[#ff4d23] text-white font-bold text-2xl px-5 py-2 rounded-lg"
                 onClick={() => dispatch(removeItemsFromCart(item.product))}
+                type="button"
               >
                 <BsFillTrash3Fill />
               </button>
@@ -106,6 +104,7 @@ const Cart = () => {
             <button
               className="bg-[#ff4d23] text-white font-bold text-2xl px-5 py-2 rounded-lg mt-5 disabled:opacity-50"
               disabled={cart.length === 0}
+              type="button"
               onClick={checkoutHandler}
             >
               Proceed to Checkout
