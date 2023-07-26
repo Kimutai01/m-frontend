@@ -18,11 +18,11 @@ import ProductList from './pages/ProductList';
 import ProductEdit from './pages/ProductEdit';
 import OrderList from './pages/OrderList';
 import HomeShop from './pages/HomeShop';
-import News from './Components/News/index';
-import Ticket from './Components/Ticket/index';
-import Team from './Components/Team/index';
-import Membership from './Components/Membership/index';
-import OurClub from './Components/OurClub/index';
+import News from './Components/News';
+import Ticket from './Components/Ticket';
+import Team from './Components/Team';
+import Membership from './Components/Membership';
+import OurClub from './Components/OurClub';
 import NewsList from './components/NewsList';
 import NewsEdit from './pages/NewsEdit';
 
