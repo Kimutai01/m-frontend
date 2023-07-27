@@ -5,13 +5,12 @@
 @tailwind utilities;
 
 * {
-  font-family: "Oxanium", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 .service-background {
-  background-image:
-    linear-gradient(to right, rgba(62, 7, 7, 0.5), transparent),
-    url("https://assets.website-files.com/633148302ffcde12c15b7e7d/633417e6f7701e34e46f04a7_Car%20Service.jpg");
+  background-image: linear-gradient(to right, rgba(62, 7, 7, 0.5), transparent),
+    url("https://images.unsplash.com/photo-1589487391730-58f20eb2c308?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Zm9vdGJhbGx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
