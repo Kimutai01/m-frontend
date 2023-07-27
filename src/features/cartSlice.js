@@ -1,14 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-const cartItemsFromStorage = localStorage.getItem("cartItems");
-const shippingAddressFromStorage = localStorage.getItem("shippingAddress");
-const paymentMethodFromStorage = localStorage.getItem("paymentMethod");
+const cartItemsFromStorage = localStorage.getItem('cartItems');
+const shippingAddressFromStorage = localStorage.getItem('shippingAddress');
+const paymentMethodFromStorage = localStorage.getItem('paymentMethod');
 
 export const addItemsToCart = (id, qty, size) => async (dispatch, getState) => {
   try {
     const response = await fetch(`http://127.0.0.1:8000/api/products/${id}`);
     if (!response.ok) {
-      throw new Error("Failed to fetch product data.");
+      throw new Error('Failed to fetch product data.');
     }
     const data = await response.json();
     const payload = {
@@ -22,11 +22,11 @@ export const addItemsToCart = (id, qty, size) => async (dispatch, getState) => {
     };
     dispatch(addToCart(payload));
     localStorage.setItem(
-      "cartItems",
-      JSON.stringify(getState().cart.cartItems)
+      'cartItems',
+      JSON.stringify(getState().cart.cartItems),
     );
   } catch (error) {
-    console.error("Error adding items to cart:", error);
+    console.error('Error adding items to cart:', error);
   }
 };
 
@@ -34,7 +34,7 @@ export const removeItemsFromCart = (id) => async (dispatch, getState) => {
   try {
     const response = await fetch(`http://127.0.0.1:8000/api/products/${id}`);
     if (!response.ok) {
-      throw new Error("Failed to fetch product data.");
+      throw new Error('Failed to fetch product data.');
     }
     const data = await response.json();
     const payload = {
@@ -42,29 +42,29 @@ export const removeItemsFromCart = (id) => async (dispatch, getState) => {
     };
     dispatch(removeFromCart(payload));
     localStorage.setItem(
-      "cartItems",
-      JSON.stringify(getState().cart.cartItems)
+      'cartItems',
+      JSON.stringify(getState().cart.cartItems),
     );
   } catch (error) {
-    console.error("Error removing items from cart:", error);
+    console.error('Error removing items from cart:', error);
   }
 };
 
 export const saveShippingAddress = (data) => async (dispatch) => {
   try {
     dispatch(shippingAddress(data));
-    localStorage.setItem("shippingAddress", JSON.stringify(data));
+    localStorage.setItem('shippingAddress', JSON.stringify(data));
   } catch (error) {
-    console.error("Error saving shipping address:", error);
+    console.error('Error saving shipping address:', error);
   }
 };
 
 export const savePaymentMethod = (data) => async (dispatch) => {
   try {
     dispatch(paymentMethod(data));
-    localStorage.setItem("paymentMethod", JSON.stringify(data));
+    localStorage.setItem('paymentMethod', JSON.stringify(data));
   } catch (error) {
-    console.error("Error saving payment method:", error);
+    console.error('Error saving payment method:', error);
   }
 };
 
@@ -79,19 +79,17 @@ const initialState = {
 };
 
 export const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
     addToCart: (state, action) => {
       const item = action.payload;
       console.log(item);
       const existingItem = state.cartItems.find(
-        (i) => i.product === item.product
+        (i) => i.product === item.product,
       );
       if (existingItem) {
-        state.cartItems = state.cartItems.map((i) =>
-          i.product === existingItem.product ? item : i
-        );
+        state.cartItems = state.cartItems.map((i) => (i.product === existingItem.product ? item : i));
       } else {
         state.cartItems = [...state.cartItems, item];
       }
@@ -99,7 +97,7 @@ export const cartSlice = createSlice({
     removeFromCart: (state, action) => {
       const item = action.payload;
       state.cartItems = state.cartItems.filter(
-        (i) => i.product !== item.product
+        (i) => i.product !== item.product,
       );
     },
 
@@ -131,7 +129,6 @@ export const selectCartItems = (state) => state.cart.cartItems;
 export const selectShippingAddress = (state) => state.cart.shippingAddress;
 export const selectPaymentMethod = (state) => state.cart.paymentMethod;
 
-export const selectCartItemsCount = (state) =>
-  state.cart.cartItems.reduce((acc, item) => acc + item.qty, 0);
+export const selectCartItemsCount = (state) => state.cart.cartItems.reduce((acc, item) => acc + item.qty, 0);
 
 export default cartSlice.reducer;

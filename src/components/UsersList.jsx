@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   getAllUsers,
   selectUsers,
   selectUser,
   deleteUserById,
-} from "../features/userSlice";
+} from '../features/userSlice';
 
 const UsersList = () => {
   const dispatch = useDispatch();
@@ -19,16 +19,16 @@ const UsersList = () => {
     if (singleUser && singleUser.isAdmin) {
       dispatch(getAllUsers());
     } else {
-      navigate("/login");
+      navigate('/login');
     }
   }, [dispatch, navigate, singleUser]);
 
   const deleteHandler = (id) => {
-    if (window.confirm("Are you sure you want to delete this user?")) {
+    if (window.confirm('Are you sure you want to delete this user?')) {
       dispatch(deleteUserById(id));
 
-      toast.success("User Deleted Successfully", {
-        position: "top-center",
+      toast.success('User Deleted Successfully', {
+        position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

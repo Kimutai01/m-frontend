@@ -1,35 +1,37 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 
 import {
   getUserDetails,
   selectUserDetails,
   updateUserProfileAdmin,
-} from "../features/profileSlice";
+} from '../features/profileSlice';
 
 const UserEdit = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(updateUserProfileAdmin({ id, name, email, isAdmin }));
-    toast.success("User Updated Successfully", {
-      position: "top-center",
+    dispatch(updateUserProfileAdmin({
+      id, name, email, isAdmin,
+    }));
+    toast.success('User Updated Successfully', {
+      position: 'top-center',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       draggable: true,
     });
-    navigate("/admin/userlist");
+    navigate('/admin/userlist');
   };
   toast.error({
-    position: "top-center",
+    position: 'top-center',
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
