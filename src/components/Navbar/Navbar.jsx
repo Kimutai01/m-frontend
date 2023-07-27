@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import { AiOutlineClose } from 'react-icons/ai';
-import { CiUser } from 'react-icons/ci';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { AiOutlineClose } from "react-icons/ai";
+import { CiUser } from "react-icons/ci";
+import { useNavigate, Link } from "react-router-dom";
 
-import { RiMenu5Line } from 'react-icons/ri';
-import { HiShoppingCart } from 'react-icons/hi';
-import './Navbar.css';
-import { BsChevronDown } from 'react-icons/bs';
+import { RiMenu5Line } from "react-icons/ri";
+import { HiShoppingCart } from "react-icons/hi";
+import "./Navbar.css";
+import { BsChevronDown } from "react-icons/bs";
 
-import logo from '../../assets/logo.png';
-import { logoutUser, selectUser } from '../../features/userSlice';
-import { selectCartItemsCount } from '../../features/cartSlice';
+import logo from "../../assets/logo.png";
+import { logoutUser, selectUser } from "../../features/userSlice";
+import { selectCartItemsCount } from "../../features/cartSlice";
 
 const NavBar = () => {
   const navigate = useNavigate();
   const user = useSelector(selectUser);
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
-  const [navBg, setNavBg] = useState('#ecf0f3');
-  const [linkColor, setLinkColor] = useState('#1f2937');
+  const [navBg, setNavBg] = useState("#ecf0f3");
+  const [linkColor, setLinkColor] = useState("#1f2937");
 
   useEffect(() => {
-    setNavBg('#000');
-    setLinkColor('#ecf0f3');
+    setNavBg("#000");
+    setLinkColor("#ecf0f3");
   }, []);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const NavBar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleShadow);
+    window.addEventListener("scroll", handleShadow);
   }, []);
 
   const handleNav = () => {
@@ -55,14 +55,14 @@ const NavBar = () => {
   const logoutHandler = () => {
     dispatch(logoutUser());
 
-    toast.success('Logged out successfully', {
-      position: 'top-center',
+    toast.success("Logged out successfully", {
+      position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       draggable: true,
     });
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -70,8 +70,8 @@ const NavBar = () => {
       style={{ backgroundColor: `${navBg}` }}
       className={
         shadow
-          ? 'fixed w-full h-20 shadow-xl z-[100] md:px-24'
-          : 'fixed w-full h-20 z-[100] md:px-24'
+          ? "fixed w-full h-20 shadow-xl z-[100] md:px-24"
+          : "fixed w-full h-20 z-[100] md:px-24"
       }
     >
       <div className="flex justify-between items-center w-full h-full md:px-4 py-4 px-2 2xl:px-16 rounded">
@@ -144,6 +144,11 @@ const NavBar = () => {
                       <Link to="/admin/news">
                         <div className="text-[#fff] py-1 px-2 hover:text-[#ff4d23] hover:scale-105 transition-all duration-all hover:border-y-black">
                           News
+                        </div>
+                      </Link>
+                      <Link to="/admin/adverts">
+                        <div className="text-[#fff] py-1 px-2 hover:text-[#ff4d23] hover:scale-105 transition-all duration-all hover:border-y-black">
+                          Adverts
                         </div>
                       </Link>
                     </ul>
@@ -253,14 +258,14 @@ const NavBar = () => {
 
       <div
         className={
-          nav ? 'md:hiddden fixed left-0 top-0 w-full h-screen bg-black/70' : ''
+          nav ? "md:hiddden fixed left-0 top-0 w-full h-screen bg-black/70" : ""
         }
       >
         <div
           className={
             nav
-              ? ' fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%]  h-screen bg-[#000] text-white p-2 ease-in duration-500'
-              : 'fixed left-[-100%] top-0  p-10 ease-in duration-500'
+              ? " fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%]  h-screen bg-[#000] text-white p-2 ease-in duration-500"
+              : "fixed left-[-100%] top-0  p-10 ease-in duration-500"
           }
         >
           <div>
