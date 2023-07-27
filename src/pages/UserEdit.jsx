@@ -1,21 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import { useParams, Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
-import { getUserDetails, selectUserDetails } from '../features/profileSlice';
+import {
+  getUserDetails,
+  selectUserDetails,
+  updateUserProfileAdmin,
+} from "../features/profileSlice";
 
 const UserEdit = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [admin, setAdmin] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
+    dispatch(updateUserProfileAdmin({ id, name, email, isAdmin }));
+    toast.success("User Updated Successfully", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+    });
+    navigate("/admin/userlist");
   };
   toast.error({
-    position: 'top-center',
+    position: "top-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -31,7 +45,7 @@ const UserEdit = () => {
   useEffect(() => {
     setName(user.name);
     setEmail(user.email);
-    setAdmin(user.isAdmin);
+    setIsAdmin(user.isAdmin);
   }, [user]);
   return (
     <div className="bg-[#000] pt-28">
@@ -92,8 +106,8 @@ const UserEdit = () => {
                 type="checkbox"
                 id="admin"
                 name="admin"
-                checked={admin}
-                onChange={(e) => setAdmin(e.target.checked)}
+                checked={isAdmin}
+                onChange={(e) => setIsAdmin(e.target.checked)}
                 className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
               />
             </label>
