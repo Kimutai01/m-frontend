@@ -25,6 +25,8 @@ import Membership from './components/Membership';
 import OurClub from './components/OurClub';
 import NewsList from './components/NewsList';
 import NewsEdit from './pages/NewsEdit';
+import AdvertList from './components/advertsList';
+import AdvertEdit from './pages/AdvertEdit';
 
 function App() {
   return (
@@ -54,6 +56,8 @@ function App() {
         <Route path="/admin/orderlist" element={<OrderList />} />
         <Route path="/admin/news" element={<NewsList />} />
         <Route path="/admin/news/:id/edit" element={<NewsEdit />} />
+        <Route path="/admin/adverts" element={<AdvertList />} />
+        <Route path="/admin/adverts/:id/edit" element={<AdvertEdit />} />
       </Routes>
       <Footer />
     </>

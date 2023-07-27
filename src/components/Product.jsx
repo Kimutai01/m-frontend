@@ -16,11 +16,10 @@ const Product = ({ product }) => (
 
         <div>
           <p className="text-[#ff4d23] font-bold text-2xl">
-            $
             {' '}
             {product.price}
             {' '}
-            USD
+            ksh
           </p>
         </div>
         <p className="mt-5 text-[grey] font-medium">{product.description}</p>

@@ -4,7 +4,7 @@ const cartItemsFromStorage = localStorage.getItem('cartItems');
 const shippingAddressFromStorage = localStorage.getItem('shippingAddress');
 const paymentMethodFromStorage = localStorage.getItem('paymentMethod');
 
-export const addItemsToCart = (id, qty) => async (dispatch, getState) => {
+export const addItemsToCart = (id, qty, size) => async (dispatch, getState) => {
   try {
     const response = await fetch(`http://127.0.0.1:8000/api/products/${id}`);
     if (!response.ok) {
@@ -18,6 +18,7 @@ export const addItemsToCart = (id, qty) => async (dispatch, getState) => {
       price: data.price,
       countInStock: data.countInStock,
       qty,
+      size,
     };
     dispatch(addToCart(payload));
     localStorage.setItem(
@@ -83,13 +84,14 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const item = action.payload;
-      const itemExists = state.cartItems.find(
+      console.log(item);
+      const existingItem = state.cartItems.find(
         (i) => i.product === item.product,
       );
-      if (itemExists) {
-        state.cartItems = state.cartItems.map((i) => (i.product === itemExists.product ? item : i));
+      if (existingItem) {
+        state.cartItems = state.cartItems.map((i) => (i.product === existingItem.product ? item : i));
       } else {
-        state.cartItems.push(item);
+        state.cartItems = [...state.cartItems, item];
       }
     },
     removeFromCart: (state, action) => {

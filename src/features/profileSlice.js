@@ -56,6 +56,29 @@ export const updateUserProfile = (userr) => async (dispatch, getState) => {
   }
 };
 
+export const updateUserProfileAdmin = (userr) => async (dispatch, getState) => {
+  try {
+    const {
+      user: { user },
+    } = getState();
+    const { token } = user;
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    await axios.put(
+      `http://127.0.0.1:8000/api/users/update/${userr.id}/`,
+      userr,
+      config,
+    );
+    dispatch(getUserDetails(userr.id));
+  } catch (error) {
+    console.error('Error updating profile:', error);
+  }
+};
+
 const profileSlice = createSlice({
   name: 'profile',
   initialState,

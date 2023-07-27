@@ -15,7 +15,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
-  const dispatch = useDispatch();
+
   const submitHandler = (e) => {
     if (password !== confirmPassword) {
       setMessage('Passwords do not match');
@@ -31,7 +31,7 @@ const Register = () => {
     closeOnClick: true,
     draggable: true,
   });
-
+  const dispatch = useDispatch();
   const user = useSelector(selectUser);
   useEffect(() => {
     if (user) {

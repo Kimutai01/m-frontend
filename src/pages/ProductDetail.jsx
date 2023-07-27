@@ -43,7 +43,8 @@ const ProductDetail = () => {
   const product = products.find((product) => product._id === parseInt(id));
 
   const addToCartHandler = () => {
-    dispatch(addItemsToCart(id, qty));
+    console.log(id, qty, size);
+    dispatch(addItemsToCart(id, qty, size));
     navigate(`/cart/${id}?qty=${qty}`);
   };
 
@@ -80,11 +81,10 @@ const ProductDetail = () => {
 
             <div>
               <p className="text-[#ff4d23] font-bold text-2xl">
-                $
                 {' '}
                 {product.price}
                 {' '}
-                USD
+                ksh
               </p>
             </div>
 

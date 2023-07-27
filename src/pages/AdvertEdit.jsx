@@ -5,34 +5,30 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { selectUser } from '../features/userSlice';
 import {
-  // fetchNews,
-  fetchNewsById,
-  // selectAllNews,
-  selectSingleNews,
-  updateNewsById,
-} from '../features/newsSlice';
+  fetchAdvertsById,
+  selectSingleAdverts,
+  updateAdvertsById,
+} from '../features/advertsSlice';
 
-const NewsEdit = () => {
+const AdvertEdit = () => {
   const { id } = useParams();
   const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
   const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
 
-  const newsById = useSelector(selectSingleNews);
+  const advertsById = useSelector(selectSingleAdverts);
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     dispatch(
-      updateNewsById({
-        _id: newsById._id,
+      updateAdvertsById({
+        _id: advertsById._id,
         title,
         image,
-        category,
         description,
       }),
     );
@@ -45,7 +41,7 @@ const NewsEdit = () => {
       draggable: true,
     });
 
-    navigate('/admin/news');
+    navigate('/admin/adverts');
   };
   const user = useSelector(selectUser);
 
@@ -80,17 +76,16 @@ const NewsEdit = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchNewsById(id));
+    dispatch(fetchAdvertsById(id));
   }, [dispatch, id]);
 
   useEffect(() => {
-    if (newsById) {
-      setTitle(newsById.title);
-      setImage(newsById.image);
-      setDescription(newsById.description);
-      setCategory(newsById.category);
+    if (advertsById) {
+      setTitle(advertsById.title);
+      setImage(advertsById.image);
+      setDescription(advertsById.description);
     }
-  }, [newsById]);
+  }, [advertsById]);
   return (
     <div className="bg-[#000] pt-28">
       <Link to="/admin/news">
@@ -164,25 +159,6 @@ const NewsEdit = () => {
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
             <label
-              htmlFor="category"
-              className="text-white mb-3 uppercase font-bold"
-            >
-              Category
-              <input
-                type="text"
-                id="category"
-                name="category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-              />
-            </label>
-          </div>
-        </div>
-
-        <div className="flex justify-center md:flex-row mt-10 gap-5">
-          <div className="flex flex-col w-full">
-            <label
               htmlFor="description"
               className="text-white mb-3 uppercase font-bold"
             >
@@ -211,4 +187,4 @@ const NewsEdit = () => {
   );
 };
 
-export default NewsEdit;
+export default AdvertEdit;
