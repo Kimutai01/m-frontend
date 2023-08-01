@@ -1,15 +1,17 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-import featured1 from '../../assets/featured1.png';
+import featured1 from "../../assets/featured1.png";
 
 const Landing = () => {
   const [news, setNews] = useState([]);
   const [featured, setFeatured] = useState({});
   const [otherNews, setOtherNews] = useState([]);
+  const [adverts, setAdverts] = useState([]);
+  console.log(adverts);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/news/latest')
+    fetch("http://127.0.0.1:8000/api/news/latest")
       .then((res) => res.json())
       .then((data) => setNews(data));
 
@@ -17,27 +19,20 @@ const Landing = () => {
   }, [news]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/news/otherlatest')
+    fetch("http://127.0.0.1:8000/api/news/otherlatest")
       .then((res) => res.json())
       .then((data) => setOtherNews(data));
   }, []);
 
-  const advert = [
-    {
-      id: 1,
-      title: 'DONT MISS THIS GAME FOR ALL STARS VS SEALS',
-      image: featured1,
-    },
-    {
-      id: 2,
-      title: 'DONT MISS THIS GAME FOR ALL STARS VS SEALS',
-      image: featured1,
-    },
-  ];
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/adverts/")
+      .then((res) => res.json())
+      .then((data) => setAdverts(data.slice(0, 1)));
+  }, []);
 
   return (
-    <div className="flex flex-col md:flex-row gap-5   m-[4%]">
-      <div className="container">
+    <div className="flex flex-col justify-center md:flex-row gap-5   m-[4%]">
+      <div className="">
         <div className="flex flex-col items-start h-16 bg-[#FAE115] border border-[#FAE115] shadow md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] ">
           <h1 className="text-[#000] font-bold uppercase text-xl md:text-2xl lg:text-3xl pl-4 pt-4 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px]">
             {featured.title}
@@ -126,26 +121,25 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className="bg-white md:flex-col md:flex-row border-t-indigo-500 ">
+      <div className="bg-white md:flex-col  border-t-indigo-500 ">
         {/* <% @advert.limit(2).each do |advert| %> */}
-        {advert.map((advert) => (
+        {adverts.map((advert) => (
           <div
             key={advert.id}
-            className="flex flex-col md:items-end gap-5 mb-2 hidden sm:flex  "
+            className="flex flex-col md:items-end gap-5 mb-2  sm:flex  "
           >
-            <div className="flex flex-col lg:w-[303px] md:w-[250px] text-white bg-black">
+            <div className="flex flex-col lg:w-[300px] md:w-[300px] text-white bg-black">
               <img
-                src={advert.desktop_image}
+                src={`http://127.0.0.1:8000${advert.image}`}
                 alt=""
-                className="w-[100%] h-[100px] "
+                className="w-[300px] h-[300px] "
               />
             </div>
-            <p>Desktop</p>
           </div>
         ))}
         {/* <% end %>
           <% @advert.limit(1).each do |advert| %> */}
-        {advert.map((advert) => (
+        {/* {advert.map((advert) => (
           <div
             className="sm:flex flex-col md:items-end m-[4%] md:hidden lg:hidden xl:hidden "
             key={advert.id}
@@ -158,7 +152,7 @@ const Landing = () => {
               />
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );
