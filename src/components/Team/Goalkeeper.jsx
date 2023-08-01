@@ -1,11 +1,12 @@
-import goalkeeper1 from '../../assets/goalkeeper1.png';
+import goalkeeper1 from '../../assets/wilsongk.png';
 import goalkeeper2 from '../../assets/goalkeeper2.png';
+import goalkeeper3 from '../../assets/christiangk.png';
 
 const Goalkeeper = () => {
   const goalkeepers = [
     {
-      name1: 'Cetric',
-      name2: 'Anyango',
+      name1: 'Wilson',
+      name2: 'Mwangi',
       image: goalkeeper1,
       number: '01',
       id: 1,
@@ -14,8 +15,15 @@ const Goalkeeper = () => {
       name1: 'Kevin',
       name2: 'Magona',
       image: goalkeeper2,
-      number: '01',
+      number: '22',
       id: 2,
+    },
+    {
+      name1: 'Christian',
+      name2: 'Kimeu',
+      image: goalkeeper3,
+      number: '33',
+      id: 3,
     },
   ];
 
@@ -27,15 +35,15 @@ const Goalkeeper = () => {
           {goalkeepers.map((goalkeeper) => (
             <div
               key={goalkeeper.id}
-              className="w-[300px] flex-flex-col cursor-pointer hover:scale-105 transition ease-in-out duration-500"
+              className="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500"
             >
               <img src={goalkeeper.image} alt="player" />
               <div className="flex justify-between">
                 <div className="flex flex-col">
-                  <h1 className="">{goalkeeper.name1}</h1>
-                  <h1 className="font-semibold text-2xl">{goalkeeper.name2}</h1>
+                  <h1 className="self-start uppercase">{goalkeeper.name1}</h1>
+                  <h1 className="font-semibold text-2xl uppercase">{goalkeeper.name2}</h1>
                 </div>
-                <h1 className="text-gray-400 text-5xl">{goalkeeper.number}</h1>
+                <h1 className="text-5xl">{goalkeeper.number}</h1>
               </div>
             </div>
           ))}
