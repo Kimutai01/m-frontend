@@ -1,5 +1,10 @@
 import midfielder1 from '../../assets/EricBalecho.png';
-import midfielder2 from '../../assets/midfielder2.png';
+import midfielder2 from '../../assets/HenryDF.png';
+import midfielder3 from '../../assets/John-Omondi-MF.png';
+import midfielder4 from '../../assets/defender3.png';
+import midfielder5 from '../../assets/JohnMwangiMF.png';
+import midfielder6 from '../../assets/EricJumaMF.png';
+import midfielder7 from '../../assets/AllyYusufMF.png';
 
 const Midfielders = () => {
   const midfielders = [
@@ -14,36 +19,85 @@ const Midfielders = () => {
       name1: 'Henry',
       name2: 'Omollo',
       image: midfielder2,
-      number: '22',
+      number: '11',
       id: 12,
     },
     {
-      name1: 'Victory',
-      name2: 'Onyango',
-      image: midfielder2,
-      number: '22',
+      name1: 'John',
+      name2: 'Omondi',
+      image: midfielder3,
+      number: '39',
       id: 13,
     },
     {
       name1: 'Victory',
       name2: 'Onyango',
-      image: midfielder2,
-      number: '22',
+      image: midfielder4,
+      number: '05',
       id: 14,
     },
     {
-      name1: 'Victory',
-      name2: 'Onyango',
-      image: midfielder2,
-      number: '22',
+      name1: 'John',
+      name2: 'Mwangi',
+      image: midfielder5,
+      number: '16',
       id: 15,
     },
     {
-      name1: 'Victory',
-      name2: 'Onyango',
-      image: midfielder2,
-      number: '22',
+      name1: 'Eric',
+      name2: 'Juma',
+      image: midfielder6,
+      number: 88,
       id: 16,
+    },
+    {
+      name1: 'Ally',
+      name2: 'Yusuf',
+      image: midfielder7,
+      number: 25,
+      id: 17,
+    },
+    {
+      name1: 'Eric',
+      name2: 'Juma',
+      image: midfielder6,
+      number: '22',
+      id: 18,
+    },
+    {
+      name1: 'Eric',
+      name2: 'Juma',
+      image: midfielder6,
+      number: '22',
+      id: 19,
+    },
+    {
+      name1: 'Eric',
+      name2: 'Juma',
+      image: midfielder6,
+      number: '22',
+      id: 20,
+    },
+    {
+      name1: 'Eric',
+      name2: 'Juma',
+      image: midfielder6,
+      number: '22',
+      id: 21,
+    },
+    {
+      name1: 'Eric',
+      name2: 'Juma',
+      image: midfielder6,
+      number: '22',
+      id: 22,
+    },
+    {
+      name1: 'Eric',
+      name2: 'Juma',
+      image: midfielder6,
+      number: '22',
+      id: 23,
     },
   ];
   return (
