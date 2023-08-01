@@ -31,7 +31,8 @@ const Goalkeeper = () => {
     <>
       <div className="my-4 ml-8">
         <h1 className="text-4xl pb-4 md:pb-0 md:p-4 font-bold">Goalkeepers</h1>
-        <div className="flex flex-col md:flex-row text-center p-2 gap-8">
+        <hr className="ml-4 sm:w-[6%] md:w-[12%] lg:w-[12%] xl:w-[8%] w-[18%]  bg-[#FAE115] h-[10px] mb-2" />
+        <div className="grid lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 flex-col text-center p-2">
           {goalkeepers.map((goalkeeper) => (
             <div
               key={goalkeeper.id}
