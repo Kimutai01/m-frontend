@@ -14,7 +14,6 @@ const NewsDetail = () => {
     fetchNews();
   }, []);
 
-  console.log(news);
   return (
     <div className="shadow-md">
       <div className="p-6 bg-[#FAE115] font-bold uppercase md:text-3xl text-3xl flex justify-between truncate ...">

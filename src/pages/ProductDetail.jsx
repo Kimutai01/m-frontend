@@ -43,7 +43,6 @@ const ProductDetail = () => {
   const product = products.find((product) => product._id === parseInt(id));
 
   const addToCartHandler = () => {
-    console.log(id, qty, size);
     dispatch(addItemsToCart(id, qty, size));
     navigate(`/cart/${id}?qty=${qty}`);
   };

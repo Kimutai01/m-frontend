@@ -17,12 +17,10 @@ import {
 const AdvertList = () => {
   const navigate = useNavigate();
   const adverts = useSelector(selectAllAdverts);
-  console.log(adverts);
   const error = useSelector(getAdvertsError);
   const status = useSelector(getAdvertsStatus);
   const dispatch = useDispatch();
   const created = useSelector(getCreatedAdverts);
-  console.log(created);
 
   const fetchAllAdverts = () => {
     dispatch(fetchAdverts());
