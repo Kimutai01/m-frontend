@@ -78,12 +78,12 @@ const Defender = () => {
   return (
     <div className="my-4 ml-8">
       <h1 className="text-4xl pb-4 md:pb-0 md:p-4 font-bold">Defenders</h1>
-      <hr className="ml-4 sm:w-[6%] md:w-[12%] lg:w-[12%] xl:w-[8%] w-[18%]  bg-[#FAE115] h-[10px] mb-2" />
+      <hr className="ml-4 sm:w-[6%] md:w-[12%] lg:w-[12%] xl:w-[8%] w-[18%]  bg-[#FAE115] h-[10px]" />
       <div className="grid lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 flex-col text-center p-2">
         {defenders.map((defender) => (
           <div
             key={defender.id}
-            className="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500"
+            className="w-[300px] flex-flex-col cursor-pointer hover:scale-105 hover:text-[#FAE115] transition ease-in-out duration-500 mb-6"
           >
             <img src={defender.image} alt="player" />
             <div className="flex justify-between">
