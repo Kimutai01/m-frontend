@@ -1,17 +1,13 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
-import featured1 from "../../assets/featured1.png";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Landing = () => {
   const [news, setNews] = useState([]);
   const [featured, setFeatured] = useState({});
   const [otherNews, setOtherNews] = useState([]);
   const [adverts, setAdverts] = useState([]);
-  console.log(adverts);
-
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/news/latest")
+    fetch('http://127.0.0.1:8000/api/news/latest')
       .then((res) => res.json())
       .then((data) => setNews(data));
 
@@ -19,13 +15,13 @@ const Landing = () => {
   }, [news]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/news/otherlatest")
+    fetch('http://127.0.0.1:8000/api/news/otherlatest')
       .then((res) => res.json())
       .then((data) => setOtherNews(data));
   }, []);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/adverts/")
+    fetch('http://127.0.0.1:8000/api/adverts/')
       .then((res) => res.json())
       .then((data) => setAdverts(data.slice(0, 1)));
   }, []);
