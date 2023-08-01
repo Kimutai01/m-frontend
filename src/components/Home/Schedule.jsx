@@ -1,81 +1,14 @@
-import { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
+import { useNavigate } from 'react-router-dom';
 import wazitologo from '../../assets/wazitologo.png';
 import msealskit from '../../assets/msealskit.png';
 import msealslogo from '../../assets/msealslogo.png';
 
 const Schedule = () => {
-  const [showModal, setShowModal] = useState(false);
-  const form = useRef();
+  const navigate = useNavigate();
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm(
-      'service_abzd5cf',
-      'template_ncd937d',
-      form.current,
-      'cea2TAaV7fu3Aqtyp',
-    );
-  };
   return (
     <>
-      {showModal && (
-        <div className="fixed kulim-park inset-0 bg-opacity-50 z-10 flex  items-center justify-center px-8 md:w-[500px] mx-auto">
-          <div className="bg-white p-12 rounded-lg">
-            <div className="flex justify-end">
-              <button
-                className="bg-[#000] text-white px-4 py-2 rounded-lg"
-                type="button"
-                onClick={() => setShowModal(false)}
-              >
-                X
-              </button>
-            </div>
-
-            <h2 className=" text-2xl uppercase md:text-5xl font-bold mb-2 text-[#000] text-center">
-              Make purchase
-            </h2>
-
-            <div className="">
-              <form
-                ref={form}
-                onSubmit={sendEmail}
-                className="flex flex-col gap-3"
-              >
-                <input
-                  type="text"
-                  placeholder="ticket, jersey"
-                  className="border border-[#000] p-3 rounded-lg focus:outline-[#FAE115] placeholder-black"
-                  required
-                />
-                <input
-                  type="number"
-                  placeholder="Quantity"
-                  className="border border-[#000] p-3 rounded-lg focus:outline-[#FAE115] placeholder-black"
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="home, away, third"
-                  className="border border-[#000] p-3 rounded-lg focus:outline-[#FAE115] placeholder-black"
-                />
-                <button
-                  className="bg-[#000] md:mr-24  hover:scale-105 transition-all duration-500 text-[#FAE115] uppercase text-center py-4 px-8 justify-start  shadow-[#00000040] rounded-md shadow-xl"
-                  type="submit"
-                >
-                  Book order
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
-      <div
-        className={`bg-black text-white px-4 py-8 md:ml-[28px] md:mr-[28px] ${
-          showModal ? 'blur-lg' : 'blur-none'
-        }`}
-      >
+      <div className="bg-black text-white px-4 py-8 md:ml-[28px] md:mr-[28px]">
         <h1 className="uppercase">Match Schedule</h1>
         <div className="flex flex-col md:flex-row justify-between ">
           <div className=" text-center border-r  flex flex-col gap-2 border-white">
@@ -98,7 +31,7 @@ const Schedule = () => {
               className="bg-[#FAE115] text-black mt-5 font-bold p-2 w-[40%] mx-auto"
               type="button"
             >
-              Buy Ticket
+              Previous Match
             </button>
           </div>
 
@@ -121,9 +54,8 @@ const Schedule = () => {
             <button
               className="bg-[#FAE115] text-black mt-5 font-bold p-2 w-[40%] mx-auto"
               type="button"
-              onClick={() => setShowModal(true)}
             >
-              Buy Ticket
+              Next Match
             </button>
           </div>
 
@@ -140,7 +72,9 @@ const Schedule = () => {
               <button
                 className="bg-[#FAE115]  flex justify-center text-black font-bold p-2 w-[80%] "
                 type="button"
-                onClick={() => setShowModal(true)}
+                onClick={() => {
+                  navigate('/shop');
+                }}
               >
                 Buy Now
               </button>

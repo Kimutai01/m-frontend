@@ -55,7 +55,7 @@ const Landing = () => {
               {/* <%= news.header_news %> */}
             </p>
             <Link
-              to="/news"
+              to={`/news/${featured._id}`}
               class="bg-[#FAE115] p-2 flex group-hover:bg-black group-hover:text-white justify-center uppercase font-semibold"
             >
               <p className="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center uppercase font-semibold">
@@ -66,13 +66,8 @@ const Landing = () => {
         </div>
 
         <div className="md:grid grid-cols-3 md:grid-cols-3 gap-5 mt-[28px] 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px]">
-          {/* <% @news.limit(4).each_with_index do |news, index| %>
-          <% if index == 0 %>
-            <%# Handle the last item separately %>
-          <% else %>
-            <% @news.length - index %> */}
           {otherNews.map((bla) => (
-            <div className="" key={bla.id}>
+            <div className="" key={bla._id}>
               <div className="bg-white border border-[#FAE115] border-t-4 flex flex-col mt-2 hover:scale-105">
                 {/* <%= image_tag(news.image, class: "h-[200px] w-full")  %> */}
                 <img
@@ -82,15 +77,13 @@ const Landing = () => {
                 />
                 <div className="p-5">
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate uppercase">
-                    {/* <%= news.type_of_news %> */}
                     {bla.title}
                   </h5>
                   <p className="mb-3 font-normal text-gray-700 truncate ...">
-                    {/* <%= news.header_news %>. */}
                     {bla.description}
                   </p>
                   <Link
-                    to="/news"
+                    to={`/news/${bla._id}`}
                     class=" flex group-hover:bg-black  uppercase font-semibold"
                   >
                     <div className="inline-flex items-center px-3 py-2 text-sm font-semibold text-center text-black hover:text-[#FAE115] bg-[#FAE115] uppercase hover:bg-white hover:border-[#FAE115] border focus:ring-4 focus:outline-none focus:ring-blue-300">
@@ -118,10 +111,9 @@ const Landing = () => {
       </div>
 
       <div className="bg-white md:flex-col  border-t-indigo-500 ">
-        {/* <% @advert.limit(2).each do |advert| %> */}
         {adverts.map((advert) => (
           <div
-            key={advert.id}
+            key={advert._id}
             className="flex flex-col md:items-end gap-5 mb-2  sm:flex  "
           >
             <div className="flex flex-col lg:w-[300px] md:w-[300px] text-white bg-black">
@@ -133,22 +125,6 @@ const Landing = () => {
             </div>
           </div>
         ))}
-        {/* <% end %>
-          <% @advert.limit(1).each do |advert| %> */}
-        {/* {advert.map((advert) => (
-          <div
-            className="sm:flex flex-col md:items-end m-[4%] md:hidden lg:hidden xl:hidden "
-            key={advert.id}
-          >
-            <div className="flex flex-col w-[100%] h-[100px] text-white bg-black">
-              <img
-                src={advert.mobile_image}
-                alt=""
-                className="w-[100%] h-[100px] "
-              />
-            </div>
-          </div>
-        ))} */}
       </div>
     </div>
   );
