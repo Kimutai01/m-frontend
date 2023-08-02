@@ -7,16 +7,6 @@ import { AiOutlineCalendar } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
 
 import React, { useEffect } from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-
-// import required modules
-import { Pagination } from 'swiper/modules';
-
 import Product from '../components/Product';
 import {
   fetchProducts,
@@ -24,6 +14,7 @@ import {
   getProductsError,
   getProductsStatus,
 } from '../features/productsSlice';
+import jersey from '../assets/msealskit.png';
 
 const HomeShop = () => {
   const dispatch = useDispatch();
@@ -51,111 +42,65 @@ const HomeShop = () => {
   return (
     <>
       <div className="">
-        <div className="">
-          <Swiper
-            pagination={{
-              dynamicBullets: true,
-            }}
-            modules={[Pagination]}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <div className="service-background">
-                <h1 className="flex align-middle uppercase justify-center items-center h-full text-5xl md:text-6xl font-bold text-white">
-                  Shop
-                </h1>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="service-background">
-                <h1 className="flex align-middle uppercase justify-center items-center h-full text-5xl md:text-6xl font-bold text-white">
-                  Shop
-                </h1>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="service-background">
-                <h1 className="flex align-middle uppercase justify-center items-center h-full text-5xl md:text-6xl font-bold text-white">
-                  Shop
-                </h1>
-              </div>
-            </SwiperSlide>
-          </Swiper>
-        </div>
         <ToastContainer />
         {status === 'loading' && (
           <div className="flex justify-center items-center pt-28 bg-black">
             <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent" />
           </div>
         )}
-        <div className="bg-[#000] pt-10 px-5 md:pt-28 pb-32 flex flex-col-reverse md:flex-row gap-10 md:px-32">
+        <div className="bg-[#ffffff]  pt-10 px-5 md:pt-28 pb-32 flex flex-col-reverse md:flex-row gap-10 md:px-32">
           <div className="md:w-[70%] grid grid-cols-1 md:grid-cols-2 gap-10">
             {products.map((product) => (
               <Product key={product._id} product={product} />
             ))}
+
           </div>
-          <div className="md:w-[30%] md:sticky md:top-20 md:h-screen">
-            <div className="bg-[#161616] flex gap-2  rounded-lg p-8">
+          <div className="md:w-[40%] md:sticky md:top-20 md:h-screen">
+            <div className="bg-[#000] flex gap-2  rounded-lg p-8">
               <input
                 type="text"
                 placeholder="Search"
-                className="bg-[#161616] border-[1px] rounded-lg border-[grey] w-full py-2 px-2 text-white focus:outline-none"
+                className="bg-[#fff] border-[1px] text-center w-[70%] rounded-lg border-[#fae115] py-2 px-2 text-[#000] focus:outline-none"
               />
-              <button className="why-btn flex items-center" type="button">
+              <button className="why-btn flex items-center w-[30%] font-medium" type="button">
                 <h1>Search</h1>
               </button>
             </div>
-            <div className="bg-[#161616] mt-10 flex flex-col gap-2  rounded-lg p-8">
-              <h1 className="text-white text-xl uppercase font-bold">
-                Product categories
-              </h1>
-              <div className="flex mt-3 flex-wrap gap-2">
-                <p className="text-white bg-[#ff4d24] hover:bg-[grey] p-2 rounded-lg">
-                  Kits
-                </p>
-                <p className="text-white bg-[#ff4d24] hover:bg-[grey] p-2 rounded-lg">
-                  Details
-                </p>
-                <p className="text-white bg-[#ff4d24] hover:bg-[grey] p-2 rounded-lg">
-                  Oils
-                </p>
-              </div>
-            </div>
             <div className="bg-[#161616] mt-10  rounded-lg p-8">
               <h1 className="uppercase text-white font-bold text-2xl">
-                Service hours
+                Delivery Hours
               </h1>
               <div className="flex mt-3 gap-7">
                 <div className="flex items-center gap-2">
-                  <AiOutlineCalendar size={25} color="#ff4d24" />
-                  <h1 className="text-[#ff4d24] text-md font-semibold">
+                  <AiOutlineCalendar size={25} color="#fae115" />
+                  <h1 className="text-white text-md font-semibold">
                     Monday - Friday
                   </h1>
                 </div>
                 <div>
-                  <h1 className="text-[grey] text-md">8AM - 9PM</h1>
+                  <h1 className="text-white text-md">8AM - 9PM</h1>
                 </div>
               </div>
               <div className="flex mt-5 gap-20">
                 <div className="flex items-center gap-2">
-                  <AiOutlineCalendar size={25} color="#ff4d24" />
-                  <h1 className="text-[#ff4d24] text-md font-semibold">
+                  <AiOutlineCalendar size={25} color="#fae115" />
+                  <h1 className="text-white text-md font-semibold">
                     Saturday
                   </h1>
                 </div>
                 <div>
-                  <h1 className="text-[grey] text-md">8AM - 7PM</h1>
+                  <h1 className="text-white text-md">8AM - 7PM</h1>
                 </div>
               </div>
               <div className="flex mt-5 gap-24">
                 <div className="flex items-center gap-2">
-                  <AiOutlineCalendar size={25} color="#ff4d24" />
-                  <h1 className="text-[#ff4d24] text-md font-semibold">
+                  <AiOutlineCalendar size={25} color="#fae115" />
+                  <h1 className="text-white text-md font-semibold">
                     Sunday
                   </h1>
                 </div>
                 <div>
-                  <h1 className="text-[grey] text-md">8AM - 2PM</h1>
+                  <h1 className="text-white text-md">8AM - 2PM</h1>
                 </div>
               </div>
             </div>

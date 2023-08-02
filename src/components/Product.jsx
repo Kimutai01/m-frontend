@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import jersey from '../assets/msealskit.png';
 
 const Product = ({ product }) => (
   <div key={product.id} className="bg-[#161616] p-4 rounded-lg h-[500px]">
@@ -10,19 +11,19 @@ const Product = ({ product }) => (
         className="h-72 mx-auto w-[65%] rounded-t-lg"
       />
       <div className="p-6 mx-auto w-[90%]">
-        <h2 className="text-white text-2xl font-bold uppercase">
+        <h2 className="text-[#000] text-2xl font-bold uppercase">
           {product.name}
         </h2>
 
         <div>
           <p className="text-[#fae115] mt-5  font-bold text-2xl">
             {' '}
-            {product.price}
-            {' '}
             ksh
+            {' '}
+            {product.price}
           </p>
         </div>
-        <p className="mt-5 text-[grey] w-[80%] truncate font-medium">
+        <p className="mt-5 text-[#000] w-[80%] truncate font-medium">
           {product.description}
         </p>
       </div>
