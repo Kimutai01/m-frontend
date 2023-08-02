@@ -14,7 +14,6 @@ import {
   getProductsError,
   getProductsStatus,
 } from '../features/productsSlice';
-import jersey from '../assets/msealskit.png';
 
 const HomeShop = () => {
   const dispatch = useDispatch();

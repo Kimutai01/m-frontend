@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import jersey from '../assets/msealskit.png';
 
 const Product = ({ product }) => (
   <div key={product.id} className="bg-[#161616] p-4 rounded-lg h-[500px]">
