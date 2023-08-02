@@ -49,6 +49,7 @@ const Register = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Name
+              <br />
               <input
                 type="text"
                 id="email"
@@ -57,7 +58,7 @@ const Register = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Your name.."
-                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                className="bg-[#161616] w-full text-white mt-5 border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#fae115]"
               />
             </label>
           </div>
@@ -69,6 +70,7 @@ const Register = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Email Address
+              <br />
               <input
                 type="text"
                 required
@@ -77,7 +79,7 @@ const Register = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address.."
-                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                className="bg-[#161616] w-full text-white mt-5 border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#fae115]"
               />
             </label>
           </div>
@@ -89,6 +91,7 @@ const Register = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Password
+              <br />
               <input
                 type="password"
                 id="password"
@@ -97,7 +100,7 @@ const Register = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Your password.."
-                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                className="bg-[#161616] w-full text-white mt-5 border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#fae115]"
               />
             </label>
           </div>
@@ -109,6 +112,7 @@ const Register = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Password
+              <br />
               <input
                 type="password"
                 required
@@ -117,7 +121,7 @@ const Register = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Confirm your password.."
-                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                className="bg-[#161616] text-white mt-5 w-full border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#fae115]"
               />
             </label>
           </div>
@@ -135,7 +139,7 @@ const Register = () => {
           {' '}
           <Link
             to={redirect ? `/login?redirect=${redirect}` : '/login'}
-            className="text-[#ff4d24]"
+            className="text-[#fae115] font-bold"
           >
             Sign In
           </Link>

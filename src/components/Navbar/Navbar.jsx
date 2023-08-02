@@ -264,7 +264,7 @@ const NavBar = () => {
             <div className="flex">
               {user ? (
                 <div className="group ml-10">
-                  <li className="font-medium  text-xl text-[#f4e721] mt-[10px] hover:underline underline-offset-8 hover:scale-105 transition-all duration-all hover:border-y-black list-none">
+                  <li className="font-medium  text-xl text-[#f4e721] mt-[10px] hover:underline underline-offset-8 hover:scale-105 transition-all duration-all capitalize hover:border-y-black list-none">
                     {user.name}
                     <div className="opacity-0 group-hover:opacity-100 w-[200px] absolute left-0 top-full bg-[#000] pt-10 py-2 rounded-lg shadow-lg">
                       <ul className="p-2 flex flex-col">

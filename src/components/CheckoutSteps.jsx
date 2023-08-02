@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const CheckoutSteps = ({
   step1, step2, step3, step4,
 }) => (
-  <div className="flex flex-row gap-10 justify-center">
+  <div className="flex flex-row md:gap-10 gap-5 justify-center">
     <div>
       {step1 ? (
         <Link to="/login" className="text-white text-lg font-bold">

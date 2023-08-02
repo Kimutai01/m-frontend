@@ -53,6 +53,7 @@ const Shipping = () => {
               type="text"
             >
               Address
+              <br />
               <input
                 type="text"
                 id="address"
@@ -61,7 +62,7 @@ const Shipping = () => {
                 value={address || ''}
                 onChange={(e) => setAddress(e.target.value)}
                 placeholder="Your address.."
-                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                className="bg-[#161616] text-white w-full mt-5 border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#fae115]"
               />
             </label>
           </div>
@@ -73,6 +74,7 @@ const Shipping = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               City
+              <br />
               <input
                 type="text"
                 required
@@ -81,7 +83,7 @@ const Shipping = () => {
                 value={city || ''}
                 onChange={(e) => setCity(e.target.value)}
                 placeholder="Your city.."
-                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                className="bg-[#161616] text-white w-full border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#fae115]"
               />
             </label>
           </div>
@@ -93,6 +95,7 @@ const Shipping = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Postal Code
+              <br />
               <input
                 type="text"
                 required
@@ -101,7 +104,7 @@ const Shipping = () => {
                 value={postalCode || ''}
                 onChange={(e) => setPostalCode(e.target.value)}
                 placeholder="Your postal code.."
-                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                className="bg-[#161616] w-full text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#fae115]"
               />
             </label>
           </div>
@@ -113,6 +116,7 @@ const Shipping = () => {
               className="text-white mb-3 uppercase font-bold"
             >
               Country
+              <br />
               <input
                 type="text"
                 required
@@ -121,7 +125,7 @@ const Shipping = () => {
                 value={country || ''}
                 onChange={(e) => setCountry(e.target.value)}
                 placeholder="Your country.."
-                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                className="bg-[#161616] w-full text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#fae115]"
               />
             </label>
           </div>

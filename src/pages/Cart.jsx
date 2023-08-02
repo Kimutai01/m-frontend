@@ -46,8 +46,8 @@ const Cart = () => {
       <h2 className="text-2xl font-bold text-center uppercase  text-[#000]">
         Shopping Cart
       </h2>
-      <div className="flex gap-20 mx-auto w-[70%] mt-10">
-        <div className="flex flex-col gap-5">
+      <div className="flex flex-col mx-5  md:flex-row gap-20  md:w-[70%] mt-10">
+        <div className="flex flex-col gap-3">
           {cart.map((item) => (
             <div
               className="flex gap-5 rounded-lg p-4 items-center text-[#000] border-b border-[#fae115]"
@@ -58,7 +58,7 @@ const Cart = () => {
                 alt=""
                 className="h-28 w-28 rounded-md"
               />
-              <h2 className="">{item.name}</h2>
+              <h2 className="hidden md:block">{item.name}</h2>
               <h2 className="">{item.price}</h2>
               <div>
                 <select
@@ -86,14 +86,14 @@ const Cart = () => {
           ))}
         </div>
         <div>
-          <div className="bg-[#EDE38E] text-[#000] gap-2  rounded-lg p-8">
-            <h2 className="text-2xl font-bold text-center p-3  ">
+          <div className="bg-[#EDE38E]  text-[#000] gap-2  rounded-lg p-8">
+            <h2 className="text-2xl font-bold md:text-center p-3  ">
               {/* Subtotal ({cart.reduce((acc, item) => acc + item.qty, 0)}) items */}
               Subtotal (
               {cart.reduce((acc, item) => acc + parseInt(item.qty), 0)}
               ) items
             </h2>
-            <h2 className="text-2xl font-bold text-center ">
+            <h2 className="text-2xl font-bold p-3 md:text-center ">
               Total Price:
               {cart
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
