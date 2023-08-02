@@ -185,11 +185,7 @@ const NavBar = () => {
                   TICKETS
                 </li>
               </Link>
-              <Link exact="true" to="/membership">
-                <li className="ml-10 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                  MEMBERSHIP
-                </li>
-              </Link>
+
               <Link exact="true" to="/ourclub">
                 <li className="ml-10 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                   OUR CLUB
@@ -290,7 +286,10 @@ const NavBar = () => {
                 </div>
               ) : (
                 <Link to="/login">
-                  <CiUser size={40} className="text-[#f4e721] cursor-pointer" />
+                  <CiUser
+                    size={40}
+                    className="text-[#f4e721] mt-[6px] cursor-pointer"
+                  />
                 </Link>
               )}
             </div>
