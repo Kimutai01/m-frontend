@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import { AiOutlineClose } from 'react-icons/ai';
-import { CiUser } from 'react-icons/ci';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { AiOutlineClose } from "react-icons/ai";
+import { CiUser } from "react-icons/ci";
+import { useNavigate, Link } from "react-router-dom";
 
-import { RiMenu5Line } from 'react-icons/ri';
-import { HiShoppingCart } from 'react-icons/hi';
-import './Navbar.css';
-import { BsChevronDown } from 'react-icons/bs';
+import { RiMenu5Line } from "react-icons/ri";
+import { HiShoppingCart } from "react-icons/hi";
+import "./Navbar.css";
+import { BsChevronDown } from "react-icons/bs";
 
-import logo from '../../assets/logo.png';
-import { logoutUser, selectUser } from '../../features/userSlice';
-import { selectCartItemsCount } from '../../features/cartSlice';
-import sportpesa from '../../assets/SP_logo-01.png';
-import fin from '../../assets/finix-casino.png';
+import logo from "../../assets/logo.png";
+import { logoutUser, selectUser } from "../../features/userSlice";
+import { selectCartItemsCount } from "../../features/cartSlice";
+import sportpesa from "../../assets/SP_logo-01.png";
+import fin from "../../assets/finix-casino.png";
 
 const NavBar = () => {
   const navigate = useNavigate();
   const user = useSelector(selectUser);
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
-  const [navBg, setNavBg] = useState('#ecf0f3');
-  const [linkColor, setLinkColor] = useState('#1f2937');
+  const [navBg, setNavBg] = useState("#ecf0f3");
+  const [linkColor, setLinkColor] = useState("#1f2937");
 
   useEffect(() => {
-    setNavBg('#000');
-    setLinkColor('#ecf0f3');
+    setNavBg("#000");
+    setLinkColor("#ecf0f3");
   }, []);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const NavBar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleShadow);
+    window.addEventListener("scroll", handleShadow);
   }, []);
 
   const handleNav = () => {
@@ -57,14 +57,14 @@ const NavBar = () => {
   const logoutHandler = () => {
     dispatch(logoutUser());
 
-    toast.success('Logged out successfully', {
-      position: 'top-center',
+    toast.success("Logged out successfully", {
+      position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       draggable: true,
     });
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -149,8 +149,8 @@ const NavBar = () => {
         style={{ backgroundColor: `${navBg}` }}
         className={
           shadow
-            ? 'w-full h-20 shadow-xl z-[100] md:px-24'
-            : 'w-full h-20 z-[100] md:px-24'
+            ? "w-full h-20 shadow-xl z-[100] md:px-24"
+            : "w-full h-20 z-[100] md:px-24"
         }
       >
         <div className="flex justify-between items-center w-full h-full py-4 px-2 rounded">
@@ -264,7 +264,7 @@ const NavBar = () => {
             <div className="flex">
               {user ? (
                 <div className="group ml-10">
-                  <li className="font-medium  text-xl text-[#f4e721] mt-[10px] hover:underline underline-offset-8 hover:scale-105 transition-all duration-all hover:border-y-black list-none">
+                  <li className="font-medium  text-xl text-[#f4e721] mt-[10px] hover:underline underline-offset-8 hover:scale-105 transition-all duration-all capitalize hover:border-y-black list-none">
                     {user.name}
                     <div className="opacity-0 group-hover:opacity-100 w-[200px] absolute left-0 top-full bg-[#000] pt-10 py-2 rounded-lg shadow-lg">
                       <ul className="p-2 flex flex-col">
@@ -313,15 +313,15 @@ const NavBar = () => {
         <div
           className={
             nav
-              ? 'md:hiddden fixed left-0 top-0 w-full h-screen bg-black/70'
-              : ''
+              ? "md:hiddden fixed left-0 top-0 w-full h-screen bg-black/70"
+              : ""
           }
         >
           <div
             className={
               nav
-                ? ' fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%]  h-screen bg-[#000] text-white p-2 ease-in duration-500'
-                : 'fixed left-[-100%] top-0  p-10 ease-in duration-500'
+                ? " fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%]  h-screen bg-[#000] text-white p-2 ease-in duration-500"
+                : "fixed left-[-100%] top-0  p-10 ease-in duration-500"
             }
           >
             <div>
@@ -353,7 +353,7 @@ const NavBar = () => {
                         onClick={handleServicesClick}
                       >
                         <div className="text-2xl uppercase text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                          {' '}
+                          {" "}
                           {user.name}
                         </div>
                         <div>
