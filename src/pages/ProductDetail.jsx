@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { addItemsToCart } from '../features/cartSlice';
 import {
@@ -49,7 +49,7 @@ const ProductDetail = () => {
 
   if (status === 'loading' || !product) {
     return (
-      <div className="flex justify-center items-center pt-28 bg-black">
+      <div className="flex justify-center items-center pt-28 bg-[black]">
         <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent" />
       </div>
     );
@@ -57,29 +57,22 @@ const ProductDetail = () => {
 
   return (
     <>
-      <div className="pt-28 bg-black ">
+      <div className="pt-28 bg-[#ffffff] ">
         <ToastContainer />
-        <button
-          className="bg-[#ff4d23] ml-40 mb-10 text-white font-bold text-2xl px-5 py-2 rounded-lg"
-          type="button"
-        >
-          <Link to="/">Go Back</Link>
-        </button>
-        <div className="bg-[#000] px-40 pb-20 flex">
+
+        <div className="bg-[#ffffff] px-40 pb-20 flex h-[550px]">
           <div className="mr-20 w-[50%]">
             <img
               src={`http://127.0.0.1:8000/${product.image}`}
               alt={product.name}
-              className=" w-full rounded-t-lg"
+              className=" h-[500px] rounded-t-lg"
             />
           </div>
-          <div className="bg-[#161616] w-[50%] rounded-lg p-8">
-            <h1 className="text-white text-3xl font-bold uppercase">
-              {product.name}
-            </h1>
+          <div className="bg-[#EDE38E] text-[#000] w-[50%] rounded-lg p-8">
+            <h1 className=" text-3xl font-bold uppercase">{product.name}</h1>
 
             <div>
-              <p className="text-[#ff4d23] font-bold text-2xl">
+              <p className=" font-bold text-2xl">
                 {' '}
                 {product.price}
                 {' '}
@@ -87,20 +80,18 @@ const ProductDetail = () => {
               </p>
             </div>
 
-            <p className="mt-5 text-[grey] font-medium">
-              {product.description}
-            </p>
-            <div className="flex border-[#ff4d23] border-2 justify-between px-3  mt-5 w-3/4">
-              <p className="text-[grey] font-bold text-2xl">Status :</p>
-              <p className="text-[grey] font-bold text-2xl">
+            <p className="mt-5  font-medium">{product.description}</p>
+            <div className="flex border-[#000] border-2 justify-between px-3  mt-5 w-[55%]">
+              <p className=" font-bold text-2xl">Status :</p>
+              <p className="font-bold text-2xl">
                 {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
               </p>
             </div>
-            <div className="flex border-[#ff4d23] border-2 justify-between px-3 mt-5 w-3/4">
-              <p className="text-[grey] font-bold text-2xl">Size :</p>
-              <p className="text-[grey] font-bold text-2xl">
+            <div className="flex border-[#000] border-2 justify-between px-3 mt-5 w-[55%]">
+              <p className=" font-bold text-2xl">Size :</p>
+              <p className=" font-bold text-2xl">
                 <select
-                  className="bg-[#161616] text-[#ff4d23] font-bold text-2xl outline-none focus:outline-none"
+                  className="bg-[#EDE38E] font-bold text-2xl outline-none focus:outline-none"
                   value={size}
                   onChange={(e) => setSize(e.target.value)}
                 >
@@ -113,11 +104,11 @@ const ProductDetail = () => {
               </p>
             </div>
             {product.countInStock > 0 && (
-              <div className="flex border-[#ff4d23] border-2 justify-between px-3 mt-5 w-3/4">
-                <p className="text-[grey] font-bold text-2xl">Qty :</p>
-                <p className="text-[grey] font-bold text-2xl">
+              <div className="flex border-[#000] border-2 justify-between px-3 mt-5 w-[55%]">
+                <p className="font-bold text-2xl">Qty :</p>
+                <p className=" font-bold text-2xl">
                   <select
-                    className="bg-[#161616] text-[#ff4d23] font-bold text-2xl outline-none focus:outline-none"
+                    className="bg-[#EDE38E]  font-bold text-2xl outline-none focus:outline-none"
                     value={qty}
                     onChange={(e) => setQty(e.target.value)}
                   >
@@ -130,11 +121,11 @@ const ProductDetail = () => {
                 </p>
               </div>
             )}
-            <div className="flex justify-center mt-5">
+            <div className="flex  mt-5">
               <button
                 onClick={addToCartHandler}
                 type="button"
-                className="bg-[#ff4d23] text-[#161616] font-bold text-2xl px-10 py-3 rounded-lg uppercase"
+                className="bg-[#fae115] text-[#161616] font-bold text-2xl px-10 py-3 rounded-lg border border-[#000] uppercase"
                 disabled={product.countInStock === 0}
               >
                 Add to Cart
