@@ -37,16 +37,16 @@
   transition: background-color 0.3s, color 0.3s;
   display: flex;
 }
+
 .why-btn :hover {
   background-color: #fff;
   color: #fae115;
   border: #fae115;
 }
 
-.background-white{
+.background-white {
   background-color: white;
   background-repeat: no-repeat;
-
 }
 
 .why-btn:hover {
