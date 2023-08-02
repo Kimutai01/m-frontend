@@ -25,22 +25,22 @@ const Payment = () => {
     navigate('/placeorder');
   };
   return (
-    <div className="pt-28 bg-[#000]">
+    <div className="pt-28 pb-10 bg-[#000]">
       <CheckoutSteps step1 step2 step3 />
-      <div className="bg-[#161616] mx-auto w-[40%] px-10 rounded-lg pb-10">
+      <div className="bg-[#161616] mx-auto mt-10 md:w-[40%] w-[90%]  px-10 rounded-lg pb-10">
         <h1 className="text-white text-3xl uppercase font-bold pt-10 pb-5 text-center">
           Payment Method
         </h1>
         <div className="items-center">
           <label
-            className="text-white font-bold gap-5 text-2xl "
+            className="text-white font-bold gap-5 text-2xl uppercase "
             htmlFor="method"
           >
             select Method
             <select
               name="method"
               id="method"
-              className="bg-[#161616] ml-4  text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+              className="bg-[#161616] w-full mt-5  text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#fae115]"
               value={paymentMethod}
               onChange={(e) => setPaymentMethod(e.target.value)}
             >

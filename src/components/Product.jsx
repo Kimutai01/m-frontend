@@ -10,7 +10,7 @@ const Product = ({ product }) => (
         className="h-72 mx-auto w-[65%] rounded-t-lg"
       />
       <div className="p-6 mx-auto w-[90%]">
-        <h2 className="text-[#000] text-2xl font-bold uppercase">
+        <h2 className="text-[#fff] text-2xl font-bold uppercase">
           {product.name}
         </h2>
 
@@ -22,7 +22,7 @@ const Product = ({ product }) => (
             {product.price}
           </p>
         </div>
-        <p className="mt-5 text-[#000] w-[80%] truncate font-medium">
+        <p className="mt-5 text-[#fff] w-[80%] truncate font-medium">
           {product.description}
         </p>
       </div>

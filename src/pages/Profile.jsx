@@ -199,7 +199,7 @@ const Profile = () => {
             </thead>
             <tbody>
               {orders.map((order) => (
-                <tr key={order._id} className="border-b-[1px] border-[#ff4d24]">
+                <tr key={order._id} className="border-b-[1px] border-[#fae115]">
                   <td className="text-white text-lg font-medium px-4 py-2">
                     {order._id}
                   </td>
@@ -223,9 +223,12 @@ const Profile = () => {
                       <ImCross className="text-[#ff4d24]  text-2xl ml-10" />
                     )}
                   </td>
-                  <td className="text-white text-lg font-medium px-4 py-2">
+                  <td className="text-[#000] text-lg font-medium px-4 py-2">
                     <Link to={`/order/${order._id}`}>
-                      <button className="why-btn" type="button">
+                      <button
+                        className="bg-[#fae115] text-[#000] px-4 py-2 rounded-lg"
+                        type="button"
+                      >
                         <h1 className="font-bold">Details</h1>
                       </button>
                     </Link>

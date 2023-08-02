@@ -60,15 +60,15 @@ const ProductDetail = () => {
       <div className="pt-28 bg-[#ffffff] ">
         <ToastContainer />
 
-        <div className="bg-[#ffffff] px-40 pb-20 flex h-[550px]">
-          <div className="mr-20 w-[50%]">
+        <div className="bg-[#ffffff] md:px-40 px-5 pb-20 flex flex-col-reverse md:flex-row md:h-[550px]">
+          <div className="mr-20 md:w-[50%]">
             <img
               src={`http://127.0.0.1:8000/${product.image}`}
               alt={product.name}
-              className=" h-[500px] rounded-t-lg"
+              className=" md:h-[500px] mt-10 rounded-t-lg mx-10 md:mx-0"
             />
           </div>
-          <div className="bg-[#EDE38E] text-[#000] w-[50%] rounded-lg p-8">
+          <div className="bg-[#EDE38E] text-[#000] md:w-[50%] rounded-lg p-8">
             <h1 className=" text-3xl font-bold uppercase">{product.name}</h1>
 
             <div>
@@ -81,13 +81,13 @@ const ProductDetail = () => {
             </div>
 
             <p className="mt-5  font-medium">{product.description}</p>
-            <div className="flex border-[#000] border-2 justify-between px-3  mt-5 w-[55%]">
+            <div className="flex border-[#000] border-2 justify-between px-3  mt-5 md:w-[55%]">
               <p className=" font-bold text-2xl">Status :</p>
               <p className="font-bold text-2xl">
                 {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
               </p>
             </div>
-            <div className="flex border-[#000] border-2 justify-between px-3 mt-5 w-[55%]">
+            <div className="flex border-[#000] border-2 justify-between px-3 mt-5 md:w-[55%]">
               <p className=" font-bold text-2xl">Size :</p>
               <p className=" font-bold text-2xl">
                 <select
@@ -104,7 +104,7 @@ const ProductDetail = () => {
               </p>
             </div>
             {product.countInStock > 0 && (
-              <div className="flex border-[#000] border-2 justify-between px-3 mt-5 w-[55%]">
+              <div className="flex border-[#000] border-2 justify-between px-3 mt-5 md:w-[55%]">
                 <p className="font-bold text-2xl">Qty :</p>
                 <p className=" font-bold text-2xl">
                   <select

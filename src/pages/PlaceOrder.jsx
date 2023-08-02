@@ -61,8 +61,8 @@ const PlaceOrder = () => {
     <div className="bg-[#000] pt-32 pb-20">
       <CheckoutSteps step1 step2 step3 step4 />
 
-      <div className="flex mx-20 mt-10">
-        <div>
+      <div className="flex flex-col md:flex-row mx-auto w-[90%] md:w-[80%] mt-10">
+        <div className="md:w-[50%]">
           <div className="border-b border-[gray]">
             <h1 className="uppercase text-[#fff] font-bold text-3xl">
               Shipping
@@ -123,8 +123,10 @@ const PlaceOrder = () => {
                       x
                       {item.price}
                       {' '}
-                      = $
+                      =
                       {item.qty * item.price}
+                      {' '}
+                      ksh
                     </h1>
                   </div>
                 </div>
@@ -132,45 +134,45 @@ const PlaceOrder = () => {
             ))}
           </div>
         </div>
-        <div className="bg-[#161616] mx-20 px-10 rounded-lg pb-10">
+        <div className="bg-[#161616] md:mx-20 mt-10 md:mt-0 px-10 md:w-[50%] rounded-lg pb-10">
           <h1 className="text-white text-3xl uppercase font-bold pt-10 pb-5 text-center">
             Order Summary
           </h1>
           <div className="flex mt-5">
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
               <div className="flex justify-between flex-row gap-32 border-b border-[gray] pb-5">
                 <h1 className="text-[#fff] text-lg font-medium">Items</h1>
                 <p className="text-[#fff] text-lg font-medium">
-                  $
-                  {' '}
                   {order.itemsPrice}
+                  {' '}
+                  ksh
                 </p>
               </div>
 
               <div className="flex justify-between flex-row mt-5 gap-32 border-b border-[gray] pb-5">
                 <h1 className="text-[#fff] text-lg font-medium">Shipping</h1>
                 <p className="text-[#fff] text-lg font-medium">
-                  $
-                  {' '}
                   {order.shippingPrice}
+                  {' '}
+                  ksh
                 </p>
               </div>
 
               <div className="flex justify-between flex-row mt-5 gap-32 border-b border-[gray] pb-5">
                 <h1 className="text-[#fff] text-lg font-medium">Tax</h1>
                 <p className="text-[#fff] text-lg font-medium">
-                  $
-                  {' '}
                   {order.taxPrice}
+                  {' '}
+                  ksh
                 </p>
               </div>
 
               <div className="flex justify-between flex-row mt-5 gap-32 border-b border-[gray] pb-5">
                 <h1 className="text-[#fff] text-lg font-medium">Total</h1>
                 <p className="text-[#fff] text-lg font-medium">
-                  $
-                  {' '}
                   {order.totalPrice}
+                  {' '}
+                  ksh
                 </p>
               </div>
               <button
