@@ -1,35 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useLocation, useNavigate, Link } from "react-router-dom";
-import { ImCross } from "react-icons/im";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, Link } from 'react-router-dom';
+import { ImCross } from 'react-icons/im';
 
 import {
   selectUserDetails,
   updateUserProfile,
   getUserDetails,
-} from "../features/profileSlice";
-import { selectUser } from "../features/userSlice";
-import { listAllOrders, selectOrders } from "../features/orderSlice";
+} from '../features/profileSlice';
+import { selectUser } from '../features/userSlice';
+import { listAllOrders, selectOrders } from '../features/orderSlice';
 
 const Profile = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState(null);
 
   const orders = useSelector(selectOrders);
 
-  const location = useLocation();
   const navigate = useNavigate();
 
-  const redirect = location.search ? location.search.split("=")[1] : "/";
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const submitHandler = (e) => {
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match");
+      setMessage('Passwords do not match');
     } else {
       e.preventDefault();
       dispatch(
@@ -38,12 +36,12 @@ const Profile = () => {
           name,
           email,
           password,
-        })
+        }),
       );
     }
   };
   toast.error(message, {
-    position: "top-center",
+    position: 'top-center',
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -54,9 +52,9 @@ const Profile = () => {
 
   useEffect(() => {
     if (!user) {
-      navigate("/login");
+      navigate('/login');
     } else if (!userDetails.name || user._id !== userDetails._id) {
-      dispatch(getUserDetails("profile"));
+      dispatch(getUserDetails('profile'));
     } else {
       setName(userDetails.name);
       setEmail(userDetails.email);
