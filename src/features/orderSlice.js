@@ -16,7 +16,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.post(
-      'http://127.0.0.1:8000/api/orders/add/',
+      'https://mbackend-65aa08f37e31.herokuapp.com/api/orders/add/',
       order,
       config,
     );
@@ -47,7 +47,7 @@ export const orderDetails = (id) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/orders/${id}/`,
+      `https://mbackend-65aa08f37e31.herokuapp.com/api/orders/${id}/`,
       config,
     );
 
@@ -75,7 +75,7 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.put(
-      `http://127.0.0.1:8000/api/orders/${id}/pay/`,
+      `https://mbackend-65aa08f37e31.herokuapp.com/api/orders/${id}/pay/`,
       paymentResult,
       config,
     );
@@ -103,7 +103,7 @@ export const listAllOrders = () => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.get(
-      'http://127.0.0.1:8000/api/orders/myorders',
+      'https://mbackend-65aa08f37e31.herokuapp.com/api/orders/myorders',
       config,
     );
 
@@ -129,7 +129,7 @@ export const getAllOrders = () => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.get(
-      'http://127.0.0.1:8000/api/orders/',
+      'https://mbackend-65aa08f37e31.herokuapp.com/api/orders/',
       config,
     );
 
@@ -155,7 +155,7 @@ export const markOrderAsDelivered = (id) => async (dispatch, getState) => {
       },
     };
     await axios.put(
-      `http://127.0.0.1:8000/api/orders/${id}/deliver/`,
+      `https://mbackend-65aa08f37e31.herokuapp.com/api/orders/${id}/deliver/`,
       {},
       config,
     );

@@ -20,7 +20,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/users/${id}/`,
+      `https://mbackend-65aa08f37e31.herokuapp.com/api/users/${id}/`,
       config,
     );
 
@@ -43,7 +43,7 @@ export const updateUserProfile = (userr) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.put(
-      'http://127.0.0.1:8000/api/users/profile/update/',
+      'https://mbackend-65aa08f37e31.herokuapp.com/api/users/profile/update/',
       userr,
       config,
     );
@@ -69,7 +69,7 @@ export const updateUserProfileAdmin = (userr) => async (dispatch, getState) => {
       },
     };
     await axios.put(
-      `http://127.0.0.1:8000/api/users/update/${userr.id}/`,
+      `https://mbackend-65aa08f37e31.herokuapp.com/api/users/update/${userr.id}/`,
       userr,
       config,
     );

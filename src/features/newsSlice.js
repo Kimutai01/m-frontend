@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const newsUrl = 'http://127.0.0.1:8000/api/news';
+const newsUrl = 'https://mbackend-65aa08f37e31.herokuapp.com/api/news';
 const initialState = {
   news: [],
   status: 'idle',

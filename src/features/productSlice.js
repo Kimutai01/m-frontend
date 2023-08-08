@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const productsUrl = 'http://127.0.0.1:8000/api/products/';
+const productsUrl = 'https://mbackend-65aa08f37e31.herokuapp.com/api/products/';
 const initialState = {
   product: null,
   status: 'idle',

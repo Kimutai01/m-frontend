@@ -63,7 +63,7 @@ const ProductDetail = () => {
         <div className="bg-[#ffffff] md:px-40 px-5 pb-20 flex flex-col-reverse md:flex-row md:h-[550px]">
           <div className="mr-20 md:w-[50%]">
             <img
-              src={`http://127.0.0.1:8000/${product.image}`}
+              src={`https://mbackend-65aa08f37e31.herokuapp.com/${product.image}`}
               alt={product.name}
               className=" md:h-[500px] mt-10 rounded-t-lg mx-10 md:mx-0"
             />
