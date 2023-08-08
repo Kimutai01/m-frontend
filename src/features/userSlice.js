@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { userDetailReset } from "./profileSlice";
+import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { userDetailReset } from './profileSlice';
 
-const userInfoFromStorage = localStorage.getItem("userInfo");
+const userInfoFromStorage = localStorage.getItem('userInfo');
 
 const initialState = {
   user: userInfoFromStorage ? JSON.parse(userInfoFromStorage) : null,
@@ -13,19 +13,19 @@ export const login = (email, password) => async (dispatch) => {
   try {
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
     const { data } = await axios.post(
-      "https://mbackend-65aa08f37e31.herokuapp.com/api/users/login/",
+      'https://mbackend-65aa08f37e31.herokuapp.com/api/users/login/',
       { username: email, password },
-      config
+      config,
     );
 
     dispatch(loginSuccess(data));
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem('userInfo', JSON.stringify(data));
   } catch (error) {
-    console.error("Error logging in:", error);
+    console.error('Error logging in:', error);
   }
 };
 
@@ -33,19 +33,19 @@ export const register = (name, email, password) => async (dispatch) => {
   try {
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
     const { data } = await axios.post(
-      "https://mbackend-65aa08f37e31.herokuapp.com/api/users/register/",
+      'https://mbackend-65aa08f37e31.herokuapp.com/api/users/register/',
       { name, email, password },
-      config
+      config,
     );
 
     dispatch(registerSuccess(data));
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem('userInfo', JSON.stringify(data));
   } catch (error) {
-    console.error("Error registering:", error);
+    console.error('Error registering:', error);
   }
 };
 
@@ -61,12 +61,12 @@ export const getAllUsers = () => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.get(
-      "https://mbackend-65aa08f37e31.herokuapp.com/api/users/",
-      config
+      'https://mbackend-65aa08f37e31.herokuapp.com/api/users/',
+      config,
     );
     dispatch(getUsers(data));
   } catch (error) {
-    console.error("Error getting users:", error);
+    console.error('Error getting users:', error);
   }
 };
 
@@ -83,22 +83,22 @@ export const deleteUserById = (id) => async (dispatch, getState) => {
     };
     await axios.delete(
       `https://mbackend-65aa08f37e31.herokuapp.com/api/users/delete/${id}/`,
-      config
+      config,
     );
     dispatch(deleteUser(id));
   } catch (error) {
-    console.error("Error deleting user:", error);
+    console.error('Error deleting user:', error);
   }
 };
 
 export const logoutUser = () => (dispatch) => {
-  localStorage.removeItem("userInfo");
+  localStorage.removeItem('userInfo');
   dispatch(logout());
   dispatch(userDetailReset());
 };
 
 const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {
     loginSuccess: (state, action) => {
