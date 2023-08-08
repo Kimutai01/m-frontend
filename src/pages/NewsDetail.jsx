@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const NewsDetail = () => {
   const { id } = useParams();
@@ -7,7 +7,9 @@ const NewsDetail = () => {
 
   useEffect(() => {
     const fetchNews = async () => {
-      const res = await fetch(`http://127.0.0.1:8000/api/news/${id}`);
+      const res = await fetch(
+        `https://mbackend-65aa08f37e31.herokuapp.com/api/news/${id}`
+      );
       const data = await res.json();
       setNews(data);
     };
@@ -17,16 +19,13 @@ const NewsDetail = () => {
   return (
     <div className="shadow-md">
       <div className="p-6 bg-[#FAE115] font-bold uppercase md:text-3xl text-3xl flex justify-between truncate ...">
-        <p>
-          NEWS |
-          {news.title}
-        </p>
+        <p>NEWS |{news.title}</p>
       </div>
 
       <div className="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto mt-[6px]">
         <div>
           <img
-            src={`http://127.0.0.1:8000${news.image}`}
+            src={`https://mbackend-65aa08f37e31.herokuapp.com${news.image}`}
             alt=""
             className="object-cover w-full h-[400px]"
           />
