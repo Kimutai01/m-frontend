@@ -38,7 +38,7 @@ const Landing = () => {
         <div className=" flex flex-col items-start border-t-4 border border-[#FAE115] mt-3  shadow md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] ">
           {/* <%= image_tag(news.image, class: "object-cover 2xl:w-[800px] xl:w-[600px] xl:h-[400px] lg:w-[400px] lg:h-[250px] md:h-[400px] md:w-[600px] sm:w-[200px]" ) %> */}
           <img
-            src={`https://mbackend-65aa08f37e31.herokuapp.com/${featured.image}`}
+            src={`https://mbackend-65aa08f37e31.herokuapp.com${featured.image}`}
             alt=""
             className="object-cover 2xl:w-[800px] xl:w-[600px] xl:h-[400px] lg:w-[400px] lg:h-[250px] md:h-[400px] md:w-[600px] sm:w-[200px]"
           />

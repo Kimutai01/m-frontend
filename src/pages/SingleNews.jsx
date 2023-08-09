@@ -7,7 +7,7 @@ const SingleNews = ({ singleNews }) => (
       <div className=" h-28 md:h-40  sm:h-30 lg:rounded-t-none lg:rounded-l md:text-center overflow-hidden">
         {/* <%= image_tag(news.image, class: "w-28 md:w-96 h-28 md:h-40 ") %> */}
         <img
-          src={`https://mbackend-65aa08f37e31.herokuapp.com/${singleNews.image}`}
+          src={`https://mbackend-65aa08f37e31.herokuapp.com${singleNews.image}`}
           alt=""
           className="w-28 md:w-96 h-28 md:h-40 "
         />
