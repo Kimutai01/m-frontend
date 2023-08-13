@@ -19,7 +19,7 @@ import ProductEdit from './pages/ProductEdit';
 import OrderList from './pages/OrderList';
 import HomeShop from './pages/HomeShop';
 
-import Ticket from './components/Ticket';
+import Match from './components/Matches';
 import Team from './components/Team';
 import OurClub from './components/OurClub';
 import NewsList from './components/NewsList';
@@ -38,7 +38,7 @@ function App() {
         <Route path="/" element={<Home />} />
 
         <Route path="/team" element={<Team />} />
-        <Route path="/ticket" element={<Ticket />} />
+        <Route path="/match" element={<Match />} />
 
         <Route path="/ourclub" element={<OurClub />} />
         <Route path="/product/:id" element={<ProductDetail />} />

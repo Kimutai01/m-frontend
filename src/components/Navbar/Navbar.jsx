@@ -180,9 +180,9 @@ const NavBar = () => {
                 </li>
               </Link>
 
-              <Link exact="true" to="/ticket">
-                <li className="ml-10 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                  TICKETS
+              <Link exact="true" to="/match">
+                <li className="ml-10 hover:underline text-[#f4e721] uppercase underline-offset-8 hover:text-[#f4e721]">
+                  Matches
                 </li>
               </Link>
 
