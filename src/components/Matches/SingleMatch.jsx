@@ -14,8 +14,7 @@ const SingleMatch = () => (
         <div className=" align-center hidden md:flex">
           <img src={banner} alt="logo" className="h-40" />
         </div>
-        <div className="flex flex-col justify-between mb-10 ">
-          <h1>Murang&apos;a seals</h1>
+        <div className="flex flex-col justify-center mb-10 ">
           <div className="flex flex-col">
             <div className="flex align-center text-center">
               <p className="mr-1">Sun 29 April</p>
@@ -29,27 +28,6 @@ const SingleMatch = () => (
         </div>
         <div className="flex align-center items-center">
           <img src={wazito} alt="logo" className="h-40" />
-        </div>
-        <div className="flex flex-col justify-between">
-          <button
-            type="button"
-            style={{
-              background: 'rgba(244, 238, 238, 0.72)',
-              boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-            }}
-            className="p-4 text-[#b9b6b2]"
-          >
-            General Membership
-          </button>
-          <button
-            type="button"
-            className="bg-[#FAE115] p-4"
-            style={{
-              boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-            }}
-          >
-            Buy now
-          </button>
         </div>
       </div>
 
