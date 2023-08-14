@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SingleNews = ({ singleNews }) => (
   <Link to={`/news/${singleNews._id}`}>

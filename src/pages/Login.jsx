@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer } from "react-toastify";
-import { useLocation, useNavigate, Link } from "react-router-dom";
-import { selectUser, login } from "../features/userSlice";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { selectUser, login } from '../features/userSlice';
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+  const redirect = location.search ? location.search.split('=')[1] : '/';
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -79,9 +79,10 @@ const Login = () => {
           <h1 className="font-bold">Login</h1>
         </button>
         <p className="text-[#fff] font-medium">
-          Don&apos;t have an account?{" "}
+          Don&apos;t have an account?
+          {' '}
           <Link
-            to={redirect ? `/register?redirect=${redirect}` : "/register"}
+            to={redirect ? `/register?redirect=${redirect}` : '/register'}
             className="text-[#fae115] font-bold ]"
           >
             Register

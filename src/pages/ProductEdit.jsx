@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useNavigate, useParams, Link } from "react-router-dom";
-import axios from "axios";
-import { selectUser } from "../features/userSlice";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, useParams, Link } from 'react-router-dom';
+import axios from 'axios';
+import { selectUser } from '../features/userSlice';
 
 import {
   fetchProduct,
   selectProduct,
   updateProductById,
-} from "../features/productSlice";
+} from '../features/productSlice';
 
 const ProductEdit = () => {
   const { id } = useParams();
 
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
-  const [category, setCategory] = useState("");
-  const [brand, setBrand] = useState("");
-  const [countInStock, setCountInStock] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
+  const [image, setImage] = useState('');
+  const [category, setCategory] = useState('');
+  const [brand, setBrand] = useState('');
+  const [countInStock, setCountInStock] = useState('');
+  const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
 
   const navigate = useNavigate();
@@ -40,41 +40,41 @@ const ProductEdit = () => {
         brand,
         countInStock,
         description,
-      })
+      }),
     );
 
-    toast.success("Product Updated Successfully", {
-      position: "top-center",
+    toast.success('Product Updated Successfully', {
+      position: 'top-center',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       draggable: true,
     });
 
-    navigate("/admin/products");
+    navigate('/admin/products');
   };
   const user = useSelector(selectUser);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
-    formData.append("image", file);
-    formData.append("product_id", id);
+    formData.append('image', file);
+    formData.append('product_id', id);
 
     try {
       setUploading(true);
 
       const config = {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${user.token}`,
         },
       };
 
       const { data } = await axios.post(
-        "https://mbackend-65aa08f37e31.herokuapp.com/api/products/upload/",
+        'https://mbackend-65aa08f37e31.herokuapp.com/api/products/upload/',
         formData,
-        config
+        config,
       );
 
       setImage(data);
