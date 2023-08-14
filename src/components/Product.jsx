@@ -5,7 +5,7 @@ const Product = ({ product }) => (
   <div key={product.id} className="bg-[#161616] p-4 rounded-lg h-[500px]">
     <Link to={`/product/${product._id}`}>
       <img
-        src={`https://mbackend-65aa08f37e31.herokuapp.com/${product.image}`}
+        src={`https://mbackend-65aa08f37e31.herokuapp.com${product.image}`}
         alt={product.name}
         className="h-72 mx-auto w-[65%] rounded-t-lg"
       />
