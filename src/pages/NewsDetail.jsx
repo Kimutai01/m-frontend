@@ -18,19 +18,19 @@ const NewsDetail = () => {
 
   return (
     <div className="shadow-md">
-      <div className="p-6 bg-[#FAE115] font-bold uppercase md:text-3xl text-3xl flex justify-between truncate ...">
-        <p>
+      <div className="p-6 bg-[#FAE115] font-bold uppercase md:text-3xl text-3xl flex justify-between ">
+        <p className="truncate w-[90%]">
           NEWS |
           {news.title}
         </p>
       </div>
 
       <div className="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto mt-[6px]">
-        <div>
+        <div className="w-[100%]">
           <img
             src={`https://mbackend-65aa08f37e31.herokuapp.com${news.image}`}
             alt=""
-            className="object-cover w-full h-[400px]"
+            className="w-full h-[600px]"
           />
           <p className="text-semibold text-white mt-2 absolute top-80 right-100 bg-[#D9D9D9]">
             {news.created_at}

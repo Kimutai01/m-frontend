@@ -62,7 +62,7 @@ const AdvertEdit = () => {
       };
 
       const { data } = await axios.post(
-        'https://mbackend-65aa08f37e31.herokuapp.com/api/news/upload/',
+        'https://mbackend-65aa08f37e31.herokuapp.com/api/adverts/upload/',
         formData,
         config,
       );

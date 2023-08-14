@@ -45,7 +45,7 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address.."
-                className="bg-[#161616] text-white border-[grey] mt-5 w-full border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                className="bg-[#161616] text-white border-[grey] mt-5 w-full border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#fae115]"
               />
             </label>
           </div>
@@ -65,14 +65,14 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Your password.."
-                className="bg-[#161616] text-white border-[grey] w-full mt-5 border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                className="bg-[#161616] text-white border-[grey] w-full mt-5 border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#fae115]"
               />
             </label>
           </div>
         </div>
 
         <button
-          className="why-btn  w-full mt-10 mb-10 "
+          className="bg-[#fae115] p-3 rounded-lg hover:bg-[#000] hover:text-[#fae115] hover:border hover:border-[#fae115] w-full mt-10 mb-10 "
           type="submit"
           onClick={(e) => submitHandler(e)}
         >

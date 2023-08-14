@@ -128,7 +128,7 @@ const Register = () => {
         </div>
 
         <button
-          className="why-btn  w-full mt-10 mb-10 "
+          className="bg-[#fae115] p-3 rounded-lg hover:bg-[#000] hover:text-[#fae115] hover:border hover:border-[#fae115] w-full mt-10 mb-10 "
           onClick={(e) => submitHandler(e)}
           type="submit"
         >
