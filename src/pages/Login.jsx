@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { selectUser, login } from '../features/userSlice';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+import { selectUser, login } from "../features/userSlice";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const redirect = location.search ? location.search.split('=')[1] : '/';
+  const redirect = location.search ? location.search.split("=")[1] : "/";
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -45,7 +45,7 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address.."
-                className="bg-[#161616] text-white border-[grey] mt-5 w-full border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                className="bg-[#161616] text-white border-[grey] mt-5 w-full border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#fae115]"
               />
             </label>
           </div>
@@ -65,24 +65,23 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Your password.."
-                className="bg-[#161616] text-white border-[grey] w-full mt-5 border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                className="bg-[#161616] text-white border-[grey] w-full mt-5 border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#fae115]"
               />
             </label>
           </div>
         </div>
 
         <button
-          className="why-btn  w-full mt-10 mb-10 "
+          className="bg-[#fae115] p-3 rounded-lg hover:bg-[#000] hover:text-[#fae115] hover:border hover:border-[#fae115] w-full mt-10 mb-10 "
           type="submit"
           onClick={(e) => submitHandler(e)}
         >
           <h1 className="font-bold">Login</h1>
         </button>
         <p className="text-[#fff] font-medium">
-          Don&apos;t have an account?
-          {' '}
+          Don&apos;t have an account?{" "}
           <Link
-            to={redirect ? `/register?redirect=${redirect}` : '/register'}
+            to={redirect ? `/register?redirect=${redirect}` : "/register"}
             className="text-[#fae115] font-bold ]"
           >
             Register

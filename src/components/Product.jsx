@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Product = ({ product }) => (
   <div key={product.id} className="bg-[#161616] p-4 rounded-lg h-[500px]">
@@ -16,10 +16,8 @@ const Product = ({ product }) => (
 
         <div>
           <p className="text-[#fae115] mt-5  font-bold text-2xl">
-            {' '}
-            ksh
-            {' '}
-            {product.price}
+            {" "}
+            ksh {product.price}
           </p>
         </div>
         <p className="mt-5 text-[#fff] w-[80%] truncate font-medium">

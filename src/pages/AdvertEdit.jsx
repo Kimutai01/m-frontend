@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate, useParams, Link } from 'react-router-dom';
-import axios from 'axios';
-import { selectUser } from '../features/userSlice';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate, useParams, Link } from "react-router-dom";
+import axios from "axios";
+import { selectUser } from "../features/userSlice";
 import {
   fetchAdvertsById,
   selectSingleAdverts,
   updateAdvertsById,
-} from '../features/advertsSlice';
+} from "../features/advertsSlice";
 
 const AdvertEdit = () => {
   const { id } = useParams();
-  const [title, setTitle] = useState('');
-  const [image, setImage] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  const [description, setDescription] = useState("");
   const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
 
@@ -30,41 +30,41 @@ const AdvertEdit = () => {
         title,
         image,
         description,
-      }),
+      })
     );
 
-    toast.success('News Updated Successfully', {
-      position: 'top-center',
+    toast.success("News Updated Successfully", {
+      position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       draggable: true,
     });
 
-    navigate('/admin/adverts');
+    navigate("/admin/adverts");
   };
   const user = useSelector(selectUser);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
-    formData.append('image', file);
-    formData.append('news_id', id);
+    formData.append("image", file);
+    formData.append("news_id", id);
 
     try {
       setUploading(true);
 
       const config = {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${user.token}`,
         },
       };
 
       const { data } = await axios.post(
-        'https://mbackend-65aa08f37e31.herokuapp.com/api/news/upload/',
+        "https://mbackend-65aa08f37e31.herokuapp.com/api/adverts/upload/",
         formData,
-        config,
+        config
       );
 
       setImage(data);

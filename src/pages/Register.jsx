@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { selectUser, register } from '../features/userSlice';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+import { selectUser, register } from "../features/userSlice";
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const redirect = location.search ? location.search.split('=')[1] : '/';
+  const redirect = location.search ? location.search.split("=")[1] : "/";
 
   const submitHandler = (e) => {
     if (password !== confirmPassword) {
-      setMessage('Passwords do not match');
+      setMessage("Passwords do not match");
     } else {
       e.preventDefault();
       dispatch(register(name, email, password));
     }
   };
   toast.error(message, {
-    position: 'top-center',
+    position: "top-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -128,17 +128,16 @@ const Register = () => {
         </div>
 
         <button
-          className="why-btn  w-full mt-10 mb-10 "
+          className="bg-[#fae115] p-3 rounded-lg hover:bg-[#000] hover:text-[#fae115] hover:border hover:border-[#fae115] w-full mt-10 mb-10 "
           onClick={(e) => submitHandler(e)}
           type="submit"
         >
           <h1 className="font-bold">Register</h1>
         </button>
         <p className="text-[#fff] font-medium">
-          Already have an account?
-          {' '}
+          Already have an account?{" "}
           <Link
-            to={redirect ? `/login?redirect=${redirect}` : '/login'}
+            to={redirect ? `/login?redirect=${redirect}` : "/login"}
             className="text-[#fae115] font-bold"
           >
             Sign In
