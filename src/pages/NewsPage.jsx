@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import { fetchNews, selectAllNews } from '../features/newsSlice';
-import SingleNews from './SingleNews';
+import { fetchNews, selectAllNews } from "../features/newsSlice";
+import SingleNews from "./SingleNews";
 
 const NewsPage = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const NewsPage = () => {
   const newsStatus = useSelector((state) => state.news.status);
 
   useEffect(() => {
-    if (newsStatus === 'idle') {
+    if (newsStatus === "idle") {
       dispatch(fetchNews());
     }
   }, [newsStatus, dispatch]);
@@ -20,7 +20,7 @@ const NewsPage = () => {
         NEWS
       </div>
 
-      <div className="flex-col mt-10 md:ml-10">
+      <div className="flex-col mt-10 mx-auto md:w-[60%] w-[90%]">
         <div className="flex flex-col md:flex-row md:flex md:justify-between">
           <div className="ml-4 sm:w-[300px] md:w-[800px] w-[350px] hover:border-[#FAE115] mb-10">
             {news.map((singleNews) => (

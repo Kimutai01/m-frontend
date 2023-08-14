@@ -30,7 +30,7 @@ const Landing = () => {
     <div className="flex flex-col justify-center md:flex-row gap-5   m-[4%]">
       <div className="">
         <div className="flex flex-col items-start h-16 bg-[#FAE115] border border-[#FAE115] shadow md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] ">
-          <h1 className="text-[#000] font-bold uppercase text-xl md:text-2xl lg:text-3xl pl-4 pt-4 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px]">
+          <h1 className="text-[#000] font-bold truncate w-[300px] uppercase text-xl md:text-2xl lg:text-3xl pl-4 pt-4 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px]">
             {featured.title}
           </h1>
         </div>
