@@ -26,7 +26,7 @@ const SingleMatch = () => (
             </div>
           </div>
         </div>
-        <div className="flex align-center items-center">
+        <div className="align-center hidden md:flex">
           <img src={wazito} alt="logo" className="h-40" />
         </div>
       </div>
