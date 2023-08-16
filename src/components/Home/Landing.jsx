@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   const [news, setNews] = useState([]);
@@ -8,7 +8,7 @@ const Landing = () => {
   const [adverts, setAdverts] = useState([]);
   useEffect(() => {
     if (!featured.title) {
-      fetch('https://mbackend-65aa08f37e31.herokuapp.com/api/news/latest')
+      fetch("https://mbackend-65aa08f37e31.herokuapp.com/api/news/latest")
         .then((res) => res.json())
         .then((data) => setNews(data));
     }
@@ -17,13 +17,13 @@ const Landing = () => {
   }, [news]);
 
   useEffect(() => {
-    fetch('https://mbackend-65aa08f37e31.herokuapp.com/api/news/otherlatest')
+    fetch("https://mbackend-65aa08f37e31.herokuapp.com/api/news/otherlatest")
       .then((res) => res.json())
-      .then((data) => setOtherNews(data));
+      .then((data) => setOtherNews(data.slice(1, 4)));
   }, []);
 
   useEffect(() => {
-    fetch('https://mbackend-65aa08f37e31.herokuapp.com/api/adverts/')
+    fetch("https://mbackend-65aa08f37e31.herokuapp.com/api/adverts/")
       .then((res) => res.json())
       .then((data) => setAdverts(data.slice(0, 1)));
   }, []);
@@ -70,7 +70,7 @@ const Landing = () => {
         <div className="md:grid grid-cols-3 md:grid-cols-3 gap-5 mt-[28px] 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px]">
           {otherNews.map((bla) => (
             <div className="" key={bla._id}>
-              <div className="bg-white border border-[#FAE115] border-t-4 flex flex-col mt-2 hover:scale-105">
+              <div className="bg-white border border-[#FAE115] border-t-4 flex flex-col duration-500 ease-in-out cursor-pointer mt-2 hover:scale-105">
                 {/* <%= image_tag(news.image, class: "h-[200px] w-full")  %> */}
                 <img
                   src={`https://mbackend-65aa08f37e31.herokuapp.com${bla.image}`}

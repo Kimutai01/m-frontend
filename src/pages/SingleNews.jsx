@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SingleNews = ({ singleNews }) => (
   <Link to={`/news/${singleNews._id}`}>
-    <div className=" mt-5 flex mb-6 h-28 md:w-[100%] md:h-40 hover:shadow-lg hover:shadow-[#FAE115] md:hover:scale-105 lg:h-auto border-r border-b border-l border-t lg:border-l-0 lg:border-t">
+    <div className=" mt-5 flex mb-6 h-28 md:w-[100%] md:h-40 hover:shadow-md duration-500 ease-in-out transition-all hover:shadow-[#FAE115] md:hover:scale-105 lg:h-auto border-r border-b border-l border-t lg:border-l-0 lg:border-t">
       <div className=" h-28 md:h-40   md:text-center overflow-hidden">
         <img
           src={`https://mbackend-65aa08f37e31.herokuapp.com${singleNews.image}`}
