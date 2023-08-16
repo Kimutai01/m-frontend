@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Landing = () => {
   const [news, setNews] = useState([]);
@@ -8,7 +8,7 @@ const Landing = () => {
   const [adverts, setAdverts] = useState([]);
   useEffect(() => {
     if (!featured.title) {
-      fetch("https://mbackend-65aa08f37e31.herokuapp.com/api/news/latest")
+      fetch('https://mbackend-65aa08f37e31.herokuapp.com/api/news/latest')
         .then((res) => res.json())
         .then((data) => setNews(data));
     }
@@ -17,13 +17,13 @@ const Landing = () => {
   }, [news]);
 
   useEffect(() => {
-    fetch("https://mbackend-65aa08f37e31.herokuapp.com/api/news/otherlatest")
+    fetch('https://mbackend-65aa08f37e31.herokuapp.com/api/news/otherlatest')
       .then((res) => res.json())
       .then((data) => setOtherNews(data.slice(1, 4)));
   }, []);
 
   useEffect(() => {
-    fetch("https://mbackend-65aa08f37e31.herokuapp.com/api/adverts/")
+    fetch('https://mbackend-65aa08f37e31.herokuapp.com/api/adverts/')
       .then((res) => res.json())
       .then((data) => setAdverts(data.slice(0, 1)));
   }, []);
