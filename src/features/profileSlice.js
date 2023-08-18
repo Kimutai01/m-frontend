@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { loginSuccess } from './userSlice';
+import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import { loginSuccess } from "./userSlice";
 
 const initialState = {
   userDetails: {},
@@ -15,18 +15,18 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     };
     const { data } = await axios.get(
-      `https://mbackend-65aa08f37e31.herokuapp.com/api/users/${id}/`,
-      config,
+      `http://127.0.0.1:8000/api/users/${id}/`,
+      config
     );
 
     dispatch(userDetails(data));
   } catch (error) {
-    console.error('Error updating profile:', error);
+    console.error("Error updating profile:", error);
   }
 };
 
@@ -38,21 +38,21 @@ export const updateUserProfile = (userr) => async (dispatch, getState) => {
     const { token } = user;
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     };
     const { data } = await axios.put(
-      'https://mbackend-65aa08f37e31.herokuapp.com/api/users/profile/update/',
+      "http://127.0.0.1:8000/api/users/profile/update/",
       userr,
-      config,
+      config
     );
     dispatch(loginSuccess(data));
     dispatch(userDetails(data));
     dispatch(updateUser(data));
-    localStorage.setItem('userInfo', JSON.stringify(data));
+    localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
-    console.error('Error updating profile:', error);
+    console.error("Error updating profile:", error);
   }
 };
 
@@ -64,23 +64,23 @@ export const updateUserProfileAdmin = (userr) => async (dispatch, getState) => {
     const { token } = user;
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     };
     await axios.put(
-      `https://mbackend-65aa08f37e31.herokuapp.com/api/users/update/${userr.id}/`,
+      `http://127.0.0.1:8000/api/users/update/${userr.id}/`,
       userr,
-      config,
+      config
     );
     dispatch(getUserDetails(userr.id));
   } catch (error) {
-    console.error('Error updating profile:', error);
+    console.error("Error updating profile:", error);
   }
 };
 
 const profileSlice = createSlice({
-  name: 'profile',
+  name: "profile",
   initialState,
   reducers: {
     userDetails: (state, action) => {
@@ -95,7 +95,8 @@ const profileSlice = createSlice({
   },
 });
 
-export const { userDetails, updateUser, userDetailReset } = profileSlice.actions;
+export const { userDetails, updateUser, userDetailReset } =
+  profileSlice.actions;
 
 export const selectUserDetails = (state) => state.userDetails.userDetails;
 

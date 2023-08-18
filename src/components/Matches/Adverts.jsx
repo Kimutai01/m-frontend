@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const Adverts = () => {
   const [adverts, setAdverts] = useState([]);
 
   useEffect(() => {
-    fetch('https://mbackend-65aa08f37e31.herokuapp.com/api/adverts/')
+    fetch("http://127.0.0.1:8000/api/adverts/")
       .then((res) => res.json())
       .then((data) => setAdverts(data.slice(0, 1)));
   }, []);
@@ -18,7 +18,7 @@ const Adverts = () => {
         >
           <div className="flex flex-col lg:w-[300px] md:w-[300px]  text-white bg-black">
             <img
-              src={`https://mbackend-65aa08f37e31.herokuapp.com${advert.image}`}
+              src={`http://127.0.0.1:8000${advert.image}`}
               alt=""
               className="w-[300px] h-[300px] "
             />

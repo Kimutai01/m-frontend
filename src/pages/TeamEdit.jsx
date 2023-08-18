@@ -6,34 +6,30 @@ import axios from "axios";
 import { selectUser } from "../features/userSlice";
 import {
   // fetchNews,
-  fetchNewsById,
+  fetchTeamById,
   // selectAllNews,
-  selectSingleNews,
-  updateNewsById,
-} from "../features/newsSlice";
+  selectSingleTeam,
+  updateTeamById,
+} from "../features/teamsSlice";
 
-const NewsEdit = () => {
+const TeamEdit = () => {
   const { id } = useParams();
-  const [title, setTitle] = useState("");
+  const [name, setName] = useState("");
   const [image, setImage] = useState("");
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
   const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
 
-  const newsById = useSelector(selectSingleNews);
+  const teamById = useSelector(selectSingleTeam);
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     dispatch(
-      updateNewsById({
-        _id: newsById._id,
-        title,
+      updateTeamById({
+        _id: teamById._id,
+        name,
         image,
-        category,
-        description,
       })
     );
 
@@ -45,7 +41,7 @@ const NewsEdit = () => {
       draggable: true,
     });
 
-    navigate("/admin/news");
+    navigate("/admin/teams");
   };
   const user = useSelector(selectUser);
 
@@ -53,7 +49,7 @@ const NewsEdit = () => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("image", file);
-    formData.append("news_id", id);
+    formData.append("team_id", id);
 
     try {
       setUploading(true);
@@ -66,10 +62,12 @@ const NewsEdit = () => {
       };
 
       const { data } = await axios.post(
-        "http://127.0.0.1:8000/api/news/upload/",
+        "http://127.0.0.1:8000/api/teams/upload/",
         formData,
         config
       );
+
+      console.log(data);
 
       setImage(data);
 
@@ -80,20 +78,19 @@ const NewsEdit = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchNewsById(id));
+    dispatch(fetchTeamById(id));
   }, [dispatch, id]);
 
   useEffect(() => {
-    if (newsById) {
-      setTitle(newsById.title);
-      setImage(newsById.image);
-      setDescription(newsById.description);
-      setCategory(newsById.category);
+    if (teamById) {
+      setName(teamById.name);
+      setImage(teamById.logo);
     }
-  }, [newsById]);
+  }, [teamById]);
+
   return (
     <div className="bg-[#000] pt-28">
-      <Link to="/admin/news">
+      <Link to="/admin/teams">
         <button className="why-btn ml-40  mt-10 mb-10 " type="button">
           <h1 className="font-bold">Go Back</h1>
         </button>
@@ -102,22 +99,22 @@ const NewsEdit = () => {
       <ToastContainer />
       <div className="bg-[#161616] mx-auto w-[30%] px-10 rounded-lg pb-10">
         <h1 className="text-[#fff] text-center font-bold text-2xl pt-10">
-          Edit News
+          Edit Team
         </h1>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
             <label
-              htmlFor="title"
+              htmlFor="name"
               className="text-white mb-3 uppercase font-bold"
             >
-              title
+              Name
               <input
                 type="text"
-                id="title"
+                id="name"
                 name="name"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="Enter title"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter Name"
                 className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
               />
             </label>
@@ -161,44 +158,6 @@ const NewsEdit = () => {
           </div>
         </div>
 
-        <div className="flex justify-center md:flex-row mt-10 gap-5">
-          <div className="flex flex-col w-full">
-            <label
-              htmlFor="category"
-              className="text-white mb-3 uppercase font-bold"
-            >
-              Category
-              <input
-                type="text"
-                id="category"
-                name="category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-              />
-            </label>
-          </div>
-        </div>
-
-        <div className="flex justify-center md:flex-row mt-10 gap-5">
-          <div className="flex flex-col w-full">
-            <label
-              htmlFor="description"
-              className="text-white mb-3 uppercase font-bold"
-            >
-              Description
-              <textarea
-                type="text"
-                id="description"
-                name="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-              />
-            </label>
-          </div>
-        </div>
-
         <button
           className="why-btn  w-full mt-10 mb-10 "
           onClick={(e) => submitHandler(e)}
@@ -211,4 +170,4 @@ const NewsEdit = () => {
   );
 };
 
-export default NewsEdit;
+export default TeamEdit;
