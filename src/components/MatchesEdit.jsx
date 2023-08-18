@@ -5,33 +5,39 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { selectUser } from "../features/userSlice";
 import {
-  fetchNewsById,
-  selectSingleNews,
-  updateNewsById,
-} from "../features/newsSlice";
+  // fetchNews,
+  fetchMatchById,
+  // selectAllNews,
+  selectSingleMatch,
+  updateMatchById,
+} from "../features/matchesSlice";
 
-const NewsEdit = () => {
+const MatchesEdit = () => {
   const { id } = useParams();
-  const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
-  const [description, setDescription] = useState("");
+  const [team1, setTeam1] = useState("");
+  const [team2, setTeam2] = useState("");
+  const [team1Score, setTeam1Score] = useState("");
+  const [team2Score, setTeam2Score] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [category, setCategory] = useState("");
+  const [image, setImage] = useState("");
   const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
 
-  const newsById = useSelector(selectSingleNews);
+  const matchById = useSelector(selectSingleMatch);
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     dispatch(
-      updateNewsById({
-        _id: newsById._id,
-        title,
-        image,
-        category,
-        description,
+      updateMatchById({
+        _id: matchById._id,
+        team1_score: team1Score,
+        team2_score: team2Score,
+        date,
+        time,
       })
     );
 
@@ -43,7 +49,7 @@ const NewsEdit = () => {
       draggable: true,
     });
 
-    navigate("/admin/news");
+    navigate("/admin/matches");
   };
   const user = useSelector(selectUser);
 
@@ -51,7 +57,7 @@ const NewsEdit = () => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("image", file);
-    formData.append("news_id", id);
+    formData.append("team_id", id);
 
     try {
       setUploading(true);
@@ -64,10 +70,12 @@ const NewsEdit = () => {
       };
 
       const { data } = await axios.post(
-        "http://127.0.0.1:8000/api/news/upload/",
+        "http://127.0.0.1:8000/api/teams/upload/",
         formData,
         config
       );
+
+      console.log(data);
 
       setImage(data);
 
@@ -78,20 +86,23 @@ const NewsEdit = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchNewsById(id));
+    dispatch(fetchMatchById(id));
   }, [dispatch, id]);
 
   useEffect(() => {
-    if (newsById) {
-      setTitle(newsById.title);
-      setImage(newsById.image);
-      setDescription(newsById.description);
-      setCategory(newsById.category);
+    if (matchById) {
+      setTeam1(matchById.team1?.name);
+      setTeam2(matchById.team2?.name);
+      setTeam1Score(matchById.team1_score);
+      setTeam2Score(matchById.team2_score);
+      setDate(matchById.date);
+      setTime(matchById.time);
     }
-  }, [newsById]);
+  }, [matchById]);
+
   return (
     <div className="bg-[#000] pt-28">
-      <Link to="/admin/news">
+      <Link to="/admin/teams">
         <button className="why-btn ml-40  mt-10 mb-10 " type="button">
           <h1 className="font-bold">Go Back</h1>
         </button>
@@ -100,98 +111,116 @@ const NewsEdit = () => {
       <ToastContainer />
       <div className="bg-[#161616] mx-auto w-[30%] px-10 rounded-lg pb-10">
         <h1 className="text-[#fff] text-center font-bold text-2xl pt-10">
-          Edit News
+          Edit Match
         </h1>
         <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
             <label
-              htmlFor="title"
+              htmlFor="name"
               className="text-white mb-3 uppercase font-bold"
             >
-              title
+              Team 1
               <input
                 type="text"
-                id="title"
+                id="name"
                 name="name"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="Enter title"
+                value={team1}
                 className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                readOnly
               />
             </label>
           </div>
         </div>
 
-        <div className="flex justify-center md:flex-row mt-10 gap-5">
+        <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
-            <img
-              src={`http://127.0.0.1:8000/${image}`}
-              alt=""
-              className="h-20 w-20"
-            />
             <label
-              htmlFor="image"
+              htmlFor="name"
               className="text-white mb-3 uppercase font-bold"
             >
-              Image
+              Team 2
               <input
                 type="text"
-                id="image"
-                name="image"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
+                id="name"
+                name="name"
+                value={team2}
                 className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                readOnly
               />
             </label>
-
-            <input
-              type="file"
-              id="image-file"
-              name="image-file"
-              onChange={uploadFileHandler}
-              className="mt-4 bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
-            {uploading && (
-              <div className="flex justify-center items-center pt-28 bg-black">
-                <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent" />
-              </div>
-            )}
           </div>
         </div>
-
-        <div className="flex justify-center md:flex-row mt-10 gap-5">
+        <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
             <label
-              htmlFor="category"
+              htmlFor="name"
               className="text-white mb-3 uppercase font-bold"
             >
-              Category
+              {team1} score
               <input
                 type="text"
-                id="category"
-                name="category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                id="name"
+                name="name"
+                value={team1Score}
                 className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                onChange={(e) => setTeam1Score(e.target.value)}
               />
             </label>
           </div>
         </div>
 
-        <div className="flex justify-center md:flex-row mt-10 gap-5">
+        <div className="flex justify-center md:flex-row gap-5 pt-10">
           <div className="flex flex-col w-full">
             <label
-              htmlFor="description"
+              htmlFor="name"
               className="text-white mb-3 uppercase font-bold"
             >
-              Description
-              <textarea
+              Team 2 score
+              <input
                 type="text"
-                id="description"
-                name="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                id="name"
+                name="name"
+                value={team2Score}
                 className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                onChange={(e) => setTeam2Score(e.target.value)}
+              />
+            </label>
+          </div>
+        </div>
+
+        <div className="flex justify-center md:flex-row gap-5 pt-10">
+          <div className="flex flex-col w-full">
+            <label
+              htmlFor="name"
+              className="text-white mb-3 uppercase font-bold"
+            >
+              date of match
+              <input
+                type="date"
+                id="name"
+                name="name"
+                value={date}
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                onChange={(e) => setDate(e.target.value)}
+              />
+            </label>
+          </div>
+        </div>
+
+        <div className="flex justify-center md:flex-row gap-5 pt-10">
+          <div className="flex flex-col w-full">
+            <label
+              htmlFor="name"
+              className="text-white mb-3 uppercase font-bold"
+            >
+              Time
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={time}
+                className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
+                onChange={(e) => setTime(e.target.value)}
               />
             </label>
           </div>
@@ -209,4 +238,4 @@ const NewsEdit = () => {
   );
 };
 
-export default NewsEdit;
+export default MatchesEdit;

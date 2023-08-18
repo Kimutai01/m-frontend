@@ -30,6 +30,8 @@ import NewsDetail from "./pages/NewsDetail";
 import NewsPage from "./pages/NewsPage";
 import TeamList from "./pages/TeamList";
 import TeamEdit from "./pages/TeamEdit";
+import MatchesList from "./components/MatchesList";
+import MatchesEdit from "./components/MatchesEdit";
 
 function App() {
   return (
@@ -65,6 +67,8 @@ function App() {
         <Route path="/news" element={<NewsPage />} />
         <Route path="/admin/teams" element={<TeamList />} />
         <Route path="/admin/teams/:id/edit" element={<TeamEdit />} />
+        <Route path="/admin/matches" element={<MatchesList />} />
+        <Route path="/admin/matches/:id/edit" element={<MatchesEdit />} />
       </Routes>
       <Footer />
     </>

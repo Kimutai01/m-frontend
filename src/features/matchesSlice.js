@@ -10,20 +10,23 @@ const initialState = {
   match: {},
 };
 
-export const fetchMatches = createAsyncThunk("news/fetchMatches", async () => {
-  const response = await axios.get(newsUrl);
-  return response.data;
-});
-
-export const fetchMatchById = createAsyncThunk(
-  "news/fetchMatchById",
-  async (id) => {
-    const response = await axios.get(`${newsUrl}/${id}`);
+export const fetchMatches = createAsyncThunk(
+  "matches/fetchMatches",
+  async () => {
+    const response = await axios.get(matchUrl);
     return response.data;
   }
 );
 
-export const updateMatchById = (news) => async (dispatch, getState) => {
+export const fetchMatchById = createAsyncThunk(
+  "matches/fetchMatchById",
+  async (id) => {
+    const response = await axios.get(`${matchUrl}/${id}`);
+    return response.data;
+  }
+);
+
+export const updateMatchById = (matches) => async (dispatch, getState) => {
   try {
     const {
       user: { user },
@@ -35,7 +38,7 @@ export const updateMatchById = (news) => async (dispatch, getState) => {
         Authorization: `Bearer ${token}`,
       },
     };
-    await axios.put(`${matchUrl}/update/${news._id}/`, news, config);
+    await axios.put(`${matchUrl}/update/${matches._id}/`, matches, config);
     dispatch(fetchMatches());
   } catch (error) {
     console.error("Error updating product:", error);
@@ -73,15 +76,15 @@ export const createNewMatch = () => async (dispatch, getState) => {
         Authorization: `Bearer ${token}`,
       },
     };
-    const { data } = await axios.post(`${newsUrl}/create/`, {}, config);
-    dispatch(fetchNews());
-    dispatch(createNews(data));
+    const { data } = await axios.post(`${matchUrl}/create/`, {}, config);
+    dispatch(fetchMatches());
+    dispatch(createMatch(data));
   } catch (error) {
     console.error("Error creating product:", error);
   }
 };
 
-const matchSlice = createSlice({
+const matchesSlice = createSlice({
   name: "matches",
   initialState,
   reducers: {
@@ -114,7 +117,7 @@ const matchSlice = createSlice({
     },
     [fetchMatchById.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      state.new = action.payload;
+      state.match = action.payload;
     },
     [fetchMatchById.rejected]: (state, action) => {
       state.status = "failed";
@@ -123,13 +126,13 @@ const matchSlice = createSlice({
   },
 });
 
-export default matchSlice.reducer;
+export default matchesSlice.reducer;
 
-export const { deleteMatch } = matchSlice.actions;
-export const { createMatch } = matchSlice.actions;
-export const { createMatchReset } = matchSlice.actions;
-export const selectAllMatches = (state) => state.matches.matches;
-export const selectSingleMatch = (state) => state.matches.match;
-export const getMatchesStatus = (state) => state.matches.status;
-export const getMatchesError = (state) => state.matches.error;
-export const getCreatedMatch = (state) => state.matches.createdMatch;
+export const { deleteMatch } = matchesSlice.actions;
+export const { createMatch } = matchesSlice.actions;
+export const { createMatchReset } = matchesSlice.actions;
+export const selectAllMatches = (state) => state.match.matches;
+export const selectSingleMatch = (state) => state.match.match;
+export const getMatchesStatus = (state) => state.match.status;
+export const getMatchesError = (state) => state.match.error;
+export const getCreatedMatch = (state) => state.match.createdMatch;

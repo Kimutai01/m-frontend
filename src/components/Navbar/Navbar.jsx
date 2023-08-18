@@ -235,6 +235,11 @@ const NavBar = () => {
                             Teams
                           </div>
                         </Link>
+                        <Link to="/admin/matches">
+                          <div className="text-[#f4e721] py-1 px-2  hover:underline underline-offset-8 hover:scale-105 transition-all duration-all hover:border-y-black">
+                            Matches
+                          </div>
+                        </Link>
                       </ul>
                     </div>
                   </li>

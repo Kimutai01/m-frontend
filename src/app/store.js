@@ -9,6 +9,7 @@ import orderReducer from "../features/orderSlice";
 import newsReducer from "../features/newsSlice";
 import advertsReducer from "../features/advertsSlice";
 import teamsReducer from "../features/teamsSlice";
+import matchesReducer from "../features/matchesSlice";
 
 const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ const store = configureStore({
     news: newsReducer,
     adverts: advertsReducer,
     teams: teamsReducer,
+    match: matchesReducer,
   },
 });
 
