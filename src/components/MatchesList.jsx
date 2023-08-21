@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate, Link } from "react-router-dom";
 
 import {
   fetchMatches,
@@ -12,7 +12,7 @@ import {
   getCreatedMatch,
   getMatchesStatus,
   getMatchesError,
-} from '../features/matchesSlice';
+} from "../features/matchesSlice";
 
 const MatchesList = () => {
   const navigate = useNavigate();
@@ -32,13 +32,15 @@ const MatchesList = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/teams/').then((res) => res.json());
+    fetch("https://mbackend-65aa08f37e31.herokuapp.com/api/teams/").then(
+      (res) => res.json()
+    );
   }, []);
 
   useEffect(() => {
-    if (status === 'failed') {
+    if (status === "failed") {
       toast.error(error, {
-        position: 'top-center',
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -48,10 +50,10 @@ const MatchesList = () => {
   }, [status, error]);
 
   const deleteHandler = (id) => {
-    if (window.confirm('Are you sure you want to delete this product?')) {
+    if (window.confirm("Are you sure you want to delete this product?")) {
       dispatch(deleteMatchById(id));
-      toast.success('Match Deleted Successfully', {
-        position: 'top-center',
+      toast.success("Match Deleted Successfully", {
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -87,7 +89,7 @@ const MatchesList = () => {
           <h1 className="font-bold">Create Match</h1>
         </button>
       </div>
-      {status === 'loading' && (
+      {status === "loading" && (
         <div className="flex justify-center items-center pt-28 bg-black">
           <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent" />
         </div>

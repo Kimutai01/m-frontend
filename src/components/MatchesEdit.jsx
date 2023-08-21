@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate, useParams, Link } from 'react-router-dom';
-import axios from 'axios';
-import { selectUser } from '../features/userSlice';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate, useParams, Link } from "react-router-dom";
+import axios from "axios";
+import { selectUser } from "../features/userSlice";
 import {
   // fetchNews,
   fetchMatchById,
   // selectAllNews,
   selectSingleMatch,
   updateMatchById,
-} from '../features/matchesSlice';
+} from "../features/matchesSlice";
 
 const MatchesEdit = () => {
   const { id } = useParams();
-  const [team1, setTeam1] = useState('');
-  const [team2, setTeam2] = useState('');
-  const [team1Score, setTeam1Score] = useState('');
-  const [team2Score, setTeam2Score] = useState('');
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
-  const [category, setCategory] = useState('');
-  const [image, setImage] = useState('');
+  const [team1, setTeam1] = useState("");
+  const [team2, setTeam2] = useState("");
+  const [team1Score, setTeam1Score] = useState("");
+  const [team2Score, setTeam2Score] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [category, setCategory] = useState("");
+  const [image, setImage] = useState("");
   const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
 
@@ -38,41 +38,41 @@ const MatchesEdit = () => {
         team2_score: team2Score,
         date,
         time,
-      }),
+      })
     );
 
-    toast.success('News Updated Successfully', {
-      position: 'top-center',
+    toast.success("News Updated Successfully", {
+      position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       draggable: true,
     });
 
-    navigate('/admin/matches');
+    navigate("/admin/matches");
   };
   const user = useSelector(selectUser);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
-    formData.append('image', file);
-    formData.append('team_id', id);
+    formData.append("image", file);
+    formData.append("team_id", id);
 
     try {
       setUploading(true);
 
       const config = {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${user.token}`,
         },
       };
 
       const { data } = await axios.post(
-        'http://127.0.0.1:8000/api/teams/upload/',
+        "https://mbackend-65aa08f37e31.herokuapp.com/api/teams/upload/",
         formData,
-        config,
+        config
       );
 
       console.log(data);
@@ -156,9 +156,7 @@ const MatchesEdit = () => {
               htmlFor="name"
               className="text-white mb-3 uppercase font-bold"
             >
-              {team1}
-              {' '}
-              score
+              {team1} score
               <input
                 type="text"
                 id="name"
@@ -177,9 +175,7 @@ const MatchesEdit = () => {
               htmlFor="name"
               className="text-white mb-3 uppercase font-bold"
             >
-              {team2}
-              {' '}
-              score
+              {team2} score
               <input
                 type="text"
                 id="name"
