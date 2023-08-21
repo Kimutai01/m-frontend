@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   selectAllMatches,
   selectSingleMatch,
@@ -7,9 +7,9 @@ import {
   fetchMatches,
   updateMatchById,
   fetchMatchById,
-} from "../../features/matchesSlice";
-import SingleMatch from "./SingleMatch";
-import Adverts from "./Adverts";
+} from '../../features/matchesSlice';
+import SingleMatch from './SingleMatch';
+import Adverts from './Adverts';
 
 const Fixtures = () => {
   const dispatch = useDispatch();

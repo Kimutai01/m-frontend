@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useNavigate, useParams, Link } from "react-router-dom";
-import axios from "axios";
-import { selectUser } from "../features/userSlice";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, useParams, Link } from 'react-router-dom';
+import axios from 'axios';
+import { selectUser } from '../features/userSlice';
 import {
   fetchAdvertsById,
   selectSingleAdverts,
   updateAdvertsById,
-} from "../features/advertsSlice";
+} from '../features/advertsSlice';
 
 const AdvertEdit = () => {
   const { id } = useParams();
-  const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState('');
+  const [image, setImage] = useState('');
+  const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
 
@@ -30,29 +30,29 @@ const AdvertEdit = () => {
         title,
         image,
         description,
-      })
+      }),
     );
 
-    toast.success("News Updated Successfully", {
-      position: "top-center",
+    toast.success('News Updated Successfully', {
+      position: 'top-center',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       draggable: true,
     });
 
-    navigate("/admin/adverts");
+    navigate('/admin/adverts');
   };
   const user = useSelector(selectUser);
 
   const uploadFileHandler = (files) => {
     const formData = new FormData();
 
-    formData.append("file", files[0]);
-    formData.append("upload_preset", "e2e6z2lx");
+    formData.append('file', files[0]);
+    formData.append('upload_preset', 'e2e6z2lx');
     setUploading(true);
-    fetch("https://api.cloudinary.com/v1_1/dakiak4mc/image/upload", {
-      method: "POST",
+    fetch('https://api.cloudinary.com/v1_1/dakiak4mc/image/upload', {
+      method: 'POST',
       body: formData,
     })
       .then((response) => response.json())

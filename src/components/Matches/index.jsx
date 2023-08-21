@@ -1,13 +1,13 @@
-import { useState } from "react";
-import SingleMatch from "./SingleMatch";
-import Membership from "./Membership";
-import Adverts from "./Adverts";
-import Fixtures from "./Fixtures";
-import Results from "./Results";
-import Table from "./Table";
+import { useState } from 'react';
+import SingleMatch from './SingleMatch';
+import Membership from './Membership';
+import Adverts from './Adverts';
+import Fixtures from './Fixtures';
+import Results from './Results';
+import Table from './Table';
 
 const Match = () => {
-  const [activeComponent, setActiveComponent] = useState("performance check");
+  const [activeComponent, setActiveComponent] = useState('performance check');
 
   return (
     <>
@@ -26,10 +26,10 @@ const Match = () => {
       <div className="bg-[#fff] md:w-[85%] rounded-xl mx-5 md:mx-32  ">
         <div className="flex flex-col justify-center md:flex-row gap-10  ">
           <div
-            onClick={() => setActiveComponent("performance check")}
+            onClick={() => setActiveComponent('performance check')}
             className="border-b border-[grey] mt-10 md:border-none "
           >
-            {activeComponent === "performance check" ? (
+            {activeComponent === 'performance check' ? (
               <h1 className="bg-[#fae115] text-[#000] text-lg text-center md:text-left md:text-2xl p-3 md:p-2 rounded-xl uppercase font-bold">
                 Matches
               </h1>
@@ -40,10 +40,10 @@ const Match = () => {
             )}
           </div>
           <div
-            onClick={() => setActiveComponent("autocheck")}
+            onClick={() => setActiveComponent('autocheck')}
             className="border-b border-[grey] md:border-none mt-10"
           >
-            {activeComponent === "autocheck" ? (
+            {activeComponent === 'autocheck' ? (
               <h1 className="bg-[#fae115] text-[#000] text-lg text-center md:text-left md:text-2xl p-3 md:p-2 rounded-xl uppercase font-bold">
                 Fixtures
               </h1>
@@ -54,8 +54,8 @@ const Match = () => {
             )}
           </div>
 
-          <div onClick={() => setActiveComponent("fleet services")}>
-            {activeComponent === "fleet services" ? (
+          <div onClick={() => setActiveComponent('fleet services')}>
+            {activeComponent === 'fleet services' ? (
               <h1 className="bg-[#fae115] text-[#000] text-lg text-center md:text-left md:text-2xl p-3 md:p-2 rounded-xl uppercase font-bold mt-10">
                 Tables
               </h1>
@@ -67,9 +67,9 @@ const Match = () => {
           </div>
         </div>
         <div className="flex flex-col justify-center md:flex-row gap-10  ">
-          {activeComponent === "performance check" && <Fixtures />}
-          {activeComponent === "autocheck" && <Results />}
-          {activeComponent === "fleet services" && <Table />}
+          {activeComponent === 'performance check' && <Fixtures />}
+          {activeComponent === 'autocheck' && <Results />}
+          {activeComponent === 'fleet services' && <Table />}
           <Adverts />
         </div>
       </div>

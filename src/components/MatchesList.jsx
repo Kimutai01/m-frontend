@@ -115,7 +115,7 @@ const MatchesList = () => {
                 <td className="py-2">
                   <img
                     className="w-20 h-20 rounded-full"
-                    src={`match.team1?.logo}`}
+                    src="match.team1?.logo}"
                     alt={match.team1?.name}
                   />
                 </td>

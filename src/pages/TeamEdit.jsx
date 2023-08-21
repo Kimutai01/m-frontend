@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useNavigate, useParams, Link } from "react-router-dom";
-import axios from "axios";
-import { selectUser } from "../features/userSlice";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, useParams, Link } from 'react-router-dom';
+import axios from 'axios';
+import { selectUser } from '../features/userSlice';
 import {
   // fetchNews,
   fetchTeamById,
   // selectAllNews,
   selectSingleTeam,
   updateTeamById,
-} from "../features/teamsSlice";
+} from '../features/teamsSlice';
 
 const TeamEdit = () => {
   const { id } = useParams();
-  const [name, setName] = useState("");
-  const [image, setImage] = useState("");
+  const [name, setName] = useState('');
+  const [image, setImage] = useState('');
   const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
 
@@ -30,29 +30,29 @@ const TeamEdit = () => {
         _id: teamById._id,
         name,
         image,
-      })
+      }),
     );
 
-    toast.success("News Updated Successfully", {
-      position: "top-center",
+    toast.success('News Updated Successfully', {
+      position: 'top-center',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       draggable: true,
     });
 
-    navigate("/admin/teams");
+    navigate('/admin/teams');
   };
   const user = useSelector(selectUser);
 
   const uploadFileHandler = (files) => {
     const formData = new FormData();
 
-    formData.append("file", files[0]);
-    formData.append("upload_preset", "e2e6z2lx");
+    formData.append('file', files[0]);
+    formData.append('upload_preset', 'e2e6z2lx');
     setUploading(true);
-    fetch("https://api.cloudinary.com/v1_1/dakiak4mc/image/upload", {
-      method: "POST",
+    fetch('https://api.cloudinary.com/v1_1/dakiak4mc/image/upload', {
+      method: 'POST',
       body: formData,
     })
       .then((response) => response.json())
