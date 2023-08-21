@@ -1,6 +1,3 @@
-import banner from '../../assets/logo.png';
-import wazito from '../../assets/wazitologo.png';
-
 // eslint-disable-next-line import/prefer-default-export
 const SingleMatch = ({ match }) => (
   <div className="flex flex-col justify-center md:flex-row mb-2 gap-5">

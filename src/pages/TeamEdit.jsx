@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import axios from 'axios';
-import { selectUser } from '../features/userSlice';
+// import { selectUser } from '../features/userSlice';
 import {
   // fetchNews,
   fetchTeamById,
@@ -16,7 +15,7 @@ const TeamEdit = () => {
   const { id } = useParams();
   const [name, setName] = useState('');
   const [image, setImage] = useState('');
-  const [uploading, setUploading] = useState(false);
+  const [setUploading] = useState(false);
   const navigate = useNavigate();
 
   const teamById = useSelector(selectSingleTeam);
@@ -43,7 +42,7 @@ const TeamEdit = () => {
 
     navigate('/admin/teams');
   };
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
 
   const uploadFileHandler = (files) => {
     const formData = new FormData();

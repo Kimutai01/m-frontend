@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import { selectUser } from '../features/userSlice';
 
 import {
@@ -21,7 +21,7 @@ const ProductEdit = () => {
   const [brand, setBrand] = useState('');
   const [countInStock, setCountInStock] = useState('');
   const [description, setDescription] = useState('');
-  const [uploading, setUploading] = useState(false);
+  const [setUploading] = useState(false);
 
   const navigate = useNavigate();
   const product = useSelector(selectProduct);
@@ -53,7 +53,7 @@ const ProductEdit = () => {
 
     navigate('/admin/products');
   };
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
 
   const uploadFileHandler = (files) => {
     const formData = new FormData();

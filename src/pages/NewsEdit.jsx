@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import axios from 'axios';
 import { selectUser } from '../features/userSlice';
 import {
   fetchNewsById,
@@ -16,7 +15,7 @@ const NewsEdit = () => {
   const [image, setImage] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
-  const [uploading, setUploading] = useState(false);
+  const [, setUploading] = useState(false);
   const navigate = useNavigate();
 
   const newsById = useSelector(selectSingleNews);
@@ -45,7 +44,7 @@ const NewsEdit = () => {
 
     navigate('/admin/news');
   };
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
 
   const uploadFileHandler = (files) => {
     const formData = new FormData();

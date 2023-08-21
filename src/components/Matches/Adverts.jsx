@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const Adverts = () => {
   const [adverts, setAdverts] = useState([]);
 
   useEffect(() => {
-    fetch("https://mbackend-65aa08f37e31.herokuapp.com/api/adverts/")
+    fetch('https://mbackend-65aa08f37e31.herokuapp.com/api/adverts/')
       .then((res) => res.json())
       .then((data) => setAdverts(data.slice(0, 1)));
   }, []);

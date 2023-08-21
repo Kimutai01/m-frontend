@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import SingleMatch from './SingleMatch';
-import Membership from './Membership';
 import Adverts from './Adverts';
 import Fixtures from './Fixtures';
 import Results from './Results';

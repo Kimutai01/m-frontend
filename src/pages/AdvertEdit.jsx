@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import axios from 'axios';
-import { selectUser } from '../features/userSlice';
+// import { selectUser } from '../features/userSlice';
 import {
   fetchAdvertsById,
   selectSingleAdverts,
@@ -43,7 +42,7 @@ const AdvertEdit = () => {
 
     navigate('/admin/adverts');
   };
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
 
   const uploadFileHandler = (files) => {
     const formData = new FormData();
