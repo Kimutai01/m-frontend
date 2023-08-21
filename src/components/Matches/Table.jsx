@@ -1,7 +1,5 @@
-import React from "react";
+import React from 'react';
 
-const Table = () => {
-  return <div>Table</div>;
-};
+const Table = () => <div>Table</div>;
 
 export default Table;

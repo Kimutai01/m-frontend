@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useNavigate, useParams, Link } from "react-router-dom";
-import axios from "axios";
-import { selectUser } from "../features/userSlice";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, useParams, Link } from 'react-router-dom';
+import axios from 'axios';
+import { selectUser } from '../features/userSlice';
 import {
   // fetchNews,
   fetchTeamById,
   // selectAllNews,
   selectSingleTeam,
   updateTeamById,
-} from "../features/teamsSlice";
+} from '../features/teamsSlice';
 
 const TeamEdit = () => {
   const { id } = useParams();
-  const [name, setName] = useState("");
-  const [image, setImage] = useState("");
+  const [name, setName] = useState('');
+  const [image, setImage] = useState('');
   const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
 
@@ -30,41 +30,41 @@ const TeamEdit = () => {
         _id: teamById._id,
         name,
         image,
-      })
+      }),
     );
 
-    toast.success("News Updated Successfully", {
-      position: "top-center",
+    toast.success('News Updated Successfully', {
+      position: 'top-center',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       draggable: true,
     });
 
-    navigate("/admin/teams");
+    navigate('/admin/teams');
   };
   const user = useSelector(selectUser);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
-    formData.append("image", file);
-    formData.append("team_id", id);
+    formData.append('image', file);
+    formData.append('team_id', id);
 
     try {
       setUploading(true);
 
       const config = {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${user.token}`,
         },
       };
 
       const { data } = await axios.post(
-        "http://127.0.0.1:8000/api/teams/upload/",
+        'http://127.0.0.1:8000/api/teams/upload/',
         formData,
-        config
+        config,
       );
 
       console.log(data);

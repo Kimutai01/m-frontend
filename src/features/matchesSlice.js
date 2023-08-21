@@ -1,29 +1,29 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const matchUrl = "http://127.0.0.1:8000/api/matches";
+const matchUrl = 'http://127.0.0.1:8000/api/matches';
 const initialState = {
   matches: [],
-  status: "idle",
+  status: 'idle',
   error: null,
   createdMatch: {},
   match: {},
 };
 
 export const fetchMatches = createAsyncThunk(
-  "matches/fetchMatches",
+  'matches/fetchMatches',
   async () => {
     const response = await axios.get(matchUrl);
     return response.data;
-  }
+  },
 );
 
 export const fetchMatchById = createAsyncThunk(
-  "matches/fetchMatchById",
+  'matches/fetchMatchById',
   async (id) => {
     const response = await axios.get(`${matchUrl}/${id}`);
     return response.data;
-  }
+  },
 );
 
 export const updateMatchById = (matches) => async (dispatch, getState) => {
@@ -34,14 +34,14 @@ export const updateMatchById = (matches) => async (dispatch, getState) => {
     const { token } = user;
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     };
     await axios.put(`${matchUrl}/update/${matches._id}/`, matches, config);
     dispatch(fetchMatches());
   } catch (error) {
-    console.error("Error updating product:", error);
+    console.error('Error updating product:', error);
   }
 };
 
@@ -60,7 +60,7 @@ export const deleteMatchById = (id) => async (dispatch, getState) => {
     dispatch(deleteMatch(id));
     dispatch(fetchMatches());
   } catch (error) {
-    console.error("Error deleting product:", error);
+    console.error('Error deleting product:', error);
   }
 };
 
@@ -72,7 +72,7 @@ export const createNewMatch = () => async (dispatch, getState) => {
     const { token } = user;
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     };
@@ -80,12 +80,12 @@ export const createNewMatch = () => async (dispatch, getState) => {
     dispatch(fetchMatches());
     dispatch(createMatch(data));
   } catch (error) {
-    console.error("Error creating product:", error);
+    console.error('Error creating product:', error);
   }
 };
 
 const matchesSlice = createSlice({
-  name: "matches",
+  name: 'matches',
   initialState,
   reducers: {
     createMatch: (state, action) => {
@@ -96,31 +96,31 @@ const matchesSlice = createSlice({
     },
     deleteMatch: (state, action) => {
       state.matches = state.matches.filter(
-        (match) => match._id !== action.payload
+        (match) => match._id !== action.payload,
       );
     },
   },
   extraReducers: {
     [fetchMatches.pending]: (state) => {
-      state.status = "loading";
+      state.status = 'loading';
     },
     [fetchMatches.fulfilled]: (state, action) => {
-      state.status = "succeeded";
+      state.status = 'succeeded';
       state.matches = action.payload;
     },
     [fetchMatches.rejected]: (state, action) => {
-      state.status = "failed";
+      state.status = 'failed';
       state.error = action.error.message;
     },
     [fetchMatchById.pending]: (state) => {
-      state.status = "loading";
+      state.status = 'loading';
     },
     [fetchMatchById.fulfilled]: (state, action) => {
-      state.status = "succeeded";
+      state.status = 'succeeded';
       state.match = action.payload;
     },
     [fetchMatchById.rejected]: (state, action) => {
-      state.status = "failed";
+      state.status = 'failed';
       state.error = action.error.message;
     },
   },

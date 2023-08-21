@@ -175,7 +175,7 @@ const MatchesEdit = () => {
               htmlFor="name"
               className="text-white mb-3 uppercase font-bold"
             >
-              Team 2 score
+              {team2} score
               <input
                 type="text"
                 id="name"
@@ -215,7 +215,7 @@ const MatchesEdit = () => {
             >
               Time
               <input
-                type="text"
+                type="time"
                 id="name"
                 name="name"
                 value={time}

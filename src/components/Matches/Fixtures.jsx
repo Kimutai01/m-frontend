@@ -1,7 +1,5 @@
-import React from "react";
+import React from 'react';
 
-const Fixtures = () => {
-  return <div>Fixtures</div>;
-};
+const Fixtures = () => <div>Fixtures</div>;
 
 export default Fixtures;

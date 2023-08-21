@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, Link } from 'react-router-dom';
 
 import {
   fetchTeams,
@@ -12,7 +12,7 @@ import {
   getCreatedTeam,
   getTeamsStatus,
   getTeamsError,
-} from "../features/teamsSlice";
+} from '../features/teamsSlice';
 
 const TeamList = () => {
   const navigate = useNavigate();
@@ -32,9 +32,9 @@ const TeamList = () => {
   }, []);
 
   useEffect(() => {
-    if (status === "failed") {
+    if (status === 'failed') {
       toast.error(error, {
-        position: "top-center",
+        position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -44,10 +44,10 @@ const TeamList = () => {
   }, [status, error]);
 
   const deleteHandler = (id) => {
-    if (window.confirm("Are you sure you want to delete this product?")) {
+    if (window.confirm('Are you sure you want to delete this product?')) {
       dispatch(deleteTeamById(id));
-      toast.success("Product Deleted Successfully", {
-        position: "top-center",
+      toast.success('Product Deleted Successfully', {
+        position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -83,7 +83,7 @@ const TeamList = () => {
           <h1 className="font-bold">Create Team</h1>
         </button>
       </div>
-      {status === "loading" && (
+      {status === 'loading' && (
         <div className="flex justify-center items-center pt-28 bg-black">
           <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent" />
         </div>

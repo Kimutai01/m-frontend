@@ -1,26 +1,26 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const teamsUrl = "http://127.0.0.1:8000/api/teams";
+const teamsUrl = 'http://127.0.0.1:8000/api/teams';
 const initialState = {
   teams: [],
-  status: "idle",
+  status: 'idle',
   error: null,
   createdTeam: {},
   team: {},
 };
 
-export const fetchTeams = createAsyncThunk("teams/fetchTeams", async () => {
+export const fetchTeams = createAsyncThunk('teams/fetchTeams', async () => {
   const response = await axios.get(teamsUrl);
   return response.data;
 });
 
 export const fetchTeamById = createAsyncThunk(
-  "teams/fetchTeamById",
+  'teams/fetchTeamById',
   async (id) => {
     const response = await axios.get(`${teamsUrl}/${id}`);
     return response.data;
-  }
+  },
 );
 
 export const updateTeamById = (teams) => async (dispatch, getState) => {
@@ -31,14 +31,14 @@ export const updateTeamById = (teams) => async (dispatch, getState) => {
     const { token } = user;
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     };
     await axios.put(`${teamsUrl}/update/${teams._id}/`, teams, config);
     dispatch(fetchTeams());
   } catch (error) {
-    console.error("Error updating product:", error);
+    console.error('Error updating product:', error);
   }
 };
 
@@ -57,7 +57,7 @@ export const deleteTeamById = (id) => async (dispatch, getState) => {
     dispatch(deleteTeam(id));
     dispatch(fetchTeams());
   } catch (error) {
-    console.error("Error deleting product:", error);
+    console.error('Error deleting product:', error);
   }
 };
 
@@ -69,7 +69,7 @@ export const createNewTeam = () => async (dispatch, getState) => {
     const { token } = user;
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     };
@@ -77,12 +77,12 @@ export const createNewTeam = () => async (dispatch, getState) => {
     dispatch(fetchTeams());
     dispatch(createTeam(data));
   } catch (error) {
-    console.error("Error creating product:", error);
+    console.error('Error creating product:', error);
   }
 };
 
 const teamsSlice = createSlice({
-  name: "teams",
+  name: 'teams',
   initialState,
   reducers: {
     createTeam: (state, action) => {
@@ -97,25 +97,25 @@ const teamsSlice = createSlice({
   },
   extraReducers: {
     [fetchTeams.pending]: (state) => {
-      state.status = "loading";
+      state.status = 'loading';
     },
     [fetchTeams.fulfilled]: (state, action) => {
-      state.status = "succeeded";
+      state.status = 'succeeded';
       state.teams = action.payload;
     },
     [fetchTeams.rejected]: (state, action) => {
-      state.status = "failed";
+      state.status = 'failed';
       state.error = action.error.message;
     },
     [fetchTeamById.pending]: (state) => {
-      state.status = "loading";
+      state.status = 'loading';
     },
     [fetchTeamById.fulfilled]: (state, action) => {
-      state.status = "succeeded";
+      state.status = 'succeeded';
       state.team = action.payload;
     },
     [fetchTeamById.rejected]: (state, action) => {
-      state.status = "failed";
+      state.status = 'failed';
       state.error = action.error.message;
     },
   },
