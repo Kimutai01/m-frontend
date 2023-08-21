@@ -115,7 +115,7 @@ const MatchesList = () => {
                 <td className="py-2">
                   <img
                     className="w-20 h-20 rounded-full"
-                    src={`http://127.0.0.1:8000${match.team1?.logo}`}
+                    src={`match.team1?.logo}`}
                     alt={match.team1?.name}
                   />
                 </td>
@@ -123,7 +123,7 @@ const MatchesList = () => {
                 <td className="py-2">
                   <img
                     className="w-20 h-20 rounded-full"
-                    src={`http://127.0.0.1:8000${match.team2?.logo}`}
+                    src={match.team2?.logo}
                     alt={match.team2?.name}
                   />
                 </td>

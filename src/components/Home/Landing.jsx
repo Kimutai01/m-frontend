@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   const [news, setNews] = useState([]);
@@ -8,7 +8,7 @@ const Landing = () => {
   const [adverts, setAdverts] = useState([]);
   useEffect(() => {
     if (!featured.title) {
-      fetch('http://127.0.0.1:8000/api/news/latest')
+      fetch("http://127.0.0.1:8000/api/news/latest")
         .then((res) => res.json())
         .then((data) => setNews(data));
     }
@@ -17,13 +17,13 @@ const Landing = () => {
   }, [news]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/news/otherlatest')
+    fetch("http://127.0.0.1:8000/api/news/otherlatest")
       .then((res) => res.json())
       .then((data) => setOtherNews(data));
   }, []);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/adverts/')
+    fetch("http://127.0.0.1:8000/api/adverts/")
       .then((res) => res.json())
       .then((data) => setAdverts(data.slice(0, 1)));
   }, []);
@@ -40,7 +40,7 @@ const Landing = () => {
         <div className=" flex flex-col items-start border-t-4 border border-[#FAE115] mt-3  shadow md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] ">
           {/* <%= image_tag(news.image, class: "object-cover 2xl:w-[800px] xl:w-[600px] xl:h-[400px] lg:w-[400px] lg:h-[250px] md:h-[400px] md:w-[600px] sm:w-[200px]" ) %> */}
           <img
-            src={`http://127.0.0.1:8000${featured.image}`}
+            src={featured.image}
             alt=""
             className="object-cover 2xl:w-[800px] xl:w-[600px] xl:h-[400px] lg:w-[400px] lg:h-[250px] md:h-[400px] md:w-[600px] sm:w-[200px]"
           />
@@ -72,11 +72,7 @@ const Landing = () => {
             <div className="" key={bla._id}>
               <div className="bg-white border border-[#FAE115] border-t-4 flex flex-col mt-2 hover:scale-105">
                 {/* <%= image_tag(news.image, class: "h-[200px] w-full")  %> */}
-                <img
-                  src={`http://127.0.0.1:8000${bla.image}`}
-                  alt=""
-                  className="h-[200px] w-full"
-                />
+                <img src={bla.image} alt="" className="h-[200px] w-full" />
                 <div className="p-5">
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate uppercase">
                     {bla.title}
@@ -119,11 +115,7 @@ const Landing = () => {
             className="flex flex-col md:items-end gap-5 mb-2  sm:flex  "
           >
             <div className="flex flex-col lg:w-[300px] md:w-[300px] text-white bg-black">
-              <img
-                src={`http://127.0.0.1:8000${advert.image}`}
-                alt=""
-                className="w-[300px] h-[300px] "
-              />
+              <img src={advert.image} alt="" className="w-[300px] h-[300px] " />
             </div>
           </div>
         ))}
