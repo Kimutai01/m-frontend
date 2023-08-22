@@ -396,11 +396,6 @@ const NavBar = () => {
                     </Link>
                   )}
 
-                  <Link exact="true" to="/ourclub" onClick={handleNav}>
-                    <li className="ml-4 mt-5 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                      OUR CLUB
-                    </li>
-                  </Link>
                   <Link exact="true" to="/news" onClick={handleNav}>
                     <li className="ml-4 mt-5 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                       NEWS
@@ -414,11 +409,23 @@ const NavBar = () => {
                   </Link>
 
                   <Link exact="true" to="/match" onClick={handleNav}>
+                    <li className="ml-4 mt-5 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+                      MATCHES
+                    </li>
+                  </Link>
+
+                  <Link exact="true" to="/ourclub" onClick={handleNav}>
+                    <li className="ml-4 mt-5 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
+                      OUR CLUB
+                    </li>
+                  </Link>
+
+                  <Link exact="true" to="/match" onClick={handleNav}>
                     <li className="ml-4 mt-5 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]" />
                   </Link>
-                  <Link exact="true" to="/membership" onClick={handleNav}>
+                  <Link exact="true" to="/shop" onClick={handleNav}>
                     <li className="ml-4 mt-5 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
-                      MEMBERSHIP
+                      SHOP
                     </li>
                   </Link>
                 </ul>
