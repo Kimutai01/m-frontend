@@ -375,6 +375,7 @@ const NavBar = () => {
                           <Link
                             to="/profile"
                             className=" text-[#f4e721] uppercase hover:text-[#f4e721] ml-5 py-1 text-2xl px-2 relative hover:underline underline-offset-8 hover:scale-105 transition-all duration-all hover:border-y-black"
+                            onClick={handleNav}
                           >
                             Profile
                           </Link>
@@ -388,34 +389,34 @@ const NavBar = () => {
                       )}
                     </li>
                   ) : (
-                    <Link to="/login">
+                    <Link to="/login" onClick={handleNav}>
                       <li className="py-4 text-xl ml-3 cursor-pointer">
                         Login
                       </li>
                     </Link>
                   )}
 
-                  <Link exact="true" to="/ourclub">
+                  <Link exact="true" to="/ourclub" onClick={handleNav}>
                     <li className="ml-4 mt-5 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                       OUR CLUB
                     </li>
                   </Link>
-                  <Link exact="true" to="/news">
+                  <Link exact="true" to="/news" onClick={handleNav}>
                     <li className="ml-4 mt-5 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                       NEWS
                     </li>
                   </Link>
 
-                  <Link exact="true" to="/team">
+                  <Link exact="true" to="/team" onClick={handleNav}>
                     <li className="ml-4 mt-5 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                       TEAM
                     </li>
                   </Link>
 
-                  <Link exact="true" to="/match">
+                  <Link exact="true" to="/match" onClick={handleNav}>
                     <li className="ml-4 mt-5 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]" />
                   </Link>
-                  <Link exact="true" to="/membership">
+                  <Link exact="true" to="/membership" onClick={handleNav}>
                     <li className="ml-4 mt-5 hover:underline text-[#f4e721] underline-offset-8 hover:text-[#f4e721]">
                       MEMBERSHIP
                     </li>
