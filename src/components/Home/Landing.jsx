@@ -60,7 +60,7 @@ const Landing = () => {
               to={`/news/${featured._id}`}
               class="bg-[#FAE115] p-2 flex group-hover:bg-black group-hover:text-white justify-center uppercase font-semibold"
             >
-              <p className="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center uppercase font-semibold">
+              <p className="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center uppercase font-semibold mx-auto">
                 Read More
               </p>
             </Link>
