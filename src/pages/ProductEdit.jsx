@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 // import axios from 'axios';
-import { selectUser } from '../features/userSlice';
+// import { selectUser } from '../features/userSlice';
 
 import {
   fetchProduct,
