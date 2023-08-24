@@ -4,7 +4,6 @@ import Adverts from '../components/Matches/Adverts';
 
 import { fetchNews, selectAllNews } from '../features/newsSlice';
 import SingleNews from './SingleNews';
-import Adverts from '../components/Matches/Adverts';
 
 const NewsPage = () => {
   const dispatch = useDispatch();
