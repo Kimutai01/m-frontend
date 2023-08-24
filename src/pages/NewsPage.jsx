@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchNews, selectAllNews } from '../features/newsSlice';
 import SingleNews from './SingleNews';
-import Adverts from '../components/Matches/Adverts.jsx';
+import Adverts from '../components/Matches/Adverts';
 
 const NewsPage = () => {
   const dispatch = useDispatch();
@@ -34,7 +34,6 @@ const NewsPage = () => {
           <Adverts />
         </div>
       </div>
-
     </div>
   );
 };

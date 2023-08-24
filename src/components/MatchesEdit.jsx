@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import axios from 'axios';
-import { selectUser } from '../features/userSlice';
+
 import {
   // fetchNews,
   fetchMatchById,
@@ -50,37 +49,36 @@ const MatchesEdit = () => {
 
     navigate('/admin/matches');
   };
-  const user = useSelector(selectUser);
 
-  const uploadFileHandler = async (e) => {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append('image', file);
-    formData.append('team_id', id);
+  // const uploadFileHandler = async (e) => {
+  //   const file = e.target.files[0];
+  //   const formData = new FormData();
+  //   formData.append('image', file);
+  //   formData.append('team_id', id);
 
-    try {
-      setUploading(true);
+  //   try {
+  //     setUploading(true);
 
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${user.token}`,
-        },
-      };
+  //     const config = {
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data',
+  //         Authorization: `Bearer ${user.token}`,
+  //       },
+  //     };
 
-      const { data } = await axios.post(
-        'https://mbackend-65aa08f37e31.herokuapp.com/api/teams/upload/',
-        formData,
-        config,
-      );
+  //     const { data } = await axios.post(
+  //       'https://mbackend-65aa08f37e31.herokuapp.com/api/teams/upload/',
+  //       formData,
+  //       config,
+  //     );
 
-      setImage(data);
+  //     setImage(data);
 
-      setUploading(false);
-    } catch (error) {
-      setUploading(false);
-    }
-  };
+  //     setUploading(false);
+  //   } catch (error) {
+  //     setUploading(false);
+  //   }
+  // };
 
   useEffect(() => {
     dispatch(fetchMatchById(id));
