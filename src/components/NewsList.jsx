@@ -75,7 +75,7 @@ const ProductList = () => {
           News List
         </h1>
         <button
-          className="why-btn ml-40  mt-10 mb-10 "
+          className="bg-[#fae115] p-2 rounded-md  text-xl ml-40  mt-10 mb-10 "
           type="button"
           onClick={createNewsHandler}
         >

@@ -78,7 +78,7 @@ const NewsEdit = () => {
   return (
     <div className="bg-[#000] pt-28">
       <Link to="/admin/news">
-        <button className="why-btn ml-40  mt-10 mb-10 " type="button">
+        <button className="bg-[#fae115] p-2 rounded-md ml-40  mt-10 mb-10 " type="button">
           <h1 className="font-bold">Go Back</h1>
         </button>
       </Link>

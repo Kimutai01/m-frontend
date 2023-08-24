@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Adverts from '../components/Matches/Adverts';
 
 import { fetchNews, selectAllNews } from '../features/newsSlice';
 import SingleNews from './SingleNews';
