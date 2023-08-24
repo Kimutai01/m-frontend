@@ -8,6 +8,8 @@ import orderReducer from '../features/orderSlice';
 // import registerReducer from "../features/registerSlice";
 import newsReducer from '../features/newsSlice';
 import advertsReducer from '../features/advertsSlice';
+import teamsReducer from '../features/teamsSlice';
+import matchesReducer from '../features/matchesSlice';
 
 const store = configureStore({
   reducer: {
@@ -19,6 +21,8 @@ const store = configureStore({
     order: orderReducer,
     news: newsReducer,
     adverts: advertsReducer,
+    teams: teamsReducer,
+    match: matchesReducer,
   },
 });
 

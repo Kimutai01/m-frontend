@@ -27,11 +27,7 @@ const NewsDetail = () => {
 
       <div className="sm:w-[200px] md:w-[60%] lg:max-w-full xl:max-w-full mx-auto mt-[6px]">
         <div className="w-[100%]">
-          <img
-            src={`https://mbackend-65aa08f37e31.herokuapp.com${news.image}`}
-            alt=""
-            className="w-full h-[600px]"
-          />
+          <img src={news.image} alt="" className="w-full h-[600px]" />
           <p className="text-semibold text-white mt-2 absolute top-80 right-100 bg-[#D9D9D9]">
             {news.created_at}
           </p>

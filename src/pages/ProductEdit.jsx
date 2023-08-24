@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import axios from 'axios';
-import { selectUser } from '../features/userSlice';
+// import axios from 'axios';
+// import { selectUser } from '../features/userSlice';
 
 import {
   fetchProduct,
@@ -21,7 +21,7 @@ const ProductEdit = () => {
   const [brand, setBrand] = useState('');
   const [countInStock, setCountInStock] = useState('');
   const [description, setDescription] = useState('');
-  const [uploading, setUploading] = useState(false);
+  const [setUploading] = useState(false);
 
   const navigate = useNavigate();
   const product = useSelector(selectProduct);
@@ -53,36 +53,23 @@ const ProductEdit = () => {
 
     navigate('/admin/products');
   };
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
 
-  const uploadFileHandler = async (e) => {
-    const file = e.target.files[0];
+  const uploadFileHandler = (files) => {
     const formData = new FormData();
-    formData.append('image', file);
-    formData.append('product_id', id);
 
-    try {
-      setUploading(true);
-
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${user.token}`,
-        },
-      };
-
-      const { data } = await axios.post(
-        'https://mbackend-65aa08f37e31.herokuapp.com/api/products/upload/',
-        formData,
-        config,
-      );
-
-      setImage(data);
-
-      setUploading(false);
-    } catch (error) {
-      setUploading(false);
-    }
+    formData.append('file', files[0]);
+    formData.append('upload_preset', 'e2e6z2lx');
+    setUploading(true);
+    fetch('https://api.cloudinary.com/v1_1/dakiak4mc/image/upload', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setUploading(false);
+        setImage(data.secure_url);
+      });
   };
 
   useEffect(() => {
@@ -152,38 +139,20 @@ const ProductEdit = () => {
         </div>
         <div className="flex justify-center md:flex-row mt-10 gap-5">
           <div className="flex flex-col w-full">
-            <img
-              src={`https://mbackend-65aa08f37e31.herokuapp.com//${image}`}
-              alt=""
-              className="h-20 w-20"
-            />
+            <img src={image} alt="" className="h-20 w-20" />
             <label
               htmlFor="image"
               className="text-white mb-3 uppercase font-bold"
             >
               Image
               <input
-                type="text"
+                type="file"
+                accept="image/*"
                 id="image"
-                name="image"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
+                onChange={(e) => uploadFileHandler(e.target.files)}
                 className="bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
               />
             </label>
-
-            <input
-              type="file"
-              id="image-file"
-              name="image-file"
-              onChange={uploadFileHandler}
-              className="mt-4 bg-[#161616] text-white border-[grey] border-[1px] rounded-lg p-2 font-medium focus:outline-none focus:border-[#ff4d24]"
-            />
-            {uploading && (
-              <div className="flex justify-center items-center pt-28 bg-black">
-                <div className="w-20 h-20 rounded-full animate-spin border-2 border-solid border-[red] border-t-transparent" />
-              </div>
-            )}
           </div>
         </div>
 

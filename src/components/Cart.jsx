@@ -53,7 +53,11 @@ const Cart = () => {
               className="flex gap-5 rounded-lg p-4 items-center text-[#000] border-b border-[#fae115]"
               key={item._id}
             >
-              <img src={item.image} alt="" className="h-28 w-28 rounded-md" />
+              <img
+                src={item.image}
+                alt=""
+                className="h-28 w-28 rounded-md"
+              />
               <h2 className="hidden md:block">{item.name}</h2>
               <h2 className="">{item.price}</h2>
               <div>

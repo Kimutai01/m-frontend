@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/prefer-default-export
-const SingleMatch = ({ match }) => (
+const SingleMatchResult = ({ match }) => (
   <div className="flex flex-col justify-center md:flex-row mb-2 gap-5">
     <div className="bg-[#FFF] border-[#FAE115] border-t-4 mb-2 justify-between">
       <div className="flex justify-between border-[#FAE115] border-b-2 p-2">
@@ -22,7 +22,12 @@ const SingleMatch = ({ match }) => (
             {' '}
           </p>
         </div>
-        <div className="flex flex-col justify-center mb-10 text-5xl">vs</div>
+        <div className="flex flex-col justify-center mb-10 text-5xl">
+          {match.team1_score}
+          {' '}
+          -
+          {match.team2_score}
+        </div>
         <div className="align-center hidden md:flex flex-col">
           <img src={match.team2.logo} alt="logo" className="h-32 w-40" />
           <p>{match.team2.name}</p>
@@ -32,4 +37,4 @@ const SingleMatch = ({ match }) => (
   </div>
 );
 
-export default SingleMatch;
+export default SingleMatchResult;

@@ -146,7 +146,7 @@ const Order = () => {
               >
                 <div className="flex items-center">
                   <img
-                    src={`https://mbackend-65aa08f37e31.herokuapp.com${item.image}`}
+                    src={item.image}
                     className="w-16 h-16 rounded-lg"
                     alt={item.name}
                   />

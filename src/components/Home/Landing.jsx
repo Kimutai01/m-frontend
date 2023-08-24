@@ -40,7 +40,7 @@ const Landing = () => {
         <div className=" flex flex-col items-start border-t-4 border border-[#FAE115] mt-3  shadow md:flex-row 2xl:min-w-[1024px] xl:min-w-[860px] lg:w-[650px] md:w-[500px] ">
           {/* <%= image_tag(news.image, class: "object-cover 2xl:w-[800px] xl:w-[600px] xl:h-[400px] lg:w-[400px] lg:h-[250px] md:h-[400px] md:w-[600px] sm:w-[200px]" ) %> */}
           <img
-            src={`https://mbackend-65aa08f37e31.herokuapp.com${featured.image}`}
+            src={featured.image}
             alt=""
             className="object-cover 2xl:w-[800px] xl:w-[600px] xl:h-[400px] lg:w-[400px] lg:h-[250px] md:h-[400px] md:w-[600px] sm:w-[200px]"
           />
@@ -60,7 +60,7 @@ const Landing = () => {
               to={`/news/${featured._id}`}
               class="bg-[#FAE115] p-2 flex group-hover:bg-black group-hover:text-white justify-center uppercase font-semibold"
             >
-              <p className="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center uppercase font-semibold">
+              <p className="bg-[#FAE115] sm:p-2 flex group-hover:bg-black group-hover:text-white justify-center uppercase font-semibold mx-auto">
                 Read More
               </p>
             </Link>
@@ -72,11 +72,7 @@ const Landing = () => {
             <div className="" key={bla._id}>
               <div className="bg-white border border-[#FAE115] border-t-4 flex flex-col duration-500 ease-in-out cursor-pointer mt-2 hover:scale-105">
                 {/* <%= image_tag(news.image, class: "h-[200px] w-full")  %> */}
-                <img
-                  src={`https://mbackend-65aa08f37e31.herokuapp.com${bla.image}`}
-                  alt=""
-                  className="h-[200px] w-full"
-                />
+                <img src={bla.image} alt="" className="h-[200px] w-full" />
                 <div className="p-5">
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate uppercase">
                     {bla.title}
@@ -118,12 +114,8 @@ const Landing = () => {
             key={advert._id}
             className="flex flex-col md:items-end gap-5 mb-2  sm:flex  "
           >
-            <div className="flex flex-col lg:w-[300px] md:w-[300px] text-white bg-black">
-              <img
-                src={`https://mbackend-65aa08f37e31.herokuapp.com${advert.image}`}
-                alt=""
-                className="w-[300px] h-[300px] "
-              />
+            <div className="flex flex-col lg:w-[300px] md:w-[300px] w-[300px] text-white bg-black mx-auto">
+              <img src={advert.image} alt="" className="w-[300px] h-[300px] " />
             </div>
           </div>
         ))}
