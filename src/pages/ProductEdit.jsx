@@ -61,8 +61,8 @@ const ProductEdit = () => {
     formData.append('file', files[0]);
     formData.append('upload_preset', 'e2e6z2lx');
     setUploading(true);
-    fetch('https://api.cloudinary.com/v1_1/dakiak4mc/image/upload', {
-      method: 'POST',
+    fetch("https://api.cloudinary.com/v1_1/dapnnry4b/image/upload", {
+      method: "POST",
       body: formData,
     })
       .then((response) => response.json())
