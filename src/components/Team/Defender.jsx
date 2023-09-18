@@ -2,11 +2,9 @@ import defender1 from '../../assets/defender1.png';
 import defender2 from '../../assets/briandf.png';
 import defender3 from '../../assets/HumphreyDF1.png';
 import defender4 from '../../assets/PeterMwaura.png';
-import defender5 from '../../assets/CentricDF.png';
 import defender7 from '../../assets/VictorDF.png';
 import defender8 from '../../assets/GideonWere.png';
 import defender9 from '../../assets/RajabDF.png';
-import defender10 from '../../assets/ThomasDF.png';
 
 const Defender = () => {
   const defenders = [

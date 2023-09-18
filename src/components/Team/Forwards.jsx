@@ -1,7 +1,5 @@
 import forward1 from '../../assets/BrianJumaAT.png';
 import forward2 from '../../assets/JohnMwitaAT.png';
-import forward3 from '../../assets/SalimAT.png';
-import forward4 from '../../assets/FrancisAT.png';
 
 const Forwards = () => {
   const forwards = [

@@ -1,6 +1,5 @@
 import goalkeeper1 from '../../assets/wilsongk.png';
 import goalkeeper2 from '../../assets/Bonphas26GK.png';
-import goalkeeper3 from '../../assets/christiangk.png';
 
 const Goalkeeper = () => {
   const goalkeepers = [

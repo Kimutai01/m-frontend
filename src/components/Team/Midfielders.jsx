@@ -3,12 +3,7 @@ import midfielder2 from '../../assets/HenryDF.png';
 import midfielder3 from '../../assets/John-Omondi-MF.png';
 import midfielder4 from '../../assets/defender3.png';
 import midfielder5 from '../../assets/JohnMwangiMF.png';
-import midfielder6 from '../../assets/EricJumaMF.png';
 import midfielder7 from '../../assets/AllyYusufMF.png';
-import midfielder8 from '../../assets/FabianMF.png';
-import midfielder9 from '../../assets/ArvineMF.png';
-import midfielder10 from '../../assets/KevinMF.png';
-import midfielder11 from '../../assets/AbouMF.png';
 import midfielder12 from '../../assets/WilsonAT.png';
 import midfielder13 from '../../assets/JohnAT.png';
 
