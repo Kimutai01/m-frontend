@@ -39,13 +39,6 @@ const Defender = () => {
       number: '04',
     },
     {
-      name1: 'Centic',
-      name2: 'Asango',
-      image: defender5,
-      id: 8,
-      number: '21',
-    },
-    {
       name1: 'Victory',
       name2: 'Onyango',
       image: defender7,
@@ -65,13 +58,6 @@ const Defender = () => {
       image: defender9,
       id: 11,
       number: '12',
-    },
-    {
-      name1: 'Thomas',
-      name2: 'Wainaina',
-      image: defender10,
-      id: 12,
-      number: '13',
     },
 
   ];

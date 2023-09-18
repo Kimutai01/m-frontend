@@ -19,20 +19,6 @@ const Forwards = () => {
       number: '07',
       id: 25,
     },
-    {
-      name1: 'Salim',
-      name2: 'Akatha',
-      image: forward3,
-      number: 25,
-      id: 26,
-    },
-    {
-      name1: 'Francis',
-      name2: 'Ocholla',
-      image: forward4,
-      number: 88,
-      id: 27,
-    },
   ];
   return (
     <div>
