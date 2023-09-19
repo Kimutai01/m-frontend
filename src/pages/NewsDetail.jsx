@@ -21,6 +21,8 @@ const NewsDetail = () => {
       <div className="p-6 bg-[#FAE115] font-bold uppercase md:text-3xl text-3xl flex justify-between ">
         <p className="truncate w-[90%]">
           NEWS |
+          {' '}
+          {' '}
           {news.title}
         </p>
       </div>
