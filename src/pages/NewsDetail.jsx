@@ -34,7 +34,10 @@ const NewsDetail = () => {
         </div>
         <h2 className="text-2xl font-bold mt-4 mr-3 m-4">{news.category}</h2>
         <h3 className="text-xl font-semibold m-4">{news.title}</h3>
-        <p className="text-lg mt-2 p-4">{news.description}</p>
+        <p
+          className="text-lg mt-2 p-4"
+          dangerouslySetInnerHTML={{ __html: news.description }}
+        />
       </div>
     </div>
   );
