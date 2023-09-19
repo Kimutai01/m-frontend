@@ -3,12 +3,7 @@ import midfielder2 from '../../assets/HenryDF.png';
 import midfielder3 from '../../assets/John-Omondi-MF.png';
 import midfielder4 from '../../assets/defender3.png';
 import midfielder5 from '../../assets/JohnMwangiMF.png';
-import midfielder6 from '../../assets/EricJumaMF.png';
 import midfielder7 from '../../assets/AllyYusufMF.png';
-import midfielder8 from '../../assets/FabianMF.png';
-import midfielder9 from '../../assets/ArvineMF.png';
-import midfielder10 from '../../assets/KevinMF.png';
-import midfielder11 from '../../assets/AbouMF.png';
 import midfielder12 from '../../assets/WilsonAT.png';
 import midfielder13 from '../../assets/JohnAT.png';
 
@@ -50,46 +45,11 @@ const Midfielders = () => {
       id: 15,
     },
     {
-      name1: 'Eric',
-      name2: 'Juma',
-      image: midfielder6,
-      number: 88,
-      id: 16,
-    },
-    {
       name1: 'Ally',
       name2: 'Yusuf',
       image: midfielder7,
       number: 25,
       id: 17,
-    },
-    {
-      name1: 'Fabian',
-      name2: 'Adkiny',
-      image: midfielder8,
-      number: '02',
-      id: 18,
-    },
-    {
-      name1: 'Arvine',
-      name2: 'Odoyo',
-      image: midfielder9,
-      number: 32,
-      id: 19,
-    },
-    {
-      name1: 'Kevin',
-      name2: 'Oyim',
-      image: midfielder10,
-      number: '30',
-      id: 20,
-    },
-    {
-      name1: 'Abou',
-      name2: 'Traore',
-      image: midfielder11,
-      number: 18,
-      id: 21,
     },
     {
       name1: 'Wilson',

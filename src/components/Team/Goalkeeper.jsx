@@ -1,29 +1,21 @@
 import goalkeeper1 from '../../assets/wilsongk.png';
-import goalkeeper2 from '../../assets/goalkeeper2.png';
-import goalkeeper3 from '../../assets/christiangk.png';
+import goalkeeper2 from '../../assets/Bonphas26GK.png';
 
 const Goalkeeper = () => {
   const goalkeepers = [
     {
       name1: 'Wilson',
-      name2: 'Mwangi',
+      name2: 'Ngamau',
       image: goalkeeper1,
       number: '01',
       id: 1,
     },
     {
-      name1: 'Kevin',
-      name2: 'Magona',
+      name1: 'Bonphas',
+      name2: 'Munyasa',
       image: goalkeeper2,
-      number: '22',
+      number: '26',
       id: 2,
-    },
-    {
-      name1: 'Christian',
-      name2: 'Kimeu',
-      image: goalkeeper3,
-      number: '33',
-      id: 3,
     },
   ];
 

@@ -1,7 +1,5 @@
 import forward1 from '../../assets/BrianJumaAT.png';
 import forward2 from '../../assets/JohnMwitaAT.png';
-import forward3 from '../../assets/SalimAT.png';
-import forward4 from '../../assets/FrancisAT.png';
 
 const Forwards = () => {
   const forwards = [
@@ -18,20 +16,6 @@ const Forwards = () => {
       image: forward2,
       number: '07',
       id: 25,
-    },
-    {
-      name1: 'Salim',
-      name2: 'Akatha',
-      image: forward3,
-      number: 25,
-      id: 26,
-    },
-    {
-      name1: 'Francis',
-      name2: 'Ocholla',
-      image: forward4,
-      number: 88,
-      id: 27,
     },
   ];
   return (
